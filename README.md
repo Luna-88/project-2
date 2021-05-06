@@ -6,5 +6,5 @@ EvolveU - Second Project - Using React - Hello
 
 Andy
 Terence
-Andreina
-Jason Salazar
+Andreina  
+**Jason Salazar**
