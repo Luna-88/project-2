@@ -1,6 +1,6 @@
 # project-2
 
-EvolveU - Second Project - Using React
+EvolveU - Second Project - Using React - Hello
 
 ## Team Members
 
