@@ -1,13 +1,11 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const db = require('../models/db')
+const Users = require('../models/users')
 const config = require('../config/authentication')
 
-//Change to mongoose
 async function signInUser(request, response, next) {
-    const usersCollection = await db.getCollection('users')
-    await usersCollection.findOne({ username: request.body.username })
+    await Users.findOne({ username: request.body.username })
         .then((user) => {
             try {
                 if (!user) {

@@ -1,11 +1,9 @@
 const bcrypt = require('bcryptjs')
 
-const db = require('../models/db')
+const Users = require('../models/users')
 
-//Change to mongoose
 async function checkDuplicateUsername(request, response, next) {
-    const usersCollection = await db.getCollection('users')
-    await usersCollection.findOne({
+    await Users.findOne({
         username: request.body.username
     }).then((user) => {
         try {
@@ -21,13 +19,18 @@ async function checkDuplicateUsername(request, response, next) {
 }
 
 async function registerUser(request, response, next) {
-    db.getCollection("users").then((user) => {
-        return user.insertOne({
-            username: request.body.username,
-            password: bcrypt.hashSync(request.body.password, 8),
-            accuseCount: 0
-        })
-    })
+    const user = {
+        username: request.body.username,
+        password: bcrypt.hashSync(request.body.password, 8)
+    }
+    try {
+        const newUser = new Users(user)
+        await newUser.save()
+    }
+    catch (error) {
+        console.log("Registration", error)
+        response.status(500).json(error)
+    }
     next()
 }
 
