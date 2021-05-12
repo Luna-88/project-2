@@ -28,9 +28,9 @@ export default function UserForm({ api }) {
     }
     return (
         <div>
-            <div className="user-form">
-                <form>
-                    <label htmlFor="username">Username:</label><br />
+            <div className="user-form-container">
+                <form className="user-form">
+                    <label htmlFor="username">Username:</label>
                     <input
                         className="user-input"
                         type="text"
@@ -39,8 +39,8 @@ export default function UserForm({ api }) {
                         onChange={(event) => { setUsername(event.target.value) }}
                         placeholder="username"
                         required
-                    /><br />
-                    <label htmlFor="password">Password:</label><br />
+                    />
+                    <label htmlFor="password">Password:</label>
                     <input
                         className="user-input"
                         type="password"
@@ -49,7 +49,7 @@ export default function UserForm({ api }) {
                         onChange={(event) => { setPassword(event.target.value) }}
                         placeholder="password"
                         required
-                    /><br />
+                    />
                     <input
                         type="checkbox"
                         id="checkbox"
