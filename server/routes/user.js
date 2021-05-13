@@ -7,13 +7,13 @@ userRouter.use(express.json())
 const registerMiddleware = require('../middleware/registerUser')
 const signInMiddleware = require('../middleware/signInUser')
 
-userRouter.post('/register', registerMiddleware.checkDuplicateUsername, registerMiddleware.registerUser, async (request, response) => {
+userRouter.post('/register',  registerMiddleware.registerUser, async (request, response) => {
     try {
         response.json({ message: "Registered successfully!" })
     }
     catch (error) {
         console.log(error)
-        response.status(404).send("There was a problem registering your information")
+        response.status(400).send("There was a problem registering your information")
     }
 })
 

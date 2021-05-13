@@ -3,6 +3,7 @@ import { useState } from "react"
 export default function UserForm({ api }) {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
+    let [error, setError] = useState()
 
     async function handleClick(event) {
         event.preventDefault()
@@ -14,8 +15,20 @@ export default function UserForm({ api }) {
                 'Content-Type': 'application/json'
             }
         }
-        fetch(api, requestOptions)
-            .then(response => response.json())
+        try {
+            let userResponse = await fetch(api, requestOptions)
+            if (userResponse.status !== 200) {
+                let errorMessage = await userResponse.text()
+                console.log('We had an error.  It was: ', errorMessage)
+                setError(errorMessage)
+            }
+            else {
+                setError(undefined)
+            }
+        }
+        catch (error) {
+            console.error("Failed to reach the server")
+        }
     }
 
     function showPassword() {
@@ -26,6 +39,7 @@ export default function UserForm({ api }) {
             x.type = "password"
         }
     }
+    
     return (
         <div>
             <div className="user-form-container">
@@ -38,7 +52,6 @@ export default function UserForm({ api }) {
                         value={username}
                         onChange={(event) => { setUsername(event.target.value) }}
                         placeholder="username"
-                        required
                     />
                     <label htmlFor="password">Password:</label>
                     <input
@@ -48,7 +61,6 @@ export default function UserForm({ api }) {
                         value={password}
                         onChange={(event) => { setPassword(event.target.value) }}
                         placeholder="password"
-                        required
                     />
                     <input
                         type="checkbox"
@@ -61,7 +73,7 @@ export default function UserForm({ api }) {
                             className="user-button-input"
                             onClick={handleClick}
                         >Submit
-                        </button>
+                        </button> {error && <div>{error}</div>}
                     </div>
                 </form>
             </div>

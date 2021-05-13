@@ -2,22 +2,6 @@ const bcrypt = require('bcryptjs')
 
 const Users = require('../models/user')
 
-async function checkDuplicateUsername(request, response, next) {
-    await Users.findOne({
-        username: request.body.username
-    }).then((user) => {
-        try {
-            if (user) {
-                return response.status(400).send(`Failed! Username is already in use!`)
-            }
-        }
-        catch (error) {
-            response.status(500).json(error)
-        }
-        next()
-    })
-}
-
 async function registerUser(request, response, next) {
     const user = {
         username: request.body.username,
@@ -28,13 +12,16 @@ async function registerUser(request, response, next) {
         await newUser.save()
     }
     catch (error) {
-        console.log("Registration", error)
-        response.status(500).json(error)
+        if (error.code === 11000) {
+            response.status(409).send("Failed! Username is already in use!")
+        }
+        else {
+            response.status(500).json(error)
+        }
     }
     next()
 }
 
 module.exports = {
-    checkDuplicateUsername,
     registerUser,
 }
