@@ -18,7 +18,7 @@ async function signInUser(request, response, next) {
                 if (!passwordIsValid) {
                     return response.status(401).json({ password: "Invalid Password!" })
                 }
-                const token = jwt.sign({ username: user.username, accuseCount: user.accuseCount }, config.secret, { expiresIn: 86400 }) //24h
+                const token = jwt.sign({ username: user.username }, config.secret, { expiresIn: 86400 }) //24h
                 response.cookie('accessToken', token, { httpOnly: true, maxAge: 3600000 })
             }
             catch (error) {
