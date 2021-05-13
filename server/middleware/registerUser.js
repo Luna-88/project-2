@@ -10,16 +10,17 @@ async function registerUser(request, response, next) {
     try {
         const newUser = new Users(user)
         await newUser.save()
+        next()
     }
     catch (error) {
         if (error.code === 11000) {
-            response.status(409).send("Failed! Username is already in use!")
+            response.status(409).json({ message: "Failed! Username is already in use!" })
         }
         else {
+            console.log(error)
             response.status(500).json(error)
         }
     }
-    next()
 }
 
 module.exports = {

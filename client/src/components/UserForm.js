@@ -3,7 +3,7 @@ import { useState } from "react"
 export default function UserForm({ api }) {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
-    let [error, setError] = useState()
+    let [serverResponse, setServerResponse] = useState()
 
     async function handleClick(event) {
         event.preventDefault()
@@ -19,11 +19,14 @@ export default function UserForm({ api }) {
             let userResponse = await fetch(api, requestOptions)
             if (userResponse.status !== 200) {
                 let errorMessage = await userResponse.text()
-                console.log('We had an error.  It was: ', errorMessage)
-                setError(errorMessage)
+                console.log('We had an error: ', errorMessage)
+                setServerResponse(errorMessage)
+            } else if (userResponse.status === 200) {
+                let serverMessage = await userResponse.text()
+                setServerResponse(serverMessage)
             }
             else {
-                setError(undefined)
+                setServerResponse(undefined)
             }
         }
         catch (error) {
@@ -39,7 +42,9 @@ export default function UserForm({ api }) {
             x.type = "password"
         }
     }
-    
+
+    let userDataInvalid = (!username || !password) || (username.trim().length === 0 || password.length === 0)
+
     return (
         <div>
             <div className="user-form-container">
@@ -71,9 +76,10 @@ export default function UserForm({ api }) {
                     <div className="user-button">
                         <button
                             className="user-button-input"
+                            disabled={userDataInvalid}
                             onClick={handleClick}
                         >Submit
-                        </button> {error && <div>{error}</div>}
+                        </button> {serverResponse && <div>{serverResponse}</div>}
                     </div>
                 </form>
             </div>
