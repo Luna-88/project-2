@@ -3,13 +3,17 @@ require('./db')
 
 const userSchema = new mongoose.Schema({
     username: {
-        type: String,
+        type: String, trim: true,
         required: true,
+        minlength: 5,
+        maxlength: 50,
         unique: true
     },
     password: {
-        type: String,
-        required: true
+        type: String, trim: true,
+        required: true,
+        minlength: 5,
+        maxlength: 50
     }
 })
 
