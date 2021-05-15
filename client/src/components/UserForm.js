@@ -73,9 +73,9 @@ export default function UserForm({ api }) {
                         onClick={showPassword}
                     />
                     <label id="show-password" htmlFor="checkbox">Show Password</label>
-                    <div className="user-button">
+                    <div className="user-btn-container">
                         <button
-                            className="user-button-input"
+                            className="user-btn"
                             disabled={userDataInvalid}
                             onClick={handleClick}
                         >Submit

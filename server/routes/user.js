@@ -1,15 +1,9 @@
 const express = require('express')
 const userRouter = express.Router()
 
-userRouter.use(express.urlencoded({ extended: true }))
-userRouter.use(express.json())
-
-// const registerMiddleware = require('../middleware/registerUser')
 const { registerUser } = require('../middleware/registerUser')
-// const signInMiddleware = require('../middleware/signInUser')
 const { signInUser } = require('../middleware/signInUser')
 
-// userRouter.post('/register', registerMiddleware.registerUser, async (request, response) => {
 userRouter.post('/register', registerUser, async (request, response) => {
     try {
         response.json({ message: "Registered successfully!" })
@@ -20,8 +14,7 @@ userRouter.post('/register', registerUser, async (request, response) => {
     }
 })
 
-// userRouter.post('/signIn', signInMiddleware.signInUser, async (request, response) => {
-userRouter.post('/signIn', signInUser, async (request, response) => {
+userRouter.post('/sign-in', signInUser, async (request, response) => {
     try {
         response.json({ message: "Signed in successfully" })
     }
