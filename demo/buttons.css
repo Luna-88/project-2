@@ -9,7 +9,7 @@ could be a div element.
 The :hover, :active, and :disabled selectors modify
 that item based on the in-browser activity. */
 
-.button {
+button {
     user-select: none;
     display: block;
     position: relative;
@@ -33,18 +33,18 @@ that item based on the in-browser activity. */
     cursor: default;
 }
 
-.button:hover {
+button:hover {
     opacity: 1;
     background-color: ghostwhite;
 }
 
-.button:active {
+button:active {
     opacity: 1;
     background: gainsboro;
     color: inherit;
 }
 
-.button:disabled {
+button:disabled {
     opacity: 1;
     background: ghostwhite;
     color: #dcdcdc;
@@ -191,6 +191,11 @@ You can ignore everything below these lines */
 }
 
 /* Secondary button states */
+
+.new-button_default {
+    background-color: #2c74f0;
+    color: #ffffff;
+}
 
 .new-button_hover {
     background-color: #225bbd;
