@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:400,700,900");
+
+/* Primary button styles
+
+We apply a basic button class to all items we want
+to treat as a button—this could be a button, or it
+could be a div element.
+
+The :hover, :active, and :disabled selectors modify
+that item based on the in-browser activity. */
+
+.button {
+    user-select: none;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 1;
+
+    background-color: white;
+    border-radius: 0.25rem;
+    border: 0.0625rem solid darkgrey;
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+
+    color: black;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    text-align: center;
+    text-decoration: none;
+
+    cursor: default;
+}
+
+.button:hover {
+    opacity: 1;
+    background-color: ghostwhite;
+}
+
+.button:active {
+    opacity: 1;
+    background: gainsboro;
+    color: inherit;
+}
+
+.button:disabled {
+    opacity: 1;
+    background: ghostwhite;
+    color: #dcdcdc;
+    cursor: not-allowed;
+}
+
+/* A pre-sized button can be defined by
+adding both classes to our html item
+eg: <button class="button button-wide">
+
+Secondary classes, like button-wide, do not
+inherit the properties of the main class. We
+can style the default button css element wit
+*/
+
+.button-wide {
+    width: 7.25rem;
+}
+
+/* Secondary button styles
+
+Secondary styles are now easy to select, because
+we apply the main button class AND the secondary
+class selector to our item. */
+
+.new-button {
+    background-color: #2c74f0;
+    color: #ffffff;
+}
+.new-button:hover {
+    background-color: #225bbd;
+    color: #ffffff;
+}
+
+.new-button:active {
+    background-color: #364b70;
+    color: #ffffff;
+}
+
+/* 
+
+
+These are just for the static styles; for buttons we would
+use the :active, :hover: :disabled selectors above
+
+You can ignore everything below these lines */
+
+.button_default {
+    user-select: none;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 1;
+
+    background-color: white;
+    border-radius: 0.25rem;
+    border: 0.0625rem solid darkgrey;
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+
+    color: black;
+    font-size: 1rem;
+    text-decoration: none;
+
+    cursor: default;
+}
+
+.button_hover {
+    user-select: none;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 1;
+
+    background-color: white;
+    border-radius: 0.25rem;
+    border: 0.0625rem solid darkgrey;
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+
+    color: black;
+    font-size: 1rem;
+    text-decoration: none;
+
+    cursor: default;
+
+    opacity: 1;
+    background-color: ghostwhite;
+}
+
+.button_active {
+    user-select: none;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 1;
+
+    background-color: white;
+    border-radius: 0.25rem;
+    border: 0.0625rem solid darkgrey;
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+
+    color: black;
+    font-size: 1rem;
+    text-decoration: none;
+
+    cursor: default;
+    opacity: 1;
+    background: gainsboro;
+    color: inherit;
+}
+
+.button_disabled {
+    user-select: none;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 1;
+
+    background-color: white;
+    border-radius: 0.25rem;
+    border: 0.0625rem solid darkgrey;
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+
+    color: black;
+    font-size: 1rem;
+    text-decoration: none;
+
+    cursor: default;
+    opacity: 1;
+    background: ghostwhite;
+    color: #dcdcdc;
+    cursor: not-allowed;
+}
+
+/* Secondary button states */
+
+.new-button_hover {
+    background-color: #225bbd;
+    color: #ffffff;
+}
+
+.new-button_active {
+    background-color: #364b70;
+    color: #ffffff;
+}
+
+/* This just defines the grid layout */
+
+body {
+    padding: 3 rem;
+    font-family: "Work Sans", sans-serif;
+    background: #fff;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.wrapper {
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-gap: 5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    font-family: "Work Sans", sans-serif;
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 0.75 rem;
+}
+
+hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
