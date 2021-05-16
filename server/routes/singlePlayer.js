@@ -7,7 +7,7 @@ singlePlayerRouter.post('/new-game', async (request, response) => {
     }
     catch (error) {
         console.log(error)
-        response.status(400).send("There was a problem starting a new game")
+        response.status(500).send("There was a problem starting a new game")
     }
 })
 
@@ -17,7 +17,7 @@ singlePlayerRouter.get('/load-game', async (request, response) => {
     }
     catch (error) {
         console.log(error)
-        response.status(404).send("There was a problem loading your game")
+        response.status(500).send("There was a problem loading your game")
     }
 })
 
@@ -27,7 +27,7 @@ singlePlayerRouter.delete('/delete-game', async (request, response) => {
     }
     catch (error) {
         console.log(error)
-        response.status(404).send("There was a problem deleting your game")
+        response.status(500).send("There was a problem deleting your game")
     }
 })
 

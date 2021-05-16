@@ -2,14 +2,17 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
 import UserForm from './components/UserForm'
 import HomePage from './components/HomePage'
-import SinglePlayer from './components/SinglePlayer'
-import InGameMenu from './components/InGameMenu'
+import SinglePlayerMenu from './components/SinglePlayerMenu'
+import Admin from './components/Admin'
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Switch>
+          <Route exact path="/admin">
+            <Admin />
+          </Route>
           <Route exact path="/register">
             <UserForm
               api='/api/register'
@@ -24,10 +27,7 @@ function App() {
             <HomePage />
           </Route>
           <Route exact path="/home-page/single-player">
-            <SinglePlayer />
-          </Route>
-          <Route exact path="/in-game-menu">
-            <InGameMenu />
+            <SinglePlayerMenu />
           </Route>
         </Switch>
       </BrowserRouter>

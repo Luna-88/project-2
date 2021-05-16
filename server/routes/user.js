@@ -10,7 +10,7 @@ userRouter.post('/register', registerUser, async (request, response) => {
     }
     catch (error) {
         console.log(error)
-        response.status(400).send("There was a problem registering your information")
+        response.status(500).send("There was a problem registering your information")
     }
 })
 
@@ -20,7 +20,7 @@ userRouter.post('/sign-in', signInUser, async (request, response) => {
     }
     catch (error) {
         console.log(error)
-        response.status(404).send("There was a problem registering your information")
+        response.status(500).send("There was a problem signing in")
     }
 })
 
