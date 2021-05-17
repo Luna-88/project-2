@@ -7,21 +7,18 @@ export default function Admin() {
     return (
         <div className="admin-container">
             <button
-                className="admin-btn"
                 onClick={() => handleClickWithFetch(
                     setServerResponse,
                     "POST",
                     "/api/admin/add-user")}
             >Add User</button>
             <button
-                className="admin-btn"
                 onClick={() => handleClickWithFetch(
                     setServerResponse,
                     "DELETE",
                     "/api/admin/delete-user")}
             >Delete User</button>
             <button
-                className="admin-btn"
                 onClick={() => handleClickWithFetch(
                     setServerResponse,
                     "PUT",

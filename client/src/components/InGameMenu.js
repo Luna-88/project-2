@@ -7,35 +7,30 @@ export default function InGameMenu() {
     return (
         <div className="in-menu-container">
             <button
-                className="in-menu-btn"
                 onClick={() => handleClickWithFetch(
                     setServerResponse,
                     "GET",
                     "/api/in-game-menu/inventory")}
             >Inventory</button>
             <button
-                className="in-menu-btn"
                 onClick={() => handleClickWithFetch(
                     setServerResponse,
                     "GET",
                     "/api/in-game-menu/tooltips")}
             >Tooltips</button>
             <button
-                className="in-menu-btn"
                 onClick={() => handleClickWithFetch(
                     setServerResponse,
                     "GET",
                     "/api/in-game-menu/options")}
             >Options</button>
             <button
-                className="in-menu-btn"
                 onClick={() => handleClickWithFetch(
                     setServerResponse,
                     "GET",
                     "/api/in-game-menu/save-game")}
             >Save Game</button>
             <button
-                className="in-menu-btn"
                 onClick={() => handleClickWithFetch(
                     setServerResponse,
                     "GET",
