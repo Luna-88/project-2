@@ -17,8 +17,9 @@ async function registerUser(request, response, next) {
             response.status(409).json({ message: "Failed! Username is already in use!" })
         }
         else {
-            console.log(error)
-            response.status(500).json(error)
+            // console.log(error)
+            // response.status(500).json(error)
+            response.status(500).json({ message: "Minimum username length is 5 characters." })
         }
     }
 }
