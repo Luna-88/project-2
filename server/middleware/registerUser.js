@@ -7,7 +7,7 @@ async function registerUser(request, response, next) {
     let password = request.body.password.trim()
 
     try {
-        if ((username.length && password.length) >= 5 && (username.length && password.length) <= 15) {
+        if ((username.length >= 5 && password.length >= 5) && (username.length <= 15 && password.length <= 15)) {
             const user = {
                 username: username,
                 password: bcrypt.hashSync(password, 8)
