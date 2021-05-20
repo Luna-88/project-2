@@ -10,23 +10,25 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/admin">
+          <Route exact path='/admin'>
             <Admin />
           </Route>
-          <Route exact path="/register">
+          <Route exact path='/register'>
             <UserForm
               api='/api/register'
+              redirect='/sign-in'
             />
           </Route>
-          <Route exact path="/sign-in">
+          <Route exact path='/sign-in'>
             <UserForm
               api='/api/sign-in'
+              redirect='/home-page'
             />
           </Route>
-          <Route exact path="/home-page">
+          <Route exact path='/home-page'>
             <HomePage />
           </Route>
-          <Route exact path="/home-page/single-player">
+          <Route exact path='/home-page/single-player'>
             <SinglePlayerMenu />
           </Route>
         </Switch>

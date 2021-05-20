@@ -5,24 +5,24 @@ export default function Admin() {
     let [serverResponse, setServerResponse] = useState()
 
     return (
-        <div className="admin-container">
+        <div className='admin-container'>
             <button
                 onClick={() => handleClickWithFetch(
                     setServerResponse,
-                    "POST",
-                    "/api/admin/add-user")}
+                    'POST',
+                    '/api/admin/add-user')}
             >Add User</button>
             <button
                 onClick={() => handleClickWithFetch(
                     setServerResponse,
-                    "DELETE",
-                    "/api/admin/delete-user")}
+                    'DELETE',
+                    '/api/admin/delete-user')}
             >Delete User</button>
             <button
                 onClick={() => handleClickWithFetch(
                     setServerResponse,
-                    "PUT",
-                    "/api/admin/modify-user")}
+                    'PUT',
+                    '/api/admin/modify-user')}
             >Modify User</button>
             {serverResponse && <div>{serverResponse}</div>}
         </div>

@@ -5,21 +5,21 @@ export default function HomePage() {
 
     function handleSinglePlayerClick(event) {
         event.preventDefault()
-        history.push("/home-page/single-player")
+        history.push('/home-page/single-player')
     }
     function handleMultiplayerClick(event) {
         event.preventDefault()
-        history.push("/home-page/multiplayer")
+        history.push('/home-page/multiplayer')
     }
 
     return (
-        <div className="home-page-container">
+        <div className='home-page-container'>
             <button
-                className="single-player-button"
+                className='single-player-button'
                 onClick={handleSinglePlayerClick}
             >Single Player</button>
             <button
-                className="multiplayer-button"
+                className='multiplayer-button'
                 onClick={handleMultiplayerClick}
             >Multiplayer</button>
         </div>
