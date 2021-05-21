@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import handleClickWithFetch from '../models/handleClickWithFetch'
 
 export default function InGameMenu() {

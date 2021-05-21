@@ -1,11 +1,12 @@
 export default async function handleClickWithFetch(setResponse, requestMethod, api) {
 
-    const requestOptions = {
+    let requestOptions = {
         method: requestMethod,
         headers: {
             'Content-Type': 'application/json'
         }
     }
+
     try {
         let serverResponse = await fetch(api, requestOptions)
         if (serverResponse.status !== 200) {

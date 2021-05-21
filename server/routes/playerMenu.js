@@ -1,7 +1,17 @@
 const express = require('express')
-const singlePlayerRouter = express.Router()
+const playerMenuRouter = express.Router()
 
-singlePlayerRouter.post('/new-game', async (request, response) => {
+playerMenuRouter.post('/add-player', async (request, response) => {
+    try {
+        response.json({ message: "Player was added" })
+    }
+    catch (error) {
+        console.log(error)
+        response.status(500).send("There was a problem adding player")
+    }
+})
+
+playerMenuRouter.post('/new-game', async (request, response) => {
     try {
         response.json({ message: "New game created successfully" })
     }
@@ -11,7 +21,7 @@ singlePlayerRouter.post('/new-game', async (request, response) => {
     }
 })
 
-singlePlayerRouter.get('/load-game', async (request, response) => {
+playerMenuRouter.get('/load-game', async (request, response) => {
     try {
         response.json({ message: "Loaded game successfully" })
     }
@@ -21,7 +31,7 @@ singlePlayerRouter.get('/load-game', async (request, response) => {
     }
 })
 
-singlePlayerRouter.delete('/delete-game', async (request, response) => {
+playerMenuRouter.delete('/delete-game', async (request, response) => {
     try {
         response.json({ message: "Deleted game successfully" })
     }
@@ -32,5 +42,5 @@ singlePlayerRouter.delete('/delete-game', async (request, response) => {
 })
 
 module.exports = {
-    singlePlayerRouter,
+    playerMenuRouter,
 }
