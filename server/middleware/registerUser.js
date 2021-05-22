@@ -16,16 +16,15 @@ async function registerUser(request, response, next) {
             await newUser.save()
             next()
         } else {
-            response.status(400).json({ message: "Username and password must be between 5 and 15 characters" })
+            response.status(400).send('Username and password must be between 5 and 15 characters')
         }
     }
     catch (error) {
         if (error.code === 11000) {
-            response.status(409).json({ message: "Failed! Username is already in use!" })
+            response.status(409).send('Failed! Username is already in use!')
         }
         else {
             console.log(error)
-            response.status(500).json(error)
         }
     }
 }

@@ -9,22 +9,21 @@ async function signInUser(request, response, next) {
         .then((user) => {
             try {
                 if (!user) {
-                    return response.status(404).json({ message: "User Not found" })
+                    return response.status(404).send('User Not found')
                 }
                 const passwordIsValid = bcrypt.compareSync(
                     request.body.password,
                     user.password
                 )
                 if (!passwordIsValid) {
-                    return response.status(401).json({ message: "Invalid Password!" })
+                    return response.status(401).send('Invalid Password!')
                 }
-                const token = jwt.sign({ username: user.username }, config.secret, { expiresIn: 86400 }) //24h
-                response.cookie('accessToken', token, { httpOnly: true, maxAge: 3600000 })
+                const token = jwt.sign({ userId: user._id }, config.secret, { expiresIn: 86400 }) //24h
+                response.cookie('accessToken', token, { httpOnly: true, maxAge: 86400 })
                 next()
             }
             catch (error) {
                 console.log(error)
-                response.status(500).json(error)
             }
         })
 }

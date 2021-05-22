@@ -3,31 +3,31 @@ const adminRouter = express.Router()
 
 adminRouter.post('/add-user', async (request, response) => {
     try {
-        response.json({ message: "User added" })
+        response.status(200).send('User added')
     }
     catch (error) {
         console.log(error)
-        response.status(500).send("There was a problem adding user")
+        response.status(500).send('There was a problem adding user')
     }
 })
 
 adminRouter.delete('/delete-user', async (request, response) => {
     try {
-        response.json({ message: "User deleted" })
+        response.status(200).send('User deleted')
     }
     catch (error) {
         console.log(error)
-        response.status(500).send("There was a problem deleting user")
+        response.status(500).send('There was a problem deleting user')
     }
 })
 
 adminRouter.put('/modify-user', async (request, response) => {
     try {
-        response.json({ message: "User modified" })
+        response.status(200).send('User modified')
     }
     catch (error) {
         console.log(error)
-        response.status(500).send("There was a problem modifying user")
+        response.status(500).send('There was a problem modifying user')
     }
 })
 

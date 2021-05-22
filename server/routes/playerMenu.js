@@ -1,43 +1,47 @@
 const express = require('express')
 const playerMenuRouter = express.Router()
 
+const { createGame } = require('../models/playerMenu')
+const { loadGame } = require('../models/playerMenu')
+const { deleteGame } = require('../models/playerMenu')
+
 playerMenuRouter.post('/add-player', async (request, response) => {
     try {
-        response.json({ message: "Player was added" })
+        response.status(200).json({ message: 'Player was added' })
     }
     catch (error) {
         console.log(error)
-        response.status(500).send("There was a problem adding player")
+        response.status(500).send('There was a problem adding player')
     }
 })
 
 playerMenuRouter.post('/new-game', async (request, response) => {
     try {
-        response.json({ message: "New game created successfully" })
+        response.send(await createGame(request, response))
     }
     catch (error) {
         console.log(error)
-        response.status(500).send("There was a problem starting a new game")
+        response.status(500).send('There was a problem starting a new game')
     }
 })
 
-playerMenuRouter.get('/load-game', async (request, response) => {
+playerMenuRouter.get('/load-game', loadGame, async (request, response) => {
     try {
-        response.json({ message: "Loaded game successfully" })
+        response.status(200).send('Latest game loaded')
     }
     catch (error) {
         console.log(error)
-        response.status(500).send("There was a problem loading your game")
+        response.status(500).send('There was a problem loading your game')
     }
 })
 
 playerMenuRouter.delete('/delete-game', async (request, response) => {
     try {
-        response.json({ message: "Deleted game successfully" })
+        response.send(await deleteGame(request, response))
     }
     catch (error) {
         console.log(error)
-        response.status(500).send("There was a problem deleting your game")
+        response.status(500).send('There was a problem deleting your game')
     }
 })
 
