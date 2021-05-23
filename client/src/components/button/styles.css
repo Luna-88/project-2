@@ -1,6 +1,5 @@
 .button__container {
     padding: 15px;
-
     user-select: none;
 }
 
@@ -31,7 +30,8 @@
 
 .button__container--small {
     font-size: 18px;
-    padding: 12px;
+    padding: 12px;    background: pink;
+
 }
 
 @keyframes fade {

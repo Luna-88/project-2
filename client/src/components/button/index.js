@@ -21,7 +21,7 @@ const Button = ({
 
     return (
         <button
-            className={`button__container white-border ${
+            className={`button button__container white-border ${
                 small ? "button__container--small" : ""
             }`}
             style={style || {}}

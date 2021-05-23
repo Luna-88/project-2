@@ -17,6 +17,10 @@ body {
     overflow: hidden;
 }
 
+.button {
+    /* background: magenta; */
+}
+
 .in-menu-container {
     position: fixed;
     top: 2rem;
@@ -34,7 +38,7 @@ button {
     overflow: hidden;
     opacity: 1;
 
-    background-color: white;
+    background: white;
     border-radius: 0.25rem;
     border: 0.0625rem solid darkgrey;
     display: inline-block;
