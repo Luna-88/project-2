@@ -1,0 +1,81 @@
+:root {
+    --pixel-size: 2px;
+    --grid-cell: calc( var(--pixel-size) * 16);
+    --bg: #000000;
+ }
+ @media( min-width: 700px ) {
+    :root {
+       --pixel-size: 3px;
+    }
+ }
+
+ html, body {
+    height: 100%;
+ }
+ 
+ body {
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ 
+ .pixel-art {
+    image-rendering: pixelated;
+ }
+ 
+ .camera {
+    width: calc(var(--pixel-size) * 300);
+    height: calc(var(--pixel-size) * 300);
+    overflow: hidden;
+    background: #61ddf7;
+    position:relative;
+ }
+ 
+ .map {
+    image-rendering: pixelated;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Solid_white.svg/1024px-Solid_white.svg.png");
+    background-size: 100%;
+    width: calc(23 * var(--grid-cell));
+    height: calc(22 * var(--grid-cell));
+    position: relative;
+ }
+ 
+ .character {
+    width: calc( var(--grid-cell)* 2 );
+    height: calc( var(--grid-cell)* 3 );
+    position: absolute;
+    overflow:hidden;
+ }
+ 
+ .character_spritesheet {
+    position: absolute;
+    background: url("https://i.pinimg.com/originals/7d/59/5a/7d595a64c99a634d94759de8096cca14.png") no-repeat no-repeat;
+    background-size: 100%;
+    width: calc( var(--grid-cell)* 8 );
+    height: calc( var(--grid-cell)* 8 );
+ }
+ 
+ .character[facing="right"] .character_spritesheet {
+    background-position-y: calc( var(--pixel-size) * -144 );
+ }
+ .character[facing="up"] .character_spritesheet {
+    background-position-y: calc( var(--pixel-size) * -49 );
+ }
+ .character[facing="left"] .character_spritesheet {
+    background-position-y: calc( var(--pixel-size) * -96 );
+ }
+ .character[walking="true"] .character_spritesheet {
+    animation: walkAnimation 0.6s steps(4) infinite; 
+ }
+ 
+ @keyframes walkAnimation {
+   from {
+     transform: translate3d(0%,0%,0);
+   }
+   to {
+     transform: translate3d(-100%,0%,0);
+   }
+ }
+ 
+ 
