@@ -10,7 +10,20 @@
     outline: none;
     position: absolute;
     z-index: 0;
-}
+
+    --red: #650501;
+    --green: #258000;
+    --gray: #adadad;
+    --white: #fff;
+    --medium-gray: #292929;
+    --dark-gray: white;
+    --blue: #006fd7;
+    --orange: #daa43d;
+    --light-red: #ff593b;
+    --purple: #8000ed;
+    --transparent: rgba(0, 0, 0, 0);
+  }
+  
 
 html,
 body {
