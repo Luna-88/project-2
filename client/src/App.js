@@ -4,21 +4,22 @@ import UserForm from './components/UserForm'
 import HomePage from './components/HomePage'
 import PlayerMenu from './components/PlayerMenu'
 import Admin from './components/Admin'
-import GameWorld from './features/game-world'
+
+import GameWorld from './features/world'
 import GameMenus from './features/game-menus'
+import DialogManager from './features/dialog-manager';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Switch>
+
           {/* Game world addition */}
           <Route exact path='/game-world'>
             <GameWorld />
-          </Route>
-          {/* Game menu addition */}
-          <Route exact path='/game-menu'>
             <GameMenus />
+            <DialogManager />
           </Route>
           <Route exact path='/admin'>
             <Admin />
