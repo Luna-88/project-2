@@ -43,8 +43,16 @@ const placeCharacter = () => {
 }
 
 
-//Set up the game loop
+let time = Date.now()
+
+// Animation loop
 const step = () => {
+
+   // Time
+   const currentTime = Date.now()
+   const deltaTime = currentTime - time
+   time = currentTime
+
    placeCharacter();
    window.requestAnimationFrame(() => {
       step();
