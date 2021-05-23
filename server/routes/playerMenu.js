@@ -2,7 +2,7 @@ const express = require('express')
 const playerMenuRouter = express.Router()
 
 const { createGame } = require('../models/playerMenu')
-const { loadGame } = require('../models/playerMenu')
+const { loadGame } = require('../middleware/loadGame')
 const { deleteGame } = require('../models/playerMenu')
 
 playerMenuRouter.post('/add-player', async (request, response) => {
@@ -27,7 +27,7 @@ playerMenuRouter.post('/new-game', async (request, response) => {
 
 playerMenuRouter.get('/load-game', loadGame, async (request, response) => {
     try {
-        response.status(200).send('Latest game loaded')
+        response.status(200).send('Game loaded')
     }
     catch (error) {
         console.log(error)

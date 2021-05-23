@@ -4,12 +4,17 @@ import UserForm from './components/UserForm'
 import HomePage from './components/HomePage'
 import PlayerMenu from './components/PlayerMenu'
 import Admin from './components/Admin'
+import InGameMenu from './components/InGameMenu'
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Switch>
+        <Route exact path='/'>
+            <h1>Welcome to Gaia</h1>
+            <a href='/register'>Start</a>
+          </Route>
           <Route exact path='/admin'>
             <Admin />
           </Route>
@@ -36,9 +41,8 @@ function App() {
           <Route exact path='/home-page/multiplayer'>
             <PlayerMenu multiplayer={true} />
           </Route>
-          <Route path='/'>
-            <h1>Welcome to Gaia</h1>
-            <a href='/register'>Start</a>
+          <Route exact path='/game-menu'>
+            <InGameMenu />
           </Route>
         </Switch>
       </BrowserRouter>

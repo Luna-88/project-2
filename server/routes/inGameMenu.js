@@ -1,9 +1,11 @@
 const express = require('express')
 const inGameMenuRouter = express.Router()
 
-inGameMenuRouter.get('/inventory', async (request, response) => {
+const { accessInventory } = require('../models/accessInventory')
+
+inGameMenuRouter.get('/inventory', (request, response) => {
     try {
-        response.status(200).send('Accessed inventory')
+        response.status(200).json(accessInventory(request, response))
     }
     catch (error) {
         console.log(error)

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-export default function UserForm({ api, redirect }) {
+export default function UserForm({ api, requestMethod, redirect }) {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
 
