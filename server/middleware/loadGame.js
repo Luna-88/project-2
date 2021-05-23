@@ -35,7 +35,7 @@ async function loadGame(request, response, next) {
                         }),
                         config.secret)
 
-                    response.cookie('loadedGame', token, { httpOnly: true, maxAge: 86400 })
+                    response.cookie('loadedGame', token, { httpOnly: true, maxAge: 3600000 })
 
                     next()
                 }
