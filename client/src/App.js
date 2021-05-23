@@ -7,7 +7,8 @@ import Admin from './components/Admin'
 
 import GameWorld from './features/world'
 import GameMenus from './features/game-menus'
-import DialogManager from './features/dialog-manager';
+// import DialogManager from './features/dialog-manager';
+import MainGameStart from './features/dialog-manager/dialogs/main-game-start';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
           <Route exact path='/game-world'>
             <GameWorld />
             <GameMenus />
-            <DialogManager />
+            {/* <DialogManager /> */}
+            <MainGameStart />
           </Route>
           <Route exact path='/admin'>
             <Admin />
