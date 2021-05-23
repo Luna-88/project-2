@@ -1,7 +1,7 @@
 const express = require('express')
 const inGameMenuRouter = express.Router()
 
-const { accessInventory } = require('../models/accessInventory')
+const { accessInventory, saveGame, exitGame } = require('../models/inGameMenu')
 
 inGameMenuRouter.get('/inventory', (request, response) => {
     try {
@@ -35,7 +35,7 @@ inGameMenuRouter.get('/options', async (request, response) => {
 
 inGameMenuRouter.get('/save-game', async (request, response) => {
     try {
-        response.status(200).send('Your game has been saved successfully')
+        response.status(200).json(await saveGame(request, response))
     }
     catch (error) {
         console.log(error)
@@ -43,9 +43,9 @@ inGameMenuRouter.get('/save-game', async (request, response) => {
     }
 })
 
-inGameMenuRouter.get('/exit-game', async (request, response) => {
+inGameMenuRouter.get('/exit-game', (request, response) => {
     try {
-        response.status(200).send('You have exited the game')
+        response.status(200).send(exitGame(response))
     }
     catch (error) {
         console.log(error)

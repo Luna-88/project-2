@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const { verifyTokenFromCookies } = require('../models/cookies')
-const { getCookies } = require('../models/cookies')
+const { getCookies, verifyTokenFromCookies } = require('../models/cookies')
 const Games = require('../models/game')
 const config = require('../config/authentication')
 
@@ -28,10 +27,10 @@ async function loadGame(request, response, next) {
                     const token = jwt.sign(
                         JSON.stringify({
                             userId: loadGame[0].userId,
-                            gaiaGun: loadGame[0].inventory.gaiaGun,
                             cartridge: loadGame[0].inventory.cartridge,
                             spaceshipPieces: loadGame[0].inventory.spaceshipPieces,
                             hardDrivePieces: loadGame[0].inventory.hardDrivePieces,
+                            gaiaGun: loadGame[0].inventory.gaiaGun,
                             puzzles: loadGame[0].puzzles
                         }),
                         config.secret)

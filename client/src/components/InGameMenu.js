@@ -6,11 +6,14 @@ export default function InGameMenu() {
     let [serverResponse, setServerResponse] = useState()
     let [inventoryItem, setInventoryItem] = useState()
 
-    function hasGaiaGun(inventory) {
-        if (!inventory) {
+    function hasItem(item) {
+        if (item === false || item.length === 0) {
             return "❌"
+        } else if (item === true) {
+            return "🔫"
+        } else {
+            return item
         }
-        return "🔫"
     }
 
     useEffect(() => {
@@ -48,10 +51,10 @@ export default function InGameMenu() {
             <div class="dropdown">
                 <button>Inventory</button>
                 {inventoryItem && <div class="dropdown-content">
-                    <div>Gaia Gun: {hasGaiaGun(inventoryItem.gaiaGun)}</div>
-                    <div>Cartridges: {inventoryItem.cartridge}</div>
-                    <div>Spaceship Pieces: {inventoryItem.spaceshipPieces}</div>
-                    <div>Hard Drive Pieces: {inventoryItem.hardDrivePieces}</div>
+                    <div>Gaia Gun: {hasItem(inventoryItem.gaiaGun)}</div>
+                    <div>Cartridges: {hasItem(inventoryItem.cartridge)}</div>
+                    <div>Spaceship Pieces: {hasItem(inventoryItem.spaceshipPieces)}</div>
+                    <div>Hard Drive Pieces: {hasItem(inventoryItem.hardDrivePieces)}</div>
                 </div>}
             </div>
 
