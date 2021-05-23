@@ -1,51 +1,49 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react"
+import { connect } from "react-redux"
 
-import Button from '../../../../components/button';
-import Dialog from '../../../../components/dialog';
-import Flame from '../../../../components/flame';
-import mainGameDialog from '../../actions/main-game-dialog';
+import Button from "../../../../components/button"
+import Dialog from "../../../../components/dialog"
+import Flame from "../../../../components/flame"
+import mainGameDialog from "../../actions/main-game-dialog"
 // import endlessGameDialog from '../../actions/endless-game-dialog';
 
-import './styles.scss';
+import "./styles.css"
 
 // const GameSelect = ({ mainGameDialog, endlessGameDialog }) => {
 const GameSelect = ({ mainGameDialog }) => {
+    return (
+        <Dialog>
+            <span className="flex-row game-select__title">{"React RPG"}</span>
 
-  return (
-    <Dialog>
-      <span className='flex-row game-select__title'>
-        {'React RPG'}
-      </span>
+            <span className="flex-column game-select__text">
+                {"Greetings, Traveler. Please, explore one of our dungeons..."}
+            </span>
 
-      <span className='flex-column game-select__text'>
-        {'Greetings, Traveler. Please, explore one of our dungeons...'}
-      </span>
+            <div className="game-select__flame--1">
+                <Flame />
+            </div>
+            <div className="game-select__flame--2">
+                <Flame />
+            </div>
 
-      <div className='game-select__flame--1'>
-        <Flame />
-      </div>
-      <div className='game-select__flame--2'>
-        <Flame />
-      </div>
+            <div className="flex-column game-select__button">
+                <Button
+                    style={{ marginBottom: 16 }}
+                    onClick={mainGameDialog}
+                    icon="torah"
+                    title={"Story Mode"}
+                />
 
-      <div className='flex-column game-select__button'>
-        <Button
-          style={{ marginBottom: 16 }}
-          onClick={mainGameDialog}
-          icon='torah'
-          title={'Story Mode'} />
-
-        {/* <Button
+                {/* <Button
           onClick={endlessGameDialog}
           icon='infinity'
           title={'Endless Mode'} /> */}
-      </div>
-    </Dialog>
-  );
-};
+            </div>
+        </Dialog>
+    )
+}
 
 // const actions = { mainGameDialog, endlessGameDialog };
-const actions = { mainGameDialog };
+const actions = { mainGameDialog }
 
-export default connect(null, actions)(GameSelect);
+export default connect(null, actions)(GameSelect)

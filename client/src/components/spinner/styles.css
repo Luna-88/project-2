@@ -1,16 +1,17 @@
 .spinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  flex: 1;
+    flex: 1;
 
-  padding-top: 48px;
+    padding-top: 48px;
+}
 
-  &:after {
+.spinner :after {
     content: " ";
     display: block;
-    
+
     width: 64px;
     height: 64px;
 
@@ -19,14 +20,13 @@
     border-color: var(--gray) transparent var(--gray) transparent;
 
     animation: spinning 1.2s linear infinite;
-  }
 }
 
 @keyframes spinning {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

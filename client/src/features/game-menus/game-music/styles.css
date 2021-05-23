@@ -1,16 +1,17 @@
 .game-music__button {
-  height: 40px;
-  width: 45px;
+    height: 40px;
+    width: 45px;
 
-  background-color: var(--dark-gray);
+    background-color: var(--dark-gray);
 
-  user-select: none;
+    user-select: none;
 
-  position: relative;
+    position: relative;
 
-  z-index: 100;
+    z-index: 100;
+}
 
-  .game-music__icon {
+.game-music__icon {
     font-size: 26px;
 
     height: 100%;
@@ -18,9 +19,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .game-music__diagonal-line--1 {
+.game-music__diagonal-line--1 {
     height: 2px;
     background: var(--gray);
 
@@ -28,10 +29,10 @@
 
     position: absolute;
 
-    transition: all .25s ease-in-out;
-  }
+    transition: all 0.25s ease-in-out;
+}
 
-  .game-music__diagonal-line--2 {
+.game-music__diagonal-line--2 {
     height: 2px;
     background: var(--gray);
 
@@ -39,6 +40,5 @@
 
     position: absolute;
 
-    transition: all .25s ease-in-out;
-  }
+    transition: all 0.25s ease-in-out;
 }
