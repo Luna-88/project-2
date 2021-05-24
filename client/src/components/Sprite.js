@@ -1,7 +1,7 @@
 export default function Sprite({ image, data, position }) {
     const { y, x, h, w } = data
     return (
-        <div
+        <div className='sprite' id='sprite'
             style={{
                 position: 'absolute',
                 top: position.y,

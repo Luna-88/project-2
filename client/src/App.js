@@ -1,12 +1,14 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
-import UserForm from './components/UserForm'
-import HomePage from './components/HomePage'
+import UserForm from './pages/FormPage'
+import HomePage from './pages/HomePage'
 import PlayerMenu from './components/PlayerMenu'
-import Admin from './components/Admin'
-// import InGameMenu from './components/InGameMenu'
-import skin from './assets/skins/e1.png'
-import Player from './components/player'
+import Admin from './pages/AdminPage'
+import InGameMenu from './components/InGameMenu'
+import Player from './components/Player'
+import World from './components/World'
+import skin from './assets/images/skins/main.png'
+import world from './assets/images/worlds/world_3.png'
 
 function App() {
   return (
@@ -44,8 +46,9 @@ function App() {
             <PlayerMenu multiplayer={true} />
           </Route>
           <Route exact path='/gaia'>
+            <World image={world} />
             <Player skin={skin} />
-            {/* <InGameMenu /> */}
+            <InGameMenu />
           </Route>
         </Switch>
       </BrowserRouter>
