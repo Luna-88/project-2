@@ -18,7 +18,7 @@ export default function useWalk(maxSteps) {
         up: 3,
     }
 
-    const stepSize = 16
+    const stepSize = 8
 
     const modifier = {
         down: { x: 0, y: stepSize },
