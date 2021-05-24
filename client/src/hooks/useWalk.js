@@ -1,6 +1,9 @@
-import { useState } from 'react'
+import { useState } from "react"
+import Sprite from "../components/Sprite"
+import * as constants from "../constants"
 
 export default function useWalk(maxSteps) {
+    // Set init location of user
     const [position, setPosition] = useState({ x: 1080, y: 300 })
     const [dir, setDir] = useState(0)
     const [step, setStep] = useState(0)
@@ -36,16 +39,32 @@ export default function useWalk(maxSteps) {
         console.log("x", rect.left)
         console.log("y", rect.top)
 
-        if ((position.x+modifier[dir].x >= 645 
-            && position.x+modifier[dir].x <= 1460) 
-            && position.y+modifier[dir].y >= 75 
-            && position.y+modifier[dir].y <= 615)
+        // Original world bounds
+        //     if (
+        //         position.x + modifier[dir].x >= 645 &&
+        //         position.x + modifier[dir].x <= 1460 &&
+        //         position.y + modifier[dir].y >= 75 &&
+        //         position.y + modifier[dir].y <= 615
+        //     )
+        //         setPosition((prev) => ({
+        //             x: prev.x + modifier[dir].x,
+        //             y: prev.y + modifier[dir].y,
+        //         }))
+        // }
 
+        // New world bounds
+        if (
+            position.x + modifier[dir].x >= 50 &&
+            position.x + modifier[dir].x <=
+                constants.worldWidth - constants.spriteSize.width - 50 &&
+            position.y + modifier[dir].y >= 50 &&
+            position.y + modifier[dir].y <=
+                constants.worldHeight - constants.spriteSize.height - 50
+        )
             setPosition((prev) => ({
                 x: prev.x + modifier[dir].x,
                 y: prev.y + modifier[dir].y,
-            })
-            )
+            }))
     }
 
     return {

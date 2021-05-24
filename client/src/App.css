@@ -48,7 +48,6 @@
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
   .world-container {
-    padding-top: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
