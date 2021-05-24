@@ -4,7 +4,7 @@ import useWindowSize from "../hooks/useWindowSize"
 
 export default function useWalk(maxSteps) {
     // Set init location of user
-    const {height, width} = useWindowSize()
+    const { height, width } = useWindowSize()
     let halfWidth = width / 2
     let halfHeight = height / 2
     const [position, setPosition] = useState({ x: halfWidth, y: halfHeight })
@@ -39,8 +39,8 @@ export default function useWalk(maxSteps) {
     function move(dir) {
         const world = document.getElementById("sprite")
         const rect = world.getBoundingClientRect()
-        console.log("x", rect.left)
-        console.log("y", rect.top)
+        // console.log("position x: ", rect.left)
+        // console.log("postion y: ", rect.top)
 
         // Original world bounds
         //     if (
@@ -56,8 +56,6 @@ export default function useWalk(maxSteps) {
         // }
 
         // New world bounds
-
-
         if (
             position.x + modifier[dir].x >= 50 &&
             position.x + modifier[dir].x <=
