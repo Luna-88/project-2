@@ -1,12 +1,13 @@
 import { useState } from "react"
-import Sprite from "../components/Sprite"
 import * as constants from "../constants"
+import useWindowSize from "../hooks/useWindowSize"
 
 export default function useWalk(maxSteps) {
     // Set init location of user
     const [position, setPosition] = useState({ x: 1080, y: 300 })
     const [dir, setDir] = useState(0)
     const [step, setStep] = useState(0)
+    const {height, width} = useWindowSize()
 
     const directions = {
         down: 0,
@@ -53,13 +54,15 @@ export default function useWalk(maxSteps) {
         // }
 
         // New world bounds
+
+
         if (
             position.x + modifier[dir].x >= 50 &&
             position.x + modifier[dir].x <=
-                constants.worldWidth - constants.spriteSize.width - 50 &&
+                width - constants.spriteSize.width - 50 &&
             position.y + modifier[dir].y >= 50 &&
             position.y + modifier[dir].y <=
-                constants.worldHeight - constants.spriteSize.height - 50
+                height - constants.spriteSize.height - 50
         )
             setPosition((prev) => ({
                 x: prev.x + modifier[dir].x,
