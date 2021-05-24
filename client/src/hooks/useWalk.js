@@ -4,10 +4,12 @@ import useWindowSize from "../hooks/useWindowSize"
 
 export default function useWalk(maxSteps) {
     // Set init location of user
-    const [position, setPosition] = useState({ x: 1080, y: 300 })
+    const {height, width} = useWindowSize()
+    let halfWidth = width / 2
+    let halfHeight = height / 2
+    const [position, setPosition] = useState({ x: halfWidth, y: halfHeight })
     const [dir, setDir] = useState(0)
     const [step, setStep] = useState(0)
-    const {height, width} = useWindowSize()
 
     const directions = {
         down: 0,
