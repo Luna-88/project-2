@@ -1,3 +1,10 @@
+/* 
+*******
+*******
+*******
+ROOT VARIABLES */
+/* VDR */
+
 :root {
     /* Colours */
     --text-primary: black;
@@ -22,6 +29,13 @@
     /* Font Sizes */
     --font-size-label: 0.625rem;
 }
+
+/* 
+*******
+*******
+*******
+BASIC DEFAULTS */
+/* VDR */
 
 * {
     margin: 0;
@@ -50,7 +64,12 @@ body {
     z-index: 2;
 }
 
-/* Button Styles */
+/* 
+*******
+*******
+*******
+BUTTON STYLES */
+/* VDR */
 
 button {
     user-select: none;
@@ -109,7 +128,27 @@ button:disabled {
     justify-content: center;
     flex-direction: column;
     width: max-content;
+    min-width: 10rem;
+    max-width: 10rem;
 }
+
+/* 
+*******
+*******
+*******
+NAV MENUS */
+/* VDR */
+
+.menu-button {
+    min-width: 10rem;
+    max-width: 10rem;
+}
+
+/* 
+*******
+*******
+*******
+PRE-EXISTING MENUS */
 
 .dropbtn {
     background-color: #04aa6d;
@@ -164,7 +203,13 @@ button:disabled {
     border-radius: 3rem;
 } */
 
-/* Body text  */
+/* 
+*******
+*******
+*******
+BODY TEXT STYLING */
+/* VDR */
+
 * {
     font-family: 'Work Sans', sans-serif;
     font-kerning: auto;
@@ -187,6 +232,13 @@ a:visited {
 a:hover {
     color: var(--link-hover);
 }
+
+/* 
+*******
+*******
+*******
+FORM POSITIONING */
+/* VDR */
 
 .fullscreen-container {
     display: grid;
@@ -220,12 +272,27 @@ a:hover {
     grid-column-end: 3;
 }
 
+.column-left {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.column-right {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
 .user-form {
     border-radius: 0.25rem;
     /* grid-column-gap: 7rem; */
 }
 
-/* Form Styling */
+/* 
+*******
+*******
+*******
+FORM STYLING */
+/* VDR */
 
 input[type='text'] {
     padding: 0.5rem;
@@ -248,7 +315,6 @@ input[type='password'] {
 }
 
 .user-input {
-    /* width: 100%; */
     border: none;
 }
 
@@ -257,7 +323,6 @@ input[type='password'] {
 }
 
 .form-section {
-    /* background-color: lightpink; */
     margin: 0.25rem;
 }
 
@@ -275,14 +340,4 @@ input[type='password'] {
 .form-checkbox {
     margin: 0.25rem 0.25rem 0.25rem 0rem;
     vertical-align: middle;
-}
-
-.column-left {
-    grid-column-start: 1;
-    grid-column-end: 2;
-}
-
-.column-right {
-    grid-column-start: 2;
-    grid-column-end: 3;
 }
