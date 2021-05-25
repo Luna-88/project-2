@@ -2,7 +2,7 @@ import Actor from "./Actor"
 import useKeyPress from "../hooks/useKeyPress"
 import useWalk from "../hooks/useWalk"
 
-export default function Player({ skin }) {
+export default function Player({ skin, sidekick, xOffset, yOffset, light=false }) {
     const { dir, step, walk, position } = useWalk(3)
     const data = {
         h: 32,
@@ -10,12 +10,17 @@ export default function Player({ skin }) {
     }
 
     useKeyPress((e) => {
-        // console.log(`Keypress: `, e.key)
-
         let arrowKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
+        //console.log(e.key)
 
         if (arrowKeys.includes(e.key)) {
             walk(e.key.replace("Arrow", "").toLowerCase())
+            e.preventDefault()
+        } else if (e.key === " " && light===true) {
+            document.getElementById("sprite").style.display = "none"
+            e.preventDefault()
+        } else if (e.key === "q" && light===true) {
+            document.getElementById("sprite").style.display = "block"
             e.preventDefault()
         }
     })
@@ -27,6 +32,9 @@ export default function Player({ skin }) {
             step={step}
             dir={dir}
             position={position}
+            sidekick={sidekick}
+            xOffset={xOffset}
+            yOffset={yOffset}
         />
     )
 }

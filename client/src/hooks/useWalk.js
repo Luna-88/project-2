@@ -3,7 +3,7 @@ import * as constants from "../constants"
 import useWindowSize from "../hooks/useWindowSize"
 
 export default function useWalk(maxSteps) {
-    // Set init location of user
+    // Set initial location of user
     const { height, width } = useWindowSize()
     let halfWidth = width / 2
     let halfHeight = height / 2
@@ -37,33 +37,21 @@ export default function useWalk(maxSteps) {
     }
 
     function move(dir) {
-        const world = document.getElementById("sprite")
-        const rect = world.getBoundingClientRect()
+        // const world = document.getElementById("sprite")
+        // const rect = world.getBoundingClientRect()
         // console.log("position x: ", rect.left)
-        // console.log("postion y: ", rect.top)
-
-        // Original world bounds
-        //     if (
-        //         position.x + modifier[dir].x >= 645 &&
-        //         position.x + modifier[dir].x <= 1460 &&
-        //         position.y + modifier[dir].y >= 75 &&
-        //         position.y + modifier[dir].y <= 615
-        //     )
-        //         setPosition((prev) => ({
-        //             x: prev.x + modifier[dir].x,
-        //             y: prev.y + modifier[dir].y,
-        //         }))
-        // }
+        // console.log("position y: ", rect.top)
 
         // New world bounds
         if (
             position.x + modifier[dir].x >= 50 &&
             position.x + modifier[dir].x <=
-                width - constants.spriteSize.width - 50 &&
+            width - constants.spriteSize.width - 50 &&
             position.y + modifier[dir].y >= 50 &&
             position.y + modifier[dir].y <=
-                height - constants.spriteSize.height - 50
+            height - constants.spriteSize.height - 50
         )
+
             setPosition((prev) => ({
                 x: prev.x + modifier[dir].x,
                 y: prev.y + modifier[dir].y,

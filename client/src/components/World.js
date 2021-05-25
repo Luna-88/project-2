@@ -1,9 +1,11 @@
 import * as constants from "../constants"
 import useWindowSize from "../hooks/useWindowSize"
+import solar from '../assets/images/energies/solar.png'
+import flashlight from '../assets/images/objects/flashlight.png'
+import Object from "./Object"
 
 export default function World({ image }) {
     const { height, width } = useWindowSize()
-    // console.log(`size: `, height, width)
 
     return (
         <div className="world-container" id="world-container">
@@ -11,22 +13,17 @@ export default function World({ image }) {
                 className="world"
                 id="world"
                 style={{
-                    // height: "600px",
-                    // width: "900px",
-
                     // VDR WORLD SIZE
                     margin: constants.spriteSize.width + `px`,
                     height: height - constants.spriteSize.height + `px`,
                     width: width - constants.spriteSize.width + `px`,
                     backgroundImage: `url(${image})`,
+                    backgroundSize: '100% 100%',
                 }}
-            />
+            >
+                <Object image={solar} offsetTop={700} offsetLeft={800} />
+                <Object image={flashlight} offsetTop={600} offsetLeft={1300} />
+            </div>
         </div>
     )
 }
-
-// VDR TEST
-// console.log(`const worldWidth: `, constants.worldWidth)
-// console.log(`const worldWidth + padding: `, window.innerHeight - constants.spriteSize.height + `px`)
-// console.log(`const worldHeight: `, constants.worldHeight)
-// console.log(`const worldHeight + padding: `, window.innerHeight - constants.spriteSize.height + 'px')
