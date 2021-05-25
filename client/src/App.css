@@ -152,7 +152,8 @@ button:disabled {
     background-color: #3e8e41;
 }
 
-.world-container {
+.world-container,
+.energy-layout-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -220,6 +221,7 @@ a:hover {
 }
 
 .user-form {
+    border-radius: 0.25rem;
     /* grid-column-gap: 7rem; */
 }
 

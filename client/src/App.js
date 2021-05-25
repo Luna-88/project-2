@@ -7,8 +7,10 @@ import Admin from './pages/AdminPage'
 import InGameMenu from './components/InGameMenu'
 import Player from './components/Player'
 import World from './components/World'
-import skin from './assets/images/skins/main.png'
-import world from './assets/images/worlds/world_3.png'
+import mainSkin from './assets/images/skins/main.png'
+import sidekickSkin from './assets/images/skins/ghost.png'
+import world from './assets/images/worlds/world_1.png'
+import lightbeam from './assets/images/energies/lightbeam2.png'
 
 function App() {
     return (
@@ -74,7 +76,20 @@ function App() {
                     </Route>
                     <Route exact path="/gaia">
                         <World image={world} />
-                        <Player skin={skin} />
+                        <Player
+                            skin={lightbeam}
+                            sidekick={true}
+                            xOffset={0}
+                            yOffset={-32}
+                            light={true}
+                        />
+                        <Player skin={mainSkin} />
+                        <Player
+                            skin={sidekickSkin}
+                            sidekick={true}
+                            xOffset={16}
+                            yOffset={32}
+                        />{' '}
                         <InGameMenu />
                     </Route>
                 </Switch>
