@@ -11,17 +11,17 @@ ROOT VARIABLES */
     --text-secondary: dimgrey;
     --text-lighter: gainsboro;
 
-    --form-text: teal;
+    --form-text: var(--text-secondary);
     --form-placeholder: var(--text-lighter);
 
     --outline-light: gainsboro;
 
-    --large-header: dimgrey;
+    --large-header: var(--text-secondary);
 
     --link-colour: teal;
     --link-active: teal;
     --link-visited: teal;
-    --link-hover: green;
+    --link-hover: teal;
 
     /* Margins */
     --section-margin: 2rem;
@@ -59,8 +59,8 @@ body {
 
 .in-menu-container {
     position: fixed;
-    top: 2rem;
-    left: 2rem;
+    top: 2.5rem;
+    left: 2.5rem;
     z-index: 2;
 }
 
@@ -241,6 +241,7 @@ a:visited {
 
 a:hover {
     color: var(--link-hover);
+    text-decoration: underline;
 }
 
 /* 
