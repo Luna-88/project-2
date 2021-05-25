@@ -16,8 +16,8 @@ export default function UserForm({ api, requestMethod, redirect }) {
             method: 'POST',
             body: JSON.stringify(userRegistration),
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+            },
         }
         setUsername('')
         setPassword('')
@@ -31,12 +31,10 @@ export default function UserForm({ api, requestMethod, redirect }) {
                 let serverMessage = await userResponse.text()
                 setServerResponse(serverMessage)
                 history.push(redirect)
-            }
-            else {
+            } else {
                 setServerResponse(undefined)
             }
-        }
-        catch (error) {
+        } catch (error) {
             console.error('Failed to reach the server')
         }
     }
@@ -50,45 +48,68 @@ export default function UserForm({ api, requestMethod, redirect }) {
         }
     }
 
-    let userDataInvalid = (!username || !password) || (username.trim().length === 0 || password.length === 0)
+    let userDataInvalid =
+        !username ||
+        !password ||
+        username.trim().length === 0 ||
+        password.length === 0
 
     return (
         <div>
-            <div className='user-form-container'>
-                <form className='user-form'>
-                    <label htmlFor='username'>Username:</label>
-                    <input
-                        className='user-input'
-                        type='text'
-                        id='username'
-                        value={username}
-                        onChange={(event) => { setUsername(event.target.value) }}
-                        placeholder='username'
-                    />
-                    <label htmlFor='password'>Password:</label>
-                    <input
-                        className='user-input'
-                        type='password'
-                        id='password'
-                        value={password}
-                        onChange={(event) => { setPassword(event.target.value) }}
-                        placeholder='password'
-                    />
-                    <input
-                        type='checkbox'
-                        id='checkbox'
-                        onClick={showPassword}
-                    />
-                    <label id='show-password' htmlFor='checkbox'>Show Password</label>
-                    <div className='user-btn-container'>
+            {/* <div className="user-form-container"> */}
+                <form class="form-container">
+                    <section class="form-section column-left">
+                        <label htmlFor="username">Username:</label>
+                        <input
+                            className="user-input"
+                            type="text"
+                            id="username"
+                            value={username}
+                            onChange={(event) => {
+                                setUsername(event.target.value)
+                            }}
+                            placeholder="username"
+                        />
+                    </section>
+                    <section class="form-section column-right">
+                        <section>
+                            <label htmlFor="password">Password:</label>
+                            <input
+                                className="user-input"
+                                type="password"
+                                id="password"
+                                value={password}
+                                onChange={(event) => {
+                                    setPassword(event.target.value)
+                                }}
+                                placeholder="password"
+                            />
+                        </section>
+                        <section
+                            class="form-label"
+                            id="show-password"
+                            htmlFor="checkbox"
+                        >
+                            <input
+                                type="checkbox"
+                                class="form-checkbox"
+                                id="checkbox"
+                                onClick={showPassword}
+                            />
+                            Show Password
+                        </section>
+                    </section>
+                    <div className="button-container">
                         <button
                             disabled={userDataInvalid}
                             onClick={handleClick}
-                        >Submit
-                        </button> {serverResponse && <div>{serverResponse}</div>}
+                        >
+                            Submit
+                        </button>{' '}
+                        {serverResponse && <div>{serverResponse}</div>}
                     </div>
                 </form>
-            </div>
+            {/* </div> */}
         </div>
     )
 }

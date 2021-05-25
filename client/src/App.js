@@ -11,49 +11,76 @@ import skin from './assets/images/skins/main.png'
 import world from './assets/images/worlds/world_3.png'
 
 function App() {
-  return (
-    <div>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path='/'>
-            <h1>Welcome to Gaia</h1>
-            <a href='/register'>Start</a>
-          </Route>
-          <Route exact path='/admin'>
-            <Admin />
-          </Route>
-          <Route exact path='/register'>
-            <UserForm
-              api='/api/register'
-              redirect='/sign-in'
-            />
-            <p>Already have an account? <a href='/sign-in'>Sign In</a></p>
-          </Route>
-          <Route exact path='/sign-in'>
-            <UserForm
-              api='/api/sign-in'
-              redirect='/home-page'
-            />
-            <p>Don't have an account? <a href='/register'>Register</a></p>
-          </Route>
-          <Route exact path='/home-page'>
-            <HomePage />
-          </Route>
-          <Route exact path='/home-page/single-player'>
-            <PlayerMenu />
-          </Route>
-          <Route exact path='/home-page/multiplayer'>
-            <PlayerMenu multiplayer={true} />
-          </Route>
-          <Route exact path='/gaia'>
-            <World image={world} />
-            <Player skin={skin} />
-            <InGameMenu />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </div>
-  )
+    return (
+        <div>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/">
+                        <div class="fullscreen-container">
+                            <section class="spacer-section"></section>
+                            <section class="entry-section">
+                                <center>
+                                    <h1 class="entry-title">Welcome to Gaia</h1>
+                                    <a href="/register">Begin</a>
+                                </center>
+                            </section>
+                        </div>
+                    </Route>
+                    <Route exact path="/admin">
+                        <Admin />
+                    </Route>
+                    <Route exact path="/register">
+                        <div class="fullscreen-container">
+                            <section class="spacer-section"></section>
+                            <section>
+                                <div class="form-section">
+                                    <UserForm
+                                        api="/api/register"
+                                        redirect="/sign-in"
+                                    />
+                                </div>
+                                <div class="form-container">
+                                    Already have an account?{' '}
+                                    <a href="/sign-in">Sign In</a>
+                                </div>
+                            </section>
+                        </div>
+                    </Route>
+                    <Route exact path="/sign-in">
+                        <div class="fullscreen-container">
+                            <section class="spacer-section"></section>
+                            <section>
+                                <div class="form-section">
+                                    <UserForm
+                                        api="/api/sign-in"
+                                        redirect="/home-page"
+                                    />
+                                </div>
+                                <div class="form-container">
+                                    Don't have an account?{' '}
+                                    <a href="/register">Register</a>
+                                </div>
+                            </section>
+                        </div>
+                    </Route>
+                    <Route exact path="/home-page">
+                        <HomePage />
+                    </Route>
+                    <Route exact path="/home-page/single-player">
+                        <PlayerMenu />
+                    </Route>
+                    <Route exact path="/home-page/multiplayer">
+                        <PlayerMenu multiplayer={true} />
+                    </Route>
+                    <Route exact path="/gaia">
+                        <World image={world} />
+                        <Player skin={skin} />
+                        <InGameMenu />
+                    </Route>
+                </Switch>
+            </BrowserRouter>
+        </div>
+    )
 }
 
 export default App
