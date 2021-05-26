@@ -1,115 +1,26 @@
-import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import AccountOption from '../components/AccountOption'
+import Form from '../components/Form'
 
-export default function UserForm({ api, requestMethod, redirect }) {
-    const [username, setUsername] = useState()
-    const [password, setPassword] = useState()
+export default function FormPage({ isRegister = false }) {
+    let api = "/api/register"
+    let redirect = "/sign-in"
+    let link = 'Sign in'
 
-    let [serverResponse, setServerResponse] = useState()
-
-    let history = useHistory()
-
-    async function handleClick(event) {
-        event.preventDefault()
-        const userRegistration = { username, password }
-        const requestOptions = {
-            method: 'POST',
-            body: JSON.stringify(userRegistration),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-        setUsername('')
-        setPassword('')
-        try {
-            let userResponse = await fetch(api, requestOptions)
-            if (userResponse.status !== 200) {
-                let errorMessage = await userResponse.text()
-                console.log('We had an error: ', errorMessage)
-                setServerResponse(errorMessage)
-            } else if (userResponse.status === 200) {
-                let serverMessage = await userResponse.text()
-                setServerResponse(serverMessage)
-                history.push(redirect)
-            } else {
-                setServerResponse(undefined)
-            }
-        } catch (error) {
-            console.error('Failed to reach the server')
-        }
+    if (isRegister === true) {
+        api = "/api/sign-in"
+        redirect = "/home-page"
+        link = "Register"
     }
-
-    function showPassword() {
-        let x = document.getElementById('password')
-        if (x.type === 'password') {
-            x.type = 'text'
-        } else {
-            x.type = 'password'
-        }
-    }
-
-    let userDataInvalid =
-        !username ||
-        !password ||
-        username.trim().length === 0 ||
-        password.length === 0
 
     return (
-        <div>
-            {/* <div className="user-form-container"> */}
-                <form class="form-container">
-                    <section class="form-section column-left">
-                        <label htmlFor="username">Username:</label>
-                        <input
-                            className="user-input"
-                            type="text"
-                            id="username"
-                            value={username}
-                            onChange={(event) => {
-                                setUsername(event.target.value)
-                            }}
-                            placeholder="username"
-                        />
-                    </section>
-                    <section class="form-section column-right">
-                        <section>
-                            <label htmlFor="password">Password:</label>
-                            <input
-                                className="user-input"
-                                type="password"
-                                id="password"
-                                value={password}
-                                onChange={(event) => {
-                                    setPassword(event.target.value)
-                                }}
-                                placeholder="password"
-                            />
-                        </section>
-                        <section
-                            class="form-label"
-                            id="show-password"
-                            htmlFor="checkbox"
-                        >
-                            <input
-                                type="checkbox"
-                                class="form-checkbox"
-                                id="checkbox"
-                                onClick={showPassword}
-                            />
-                            Show Password
-                        </section>
-                    </section>
-                    <div className="button-container">
-                        <button
-                            disabled={userDataInvalid}
-                            onClick={handleClick}
-                        >
-                            Submit
-                        </button>{' '}
-                        {serverResponse && <div>{serverResponse}</div>}
-                    </div>
-                </form>
-            {/* </div> */}
+        <div className="fullscreen-container">
+            <section className="spacer-section"></section>
+            <section>
+                <div className="form-section">
+                    <Form api={api} redirect={redirect} />
+                </div>
+                <AccountOption Link={link} />
+            </section>
         </div>
     )
 }

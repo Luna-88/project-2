@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
-import UserForm from './pages/FormPage'
+
 import HomePage from './pages/HomePage'
+import WelcomePage from './pages/WelcomePage'
 import PlayerMenu from './components/PlayerMenu'
 import Admin from './pages/AdminPage'
 import InGameMenu from './components/InGameMenu'
@@ -11,65 +12,35 @@ import mainSkin from './assets/images/skins/main.png'
 import sidekickSkin from './assets/images/skins/ghost.png'
 import world from './assets/images/worlds/world_1.png'
 import lightbeam from './assets/images/energies/lightbeam2.png'
+import Tiles from './components/Tiles'
+import FormPage from './pages/FormPage'
 
 function App() {
     return (
         <div>
             <BrowserRouter>
                 <Switch>
+                    {/* <Route exact path="/">
+                        <Tiles />
+                    </Route> */}
                     <Route exact path="/">
-                        <div class="fullscreen-container">
-                            <section class="spacer-section"></section>
-                            <section class="entry-section">
-                                <center>
-                                    <h1 class="entry-title">Welcome to Gaia</h1>
-                                    <a href="/register">Begin</a>
-                                </center>
-                            </section>
-                        </div>
+                        <WelcomePage />
                     </Route>
                     <Route exact path="/admin">
                         <Admin />
                     </Route>
                     <Route exact path="/register">
-                        <div class="fullscreen-container">
-                            <section class="spacer-section"></section>
-                            <section>
-                                <div class="form-section">
-                                    <UserForm
-                                        api="/api/register"
-                                        redirect="/sign-in"
-                                    />
-                                </div>
-                                <div class="form-container">
-                                    Already have an account?{' '}
-                                    <a href="/sign-in">Sign In</a>
-                                </div>
-                            </section>
-                        </div>
+                        <FormPage />
                     </Route>
                     <Route exact path="/sign-in">
-                        <div class="fullscreen-container">
-                            <section class="spacer-section"></section>
-                            <section>
-                                <div class="form-section">
-                                    <UserForm
-                                        api="/api/sign-in"
-                                        redirect="/home-page"
-                                    />
-                                </div>
-                                <div class="form-container">
-                                    Don't have an account?{' '}
-                                    <a href="/register">Register</a>
-                                </div>
-                            </section>
-                        </div>
+                        <FormPage isRegister={true} />
                     </Route>
                     <Route exact path="/home-page">
                         <HomePage />
                     </Route>
                     <Route exact path="/home-page/single-player">
                         <PlayerMenu />
+                        <a href="/gaia">Explore Gaia</a>
                     </Route>
                     <Route exact path="/home-page/multiplayer">
                         <PlayerMenu multiplayer={true} />

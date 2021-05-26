@@ -17,7 +17,7 @@ export default function PlayerMenu({ multiplayer = false }) {
     }
 
     return (
-        <div className='single-player-container'>
+        <div className='player-menu-container'>
             {multiplayerButton}
             <button
                 onClick={() => handleClickWithFetch(

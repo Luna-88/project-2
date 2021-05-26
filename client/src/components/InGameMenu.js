@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
-
 import handleClickWithFetch from '../models/handleClickWithFetch'
+import useGameMenu from '../hooks/useGameMenu'
 
 export default function InGameMenu() {
-    let [serverResponse, setServerResponse] = useState()
-    let [inventoryItem, setInventoryItem] = useState()
+    const { serverResponse,
+        setServerResponse,
+        inventoryItem } = useGameMenu()
 
     function hasItem(item) {
         if (item === false || item.length === 0) {
@@ -15,37 +15,6 @@ export default function InGameMenu() {
             return item
         }
     }
-
-    useEffect(() => {
-        async function getInventory() {
-            let requestOptions = {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }
-
-            try {
-                let serverResponse = await fetch(
-                    '/api/in-game-menu/inventory',
-                    requestOptions
-                )
-                if (serverResponse.status !== 200) {
-                    let errorMessage = await serverResponse.text()
-                    console.log('We had an error: ', errorMessage)
-                    setServerResponse(errorMessage)
-                } else if (serverResponse.status === 200) {
-                    let inventory = await serverResponse.json()
-                    setInventoryItem(inventory)
-                } else {
-                    setServerResponse(undefined)
-                }
-            } catch (error) {
-                console.error('Failed to reach the server')
-            }
-        }
-        getInventory()
-    }, [])
 
     return (
         <div className="in-menu-container">

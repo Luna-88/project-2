@@ -1,4 +1,4 @@
-import * as constants from "../constants"
+import * as constants from "../models/constants"
 import useWindowSize from "../hooks/useWindowSize"
 import solar from '../assets/images/energies/solar.png'
 import flashlight from '../assets/images/objects/flashlight.png'

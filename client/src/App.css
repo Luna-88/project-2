@@ -122,7 +122,7 @@ button:disabled {
     width: max-content;
 } */
 
-.single-player-container,
+.player-menu-container,
 .in-menu-container {
     display: flex;
     justify-content: center;
