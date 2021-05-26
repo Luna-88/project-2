@@ -3,7 +3,7 @@ import React from 'react'
 import Water from './water'
 import { spriteSize } from '../models/constants'
 
-export default function Map({ tile, index }) {
+export default function Maptest({ tile, index }) {
 
     if(tile.value === 40) {
         return (
