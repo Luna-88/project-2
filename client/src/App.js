@@ -23,13 +23,13 @@ function App() {
         <div>
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/">
+                    {/* <Route exact path="/">
                         <Tiles />
                         <Map />
-                    </Route>
-                    {/* <Route exact path="/">
-                        <WelcomePage />
                     </Route> */}
+                    <Route exact path="/">
+                        <WelcomePage />
+                    </Route>
                     <Route exact path="/admin">
                         <Admin />
                     </Route>
