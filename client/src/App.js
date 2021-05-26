@@ -3,29 +3,33 @@ import './App.css'
 
 import HomePage from './pages/HomePage'
 import WelcomePage from './pages/WelcomePage'
-import PlayerMenu from './components/PlayerMenu'
+import FormPage from './pages/FormPage'
 import Admin from './pages/AdminPage'
+
+import PlayerMenu from './components/PlayerMenu'
 import InGameMenu from './components/InGameMenu'
 import Player from './components/Player'
 import World from './components/World'
+import Tiles from './components/Tiles'
+import Map from './components/Map'
+
 import mainSkin from './assets/images/skins/main.png'
 import sidekickSkin from './assets/images/skins/ghost.png'
 import world from './assets/images/worlds/world_1.png'
 import lightbeam from './assets/images/energies/lightbeam2.png'
-import Tiles from './components/Tiles'
-import FormPage from './pages/FormPage'
 
 function App() {
     return (
         <div>
             <BrowserRouter>
                 <Switch>
-                    {/* <Route exact path="/">
-                        <Tiles />
-                    </Route> */}
                     <Route exact path="/">
-                        <WelcomePage />
+                        <Tiles />
+                        <Map />
                     </Route>
+                    {/* <Route exact path="/">
+                        <WelcomePage />
+                    </Route> */}
                     <Route exact path="/admin">
                         <Admin />
                     </Route>
