@@ -1,5 +1,5 @@
 import { useState } from "react"
-import * as constants from "../constants"
+import * as constants from "../models/constants"
 import useWindowSize from "../hooks/useWindowSize"
 
 export default function useWalk(maxSteps) {

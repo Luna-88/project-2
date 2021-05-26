@@ -4,6 +4,7 @@ import useWalk from "../hooks/useWalk"
 
 export default function Player({ skin, sidekick, xOffset, yOffset, light=false }) {
     const { dir, step, walk, position } = useWalk(3)
+    
     const data = {
         h: 32,
         w: 32,
