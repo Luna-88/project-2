@@ -2,15 +2,15 @@ import * as constants from "../models/constants"
 import world from '../assets/images/worlds/world_1.png'
 
 export default function TileGrid({ image }) {
-    const height = 600 
+    const height = 600
     const width = 900
 
     const tiles = []
     let id = 0
 
-    for (let y = 0; y < width - constants.spriteSize.height -100; y = y + 32) {
+    for (let y = 0; y < width - constants.spriteSize.height - 100; y = y + 32) {
         const row = []
-        for (let x = 0; x <height - constants.spriteSize.width -50; x = x + 32) {
+        for (let x = 0; x < height - constants.spriteSize.width - 50; x = x + 32) {
             row.push({
                 x, y, id: id++
             })
