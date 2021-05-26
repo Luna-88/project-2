@@ -1,8 +1,37 @@
+import { useEffect, useState } from 'react'
+import spring from '../assets/tileset/spring.png'
+
 import useDraggable from "../hooks/useDraggable"
+import TilePalette from "./TilePalette"
 
 export default function Tiles() {
+    const [tileset, setTileset] = useState({ spring })
+    const [tiles, setTiles] = useState([])
+    const [mapSize, setMapSize] = useState({
+        width: 800,
+        height: 600,
+    })
+
     const { position } = useDraggable("handle")
-    
+
+    useEffect(() => {
+        const _tiles = []
+        let id = 0
+        for (let y = 0; y < mapSize.height; y = y + 32) {
+            const row = []
+            for (let x = 0; x < mapSize.width; x = x + 32) {
+                row.push({
+                    x,
+                    y,
+                    id: id++,
+                    v: { x: -32, y: -32 },
+                })
+            }
+            _tiles.push(row)
+        }
+        setTiles(_tiles)
+    }, [])
+
     return (
         <div
             style={{
@@ -14,19 +43,11 @@ export default function Tiles() {
                 border: "1px solid black"
             }}
         >
-            <div id="handle"
-                style={{
-                    position: "absolute",
-                    top: position.y,
-                    left: position.x,
-                    zIndex: 100,
-                    width: 200,
-                    height: 200,
-                    border: "1px solid black",
-                    backgroundColor: "white"
-                }}
-            >
-            </div>
+            <TilePalette
+                position={position}
+                size={{ height: 288, width: 640 }}
+                tileset={tileset}
+            />
         </div>
     )
 }
