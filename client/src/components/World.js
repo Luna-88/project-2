@@ -1,11 +1,13 @@
-import * as constants from "../models/constants"
-import useWindowSize from "../hooks/useWindowSize"
+import * as constants from '../models/constants'
+import useWindowSize from '../hooks/useWindowSize'
 import solar from '../assets/images/energies/solar.png'
 import flashlight from '../assets/images/objects/flashlight.png'
-import Object from "./Object"
+import Object from './Object'
 
 export default function World({ image }) {
-    const { height, width } = useWindowSize()
+    // const { height, width } = useWindowSize()
+    const height = 640
+    const width = 640
 
     return (
         <div className="world-container" id="world-container">

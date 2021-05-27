@@ -1,7 +1,12 @@
+import React, { useState } from 'react'
+import Sound from 'react-sound'
 import handleClickWithFetch from '../models/handleClickWithFetch'
 import useGameMenu from '../hooks/useGameMenu'
+import AmbientMusic from '../assets/audio/ambient-music.mp3'
 
 export default function InGameMenu() {
+    const [isPlaying, setIsPlaying] = useState(false)
+
     const { serverResponse,
         setServerResponse,
         inventoryItem } = useGameMenu()
@@ -50,7 +55,20 @@ export default function InGameMenu() {
             >
                 Tooltips
             </button>
-            <button
+            <div>
+                <button
+                    class="menu-button"
+                    onClick={() => setIsPlaying(!isPlaying)}>{!isPlaying ? 'Play Music' : 'Stop Music'}</button>
+                <Sound
+                    url={AmbientMusic}
+                    playStatus={
+                        isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED
+                    }
+                    autoLoad={true}
+                    loop={true}
+                    volume={10} />
+            </div>
+            {/* <button
                 class="menu-button"
                 onClick={() =>
                     handleClickWithFetch(
@@ -61,7 +79,7 @@ export default function InGameMenu() {
                 }
             >
                 Options
-            </button>
+            </button> */}
             <button
                 class="menu-button"
                 onClick={() =>

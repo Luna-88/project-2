@@ -1,13 +1,27 @@
-import { useState } from "react"
-import * as constants from "../models/constants"
-import useWindowSize from "../hooks/useWindowSize"
+import { useState } from 'react'
+import * as constants from '../models/constants'
+import useWindowSize from '../hooks/useWindowSize'
+import useWorldOffset from './useWorldOffset'
 
 export default function useWalk(maxSteps) {
     // Set initial location of user
-    const { height, width } = useWindowSize()
-    let halfWidth = width / 2
-    let halfHeight = height / 2
-    const [position, setPosition] = useState({ x: halfWidth, y: halfHeight })
+    // const { height, width } = useWindowSize()
+    const height = 640
+    const width = 640
+
+    // let halfWidth = width / 2
+    // let halfHeight = height / 2
+
+    const { topOffset, leftOffset } = useWorldOffset()
+    const leftOffsetInit = leftOffset //+ (width/2) + 32
+    const topOffsetInit = topOffset //+ (height/2) + 32
+    // const leftOffsetInit = 32
+    // const topOffsetInit = 32
+
+    const [position, setPosition] = useState({
+        x: leftOffsetInit,
+        y: topOffsetInit,
+    })
     const [dir, setDir] = useState(0)
     const [step, setStep] = useState(0)
 
@@ -37,25 +51,31 @@ export default function useWalk(maxSteps) {
     }
 
     function move(dir) {
-        // const world = document.getElementById("sprite")
         // const rect = world.getBoundingClientRect()
-        // console.log("position x: ", rect.left)
-        // console.log("position y: ", rect.top)
+        // const rect = world.offsetTop
+        // console.log("position x: ", rect)
+        // console.log("position y: ", rect)
+
+        // const world = document.getElementById('heres-your-id-name-duh')
+        // const topOffset = world.offsetTop
+        // const leftOffset = world.offsetLeft
 
         // New world bounds
         if (
-            position.x + modifier[dir].x >= 50 &&
+            position.x + modifier[dir].x >= 32 + leftOffset &&
             position.x + modifier[dir].x <=
-            width - constants.spriteSize.width - 50 &&
-            position.y + modifier[dir].y >= 50 &&
+                width - constants.spriteSize.width - 32 + leftOffset &&
+            position.y + modifier[dir].y >= 32 + topOffset &&
             position.y + modifier[dir].y <=
-            height - constants.spriteSize.height - 50
+                height - constants.spriteSize.height - 32 + topOffset
         )
-
             setPosition((prev) => ({
                 x: prev.x + modifier[dir].x,
                 y: prev.y + modifier[dir].y,
             }))
+
+            console.log(topOffset, "top")
+            console.log(leftOffset, "left")
     }
 
     return {

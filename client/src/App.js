@@ -16,23 +16,31 @@ import mainSkin from './assets/images/skins/main.png'
 import sidekickSkin from './assets/images/skins/ghost.png'
 import world from './assets/images/worlds/world_1.png'
 import lightbeam from './assets/images/energies/lightbeam2.png'
-import Maptest from './features/Maptest'
+import GroundTile from './features/groundTile'
+
+// import grass from './assets/tileset/tiles/grass.png'
+import tree from './assets/tileset/tiles/tree-0_0.png'
+import tile, { tileValuePairs } from './features/tileValuePairs'
+
+import { grassPatch } from './features/getTileImage'
 
 function App() {
     return (
-        <div>
+        <div className="wrapper">
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/">
-                        <Maptest />
-                        {/* <TileGrid image={world} /> */}
+                    {/* <GroundTile tile={tileValuePairs[0]}/> */}
+                    <div className="fullscreen-container">
+                      <div className="fullscreen-container-grass">
+                          {grassPatch}
+                      </div>
+                    </div>
+                        {/* <Maptest /> */}
                     </Route>
                     {/* <Route exact path="/">
                         <WelcomePage />
                     </Route> */}
-                    <Route exact path="/">
-                        <WelcomePage />
-                    </Route>
                     <Route exact path="/admin">
                         <Admin />
                     </Route>
@@ -53,21 +61,29 @@ function App() {
                         <PlayerMenu multiplayer={true} />
                     </Route>
                     <Route exact path="/gaia">
-                        <World image={world} />
-                        <Player
+                        {/* <World image={world} /> */}
+
+                        <div className="fullscreen-container">
+                      <div className="fullscreen-container-grass" id="heres-your-id-name-duh">
+                          {grassPatch}
+                          {/* <Player
                             skin={lightbeam}
                             sidekick={true}
                             xOffset={0}
                             yOffset={-32}
                             light={true}
-                        />
+                        /> */}
                         <Player skin={mainSkin} />
-                        <Player
+                        {/* <Player
                             skin={sidekickSkin}
                             sidekick={true}
                             xOffset={16}
                             yOffset={32}
-                        />{' '}
+                        /> */}
+
+                      </div>
+                    </div>
+
                         <InGameMenu />
                     </Route>
                 </Switch>
