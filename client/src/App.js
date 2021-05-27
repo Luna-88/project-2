@@ -25,11 +25,14 @@ function App() {
                 <Switch>
                     <Route exact path="/">
                         {/* <Maptest tile={}/> */}
-                        <TileGrid image={world}/>
+                        <TileGrid image={world} />
                     </Route>
                     {/* <Route exact path="/">
                         <WelcomePage />
                     </Route> */}
+                    <Route exact path="/">
+                        <WelcomePage />
+                    </Route>
                     <Route exact path="/admin">
                         <Admin />
                     </Route>

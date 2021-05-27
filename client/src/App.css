@@ -257,7 +257,18 @@ FORM POSITIONING */
     align-items: center;
     width: 100vw;
     height: 100vh;
+    margin: 0;
+    padding: 0;
 }
+
+.login-image {
+    background-image: url("../src/assets/images/titles/world_2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* border: 5px solid red; */
+}
+
 .entry-section {
     margin: var(--section-margin);
 }
@@ -351,4 +362,20 @@ input[type='password'] {
 .form-checkbox {
     margin: 0.25rem 0.25rem 0.25rem 0rem;
     vertical-align: middle;
+}
+
+
+/* 
+
+
+
+Game Titlescreen */
+.entry-section {
+    /* border: 5px solid red; */
+}
+
+.game-title {
+    /* border: 5px solid red; */
+    margin-top:15rem;
+    margin-bottom: 5rem;
 }
