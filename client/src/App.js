@@ -20,7 +20,9 @@ import GroundTile from './features/groundTile'
 
 // import grass from './assets/tileset/tiles/grass.png'
 import tree from './assets/tileset/tiles/tree-0_0.png'
+import tile, { tileValuePairs } from './features/tileValuePairs'
 
+import { grassPatch } from './features/getTileImage'
 
 function App() {
     return (
@@ -28,7 +30,8 @@ function App() {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/">
-                    <GroundTile tile={tree}/>
+                    {/* <GroundTile tile={tileValuePairs[0]}/> */}
+                    {grassPatch}
                         {/* <Maptest /> */}
                     </Route>
                     {/* <Route exact path="/">
