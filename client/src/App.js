@@ -26,12 +26,16 @@ import { grassPatch } from './features/getTileImage'
 
 function App() {
     return (
-        <div>
+        <div className="wrapper">
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/">
                     {/* <GroundTile tile={tileValuePairs[0]}/> */}
-                    {grassPatch}
+                    <div className="fullscreen-container">
+                      <div className="fullscreen-container-grass">
+                          {grassPatch}
+                      </div>
+                    </div>
                         {/* <Maptest /> */}
                     </Route>
                     {/* <Route exact path="/">
@@ -57,21 +61,29 @@ function App() {
                         <PlayerMenu multiplayer={true} />
                     </Route>
                     <Route exact path="/gaia">
-                        <World image={world} />
-                        <Player
+                        {/* <World image={world} /> */}
+
+                        <div className="fullscreen-container">
+                      <div className="fullscreen-container-grass" id="heres-your-id-name-duh">
+                          {grassPatch}
+                          {/* <Player
                             skin={lightbeam}
                             sidekick={true}
                             xOffset={0}
                             yOffset={-32}
                             light={true}
-                        />
+                        /> */}
                         <Player skin={mainSkin} />
-                        <Player
+                        {/* <Player
                             skin={sidekickSkin}
                             sidekick={true}
                             xOffset={16}
                             yOffset={32}
-                        />{' '}
+                        /> */}
+
+                      </div>
+                    </div>
+
                         <InGameMenu />
                     </Route>
                 </Switch>
