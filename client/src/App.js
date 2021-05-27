@@ -17,19 +17,24 @@ import mainSkin from './assets/images/skins/main.png'
 import sidekickSkin from './assets/images/skins/ghost.png'
 import world from './assets/images/worlds/world_1.png'
 import lightbeam from './assets/images/energies/lightbeam2.png'
+import GroundTile from './features/groundTile'
+
+// import grass from './assets/tileset/tiles/grass.png'
+import tree from './assets/tileset/tiles/tree-0_0.png'
+
 
 function App() {
     return (
         <div>
             <BrowserRouter>
                 <Switch>
-                    {/* <Route exact path="/">
-                        <Tiles />
-                        <Map />
-                    </Route> */}
                     <Route exact path="/">
-                        <WelcomePage />
+                    <GroundTile tile={tree}/>
+                        {/* <Maptest /> */}
                     </Route>
+                    {/* <Route exact path="/">
+                        <WelcomePage />
+                    </Route> */}
                     <Route exact path="/admin">
                         <Admin />
                     </Route>
