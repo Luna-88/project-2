@@ -4,7 +4,7 @@ export default function WelcomePage() {
     return (
         <div className="fullscreen-container">
             <section className="game-title">
-                <img src={title} width={1920/2} height={1080/2} />
+                <img src={title} width={1920/2} height={1080/2} alt="img"/>
             </section>
             <section className="entry-section">
                 <center>

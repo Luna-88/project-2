@@ -16,7 +16,7 @@ import mainSkin from './assets/images/skins/main.png'
 import sidekickSkin from './assets/images/skins/ghost.png'
 import world from './assets/images/worlds/world_1.png'
 import lightbeam from './assets/images/energies/lightbeam2.png'
-import { Maptest } from './features/Maptest'
+import Maptest from './features/Maptest'
 
 function App() {
     return (
@@ -24,8 +24,8 @@ function App() {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/">
-                        {/* <Maptest tile={}/> */}
-                        <TileGrid image={world} />
+                        <Maptest />
+                        {/* <TileGrid image={world} /> */}
                     </Route>
                     {/* <Route exact path="/">
                         <WelcomePage />
