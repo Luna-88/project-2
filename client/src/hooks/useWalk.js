@@ -33,7 +33,7 @@ export default function useWalk(maxSteps) {
         up: 3,
     }
 
-    const stepSize = 1
+    const stepSize = 8
 
     const modifier = {
         down: { x: 0, y: stepSize },
@@ -63,14 +63,13 @@ export default function useWalk(maxSteps) {
 
         // New world bounds
 
-
         if (
             position.x + modifier[dir].x >= leftOffset &&
             position.x + modifier[dir].x <=
-            width - constants.spriteSize.width + leftOffset &&
-            position.y + modifier[dir].y >= + topOffset &&
+                width - constants.spriteSize.width + leftOffset &&
+            position.y + modifier[dir].y >= +topOffset &&
             position.y + modifier[dir].y <=
-            height - constants.spriteSize.height + topOffset
+                height - constants.spriteSize.height + topOffset
 
             // position.x + modifier[dir].x >= 32 + leftOffset &&
             // position.x + modifier[dir].x <=
@@ -84,22 +83,31 @@ export default function useWalk(maxSteps) {
                 y: prev.y + modifier[dir].y,
             }))
 
-        console.log("modifier", modifier[dir].x)
+        console.log('modifier', modifier[dir].x)
 
         function currentPosition() {
-            const currentX = Math.ceil((position.x - leftOffset) / 32)
+            const currentX = Math.ceil(
+                (Math.floor(position.x) - leftOffset) / 32
+            )
             const currentY = Math.ceil((position.y - topOffset) / 32)
             return { currentX: currentX, currentY: currentY }
         }
 
+        // we will change this later
+
         function neighbouringTiles() {
             const myPosition = currentPosition()
-            const neighbours = { north: myPosition.currentY * myPosition.currentX - 20, west: myPosition.currentX * myPosition.currentY - 1, south: myPosition.currentY * myPosition.currentX + 20, east: myPosition.currentX * myPosition.currentY + 1 }
+            const neighbours = {
+                north: myPosition.currentY * myPosition.currentX - 20,
+                west: myPosition.currentX * myPosition.currentY - 1,
+                south: myPosition.currentY * myPosition.currentX + 20,
+                east: myPosition.currentX * myPosition.currentY + 1,
+            }
             return neighbours
         }
 
-        console.log("current ", currentPosition())
-        console.log("neighbours ", neighbouringTiles())
+        console.log('current ', currentPosition())
+        console.log('neighbours ', neighbouringTiles())
 
         // console.log(topOffset, "top")
         // console.log(leftOffset, "left")

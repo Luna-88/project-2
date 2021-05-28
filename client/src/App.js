@@ -65,9 +65,15 @@ function App() {
                     <Route exact path="/gaia">
                         {/* <World image={world} /> */}
 
+                        {/* <TileGrid /> */}
+
                         <div className="fullscreen-container">
-                            <div className="fullscreen-container-grass" id="heres-your-id-name-duh">
+                            <div
+                                className="fullscreen-container-grass"
+                                id="heres-your-id-name-duh"
+                            >
                                 {grassPatch}
+                                {/* {mistyForest className="zindex3"} */}
                                 {/* <Player
                             skin={lightbeam}
                             sidekick={true}
@@ -82,7 +88,6 @@ function App() {
                             xOffset={16}
                             yOffset={32}
                         /> */}
-
                             </div>
                         </div>
                         <AdminState>
