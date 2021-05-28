@@ -399,6 +399,7 @@ Game Titlescreen */
     padding: 0;
     height: 32px;
     width: 32px;
+    z-index: 2;
 }
 
 /* .wrapper {
@@ -408,3 +409,20 @@ Game Titlescreen */
     background: red;
 
 } */
+
+#canvas {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: block;
+    z-index: 1;
+}
+
+#parent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}

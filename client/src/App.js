@@ -23,6 +23,7 @@ import tree from './assets/tileset/tiles/tree-0_0.png'
 import tile, { tileValuePairs } from './features/tileValuePairs'
 
 import { grassPatch } from './features/getTileImage'
+import DrawCanvas from './components/DrawCanvas'
 
 function App() {
     return (
@@ -31,10 +32,13 @@ function App() {
                 <Switch>
                     <Route exact path="/">
                     {/* <GroundTile tile={tileValuePairs[0]}/> */}
-                    <div className="fullscreen-container">
-                      <div className="fullscreen-container-grass">
-                          {grassPatch}
-                      </div>
+                    <div id='parent' width='640px' height='640px'>
+                        <DrawCanvas />
+                        <div className="fullscreen-container">
+                        <div className="fullscreen-container-grass">
+                            {grassPatch}
+                        </div>
+                        </div>
                     </div>
                         {/* <Maptest /> */}
                     </Route>
