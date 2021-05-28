@@ -1,30 +1,25 @@
 import { useState } from 'react'
 import * as constants from '../models/constants'
-import useWindowSize from '../hooks/useWindowSize'
+// import useWindowSize from '../hooks/useWindowSize'
 import useWorldOffset from './useWorldOffset'
 
 export default function useWalk(maxSteps) {
     // Set initial location of user
     // const { height, width } = useWindowSize()
-    const height = 640
-    const width = 640
-
-    // let halfWidth = width / 2
-    // let halfHeight = height / 2
-
     const { topOffset, leftOffset } = useWorldOffset()
+
     const leftOffsetInit = leftOffset //+ (width/2) + 32
     const topOffsetInit = topOffset //+ (height/2) + 32
-    // const leftOffsetInit = 32
-    // const topOffsetInit = 32
 
     const [position, setPosition] = useState({
         x: leftOffsetInit,
         y: topOffsetInit,
     })
-
     const [dir, setDir] = useState(0)
     const [step, setStep] = useState(0)
+
+    const height = 640
+    const width = 640
 
     const directions = {
         down: 0,
@@ -57,34 +52,7 @@ export default function useWalk(maxSteps) {
         // console.log("position x: ", rect)
         // console.log("position y: ", rect)
 
-        // const world = document.getElementById('heres-your-id-name-duh')
-        // const topOffset = world.offsetTop
-        // const leftOffset = world.offsetLeft
-
         // New world bounds
-
-        if (
-            position.x + modifier[dir].x >= leftOffset &&
-            position.x + modifier[dir].x <=
-                width - constants.spriteSize.width + leftOffset &&
-            position.y + modifier[dir].y >= +topOffset &&
-            position.y + modifier[dir].y <=
-                height - constants.spriteSize.height + topOffset
-
-            // position.x + modifier[dir].x >= 32 + leftOffset &&
-            // position.x + modifier[dir].x <=
-            // width - constants.spriteSize.width - 32 + leftOffset &&
-            // position.y + modifier[dir].y >= 32 + topOffset &&
-            // position.y + modifier[dir].y <=
-            // height - constants.spriteSize.height - 32 + topOffset
-        )
-            setPosition((prev) => ({
-                x: prev.x + modifier[dir].x,
-                y: prev.y + modifier[dir].y,
-            }))
-
-        console.log('modifier', modifier[dir].x)
-
         function currentPosition() {
             const currentX = Math.ceil(
                 (Math.floor(position.x) - leftOffset) / 32
@@ -94,7 +62,6 @@ export default function useWalk(maxSteps) {
         }
 
         // we will change this later
-
         function neighbouringTiles() {
             const myPosition = currentPosition()
             const neighbours = {
@@ -105,6 +72,26 @@ export default function useWalk(maxSteps) {
             }
             return neighbours
         }
+
+        let worldBounds = position.x + modifier[dir].x >= leftOffset &&
+            position.x + modifier[dir].x <=
+            width - constants.spriteSize.width + leftOffset &&
+            position.y + modifier[dir].y >= +topOffset &&
+            position.y + modifier[dir].y <=
+            height - constants.spriteSize.height + topOffset
+
+        let myPosition = currentPosition()
+        let neighbours = neighbouringTiles()
+
+        if (worldBounds) {
+             //if () { //add collisions here?
+            setPosition((prev) => ({
+                x: prev.x + modifier[dir].x,
+                y: prev.y + modifier[dir].y,
+            }))
+             //}
+        }
+
 
         console.log('current ', currentPosition())
         console.log('neighbours ', neighbouringTiles())
