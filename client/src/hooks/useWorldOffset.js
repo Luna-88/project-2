@@ -6,8 +6,8 @@ export default function useWorldOffset() {
     const [topOffset, setTopOffset] = useState(initHeight)
     const [leftOffset, setLeftOffset] = useState(initWidth)
 
-    console.log(initHeight, 'height')
-    console.log(initWidth, 'width')
+    // console.log(topOffset, 'top')
+    // console.log(leftOffset, 'width')
 
     // const topOffset = world.offsetTop
     // const leftOffset = world.offsetLeft

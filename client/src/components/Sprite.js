@@ -19,7 +19,9 @@ export default function Sprite({ image, data, position, sidekick = false, xOffse
                 width: `${w}px`,
                 backgroundImage: `url(${image})`,
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: `-${x}px -${y}px`
+                backgroundPosition: `-${x}px -${y}px`,
+                boxSizing: "border-box",
+                border: "1px solid red",
             }}
         />
     )

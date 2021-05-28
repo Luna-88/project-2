@@ -18,7 +18,7 @@ export default function FormPage({ isRegister = false }) {
 
         <div className="fullscreen-container login-image">
             <section className="game-title">
-                <img src={title} width={1920*.55} height={1080*.55} />
+                <img src={title} width={1920*.55} height={1080*.55} alt="img"/>
                 {/* <div>
                         <center>
                 <a href="/register">Begin</a>
