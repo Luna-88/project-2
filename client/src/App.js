@@ -23,6 +23,7 @@ import tree from './assets/tileset/tiles/tree-0_0.png'
 import tile, { tileValuePairs } from './features/tileValuePairs'
 
 import AdminState from './contexts/admin/AdminState'
+import PlayerState from './contexts/player/PlayerState'
 
 import { grassPatch } from './features/getTileImage'
 
@@ -86,7 +87,9 @@ function App() {
                             </div>
                         </div>
                         <AdminState>
+                            {/* <PlayerState> */}
                             <InGameMenu />
+                            {/* </PlayerState> */}
                         </AdminState>
                     </Route>
                 </Switch>

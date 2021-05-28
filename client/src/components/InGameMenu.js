@@ -5,9 +5,11 @@ import useGameMenu from '../hooks/useGameMenu'
 import AmbientMusic from '../assets/audio/ambient-music.mp3'
 
 import AdminContext from '../contexts/admin/adminContext'
+// import PlayerContext from '../contexts/player/PlayerContext'
 
 export default function InGameMenu() {
     const { isAdmin, setIsAdmin } = useContext(AdminContext)
+    // const { isLoggedIn, setIsLoggedIn } = useContext(PlayerContext)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const { serverResponse,
