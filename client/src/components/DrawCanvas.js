@@ -15,10 +15,17 @@ export default function DrawCanvas() {
         setWindowHeight(window.innerHeight)
     })
 
+    let width = window.innerWidth
+    let height = window.innerHeight
+
+    let w = 640
+    let h = 640
+
     const draw = ctx => {
         ctx.fillStyle = 'salmon'
         ctx.beginPath()
-        ctx.fillRect( 0, 0, 640, 640)
+        ctx.clearRect( 0, 0, width, height)
+        ctx.fillRect( ((width-w)/2), ((height-h)/2), w, h)
     }
 
     return ( <div> {windowWidth} {windowHeight} <GameCanvas draw={draw} /> </div>)
