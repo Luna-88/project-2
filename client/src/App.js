@@ -77,7 +77,7 @@ function App() {
                             yOffset={-32}
                             light={true}
                         /> */}
-                        <Player skin={mainSkin} />
+                        <Player skin={mainSkin}/>
                         {/* <Player
                             skin={sidekickSkin}
                             sidekick={true}

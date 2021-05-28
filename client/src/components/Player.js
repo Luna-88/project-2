@@ -3,7 +3,7 @@ import useKeyPress from "../hooks/useKeyPress"
 import useWalk from "../hooks/useWalk"
 
 export default function Player({ skin, sidekick, xOffset, yOffset, light=false }) {
-    const { dir, step, walk, position } = useWalk(3)
+    const { dir, step, walk, position } = useWalk()
     
     const data = {
         h: 32,

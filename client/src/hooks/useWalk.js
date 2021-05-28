@@ -62,12 +62,12 @@ export default function useWalk(maxSteps) {
 
         // New world bounds
         if (
-            position.x + modifier[dir].x >= 32 + leftOffset &&
+            position.x + modifier[dir].x >= + leftOffset &&
             position.x + modifier[dir].x <=
-                width - constants.spriteSize.width - 32 + leftOffset &&
-            position.y + modifier[dir].y >= 32 + topOffset &&
+                width - constants.spriteSize.width + leftOffset &&
+            position.y + modifier[dir].y >= + topOffset &&
             position.y + modifier[dir].y <=
-                height - constants.spriteSize.height - 32 + topOffset
+                height - constants.spriteSize.height + topOffset
         )
             setPosition((prev) => ({
                 x: prev.x + modifier[dir].x,
