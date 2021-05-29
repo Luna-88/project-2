@@ -28,6 +28,7 @@ ROOT VARIABLES */
 
     /* Font Sizes */
     --font-size-label: 0.625rem;
+
 }
 
 /* 
@@ -266,16 +267,6 @@ FORM POSITIONING */
     height: 100vh;
 }
 
-.fullscreen-container-grass {
-    width: 640px;
-    height: 640px;
-    margin: 0;
-    padding: 0;
-    display: flex !important;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
 .login-image {
     background-image: url('../src/assets/images/titles/world_2.png');
     background-position: center;
@@ -410,11 +401,23 @@ Game Titlescreen */
 
 } */
 
+.camera {
+    width: 640px;
+    height: 640px;
+    position: absolute;
+    overflow: hidden;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
 #canvas {
-    background-color: rgb(255, 255, 255);
     position: absolute;
     display: grid;
-    z-index: 1;
+    z-index: 3;
+    overflow: hidden;
+    
 }
 
 #parent {

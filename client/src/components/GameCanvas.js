@@ -13,8 +13,9 @@ export default function GameCanvas(props) {
     return ( <canvas  
         id="canvas" 
         ref={canvasRef} 
-        height='640px' 
-        width={window.innerWidth}/>
+        height={window.innerHeight} 
+        width={window.innerWidth}
+        />
     )
 }
 

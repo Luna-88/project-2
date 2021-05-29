@@ -6,6 +6,8 @@ import ditch from '../assets/tileset/tiles/ground-bump-bottom.png'
 
 import GroundTile from '../features/groundTile'
 
+
+
   const mapMatrix = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -21,33 +23,13 @@ import GroundTile from '../features/groundTile'
   0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
-
-// function getTileImage(type) {
-//     switch(type) {
-//       case 0:
-//         return <GroundTile tile={grass}/>
-      // case 1:
-      //     return 'tree-0_0'
-      // case 2:
-      //     return 'tree-0_1'
-      // case 3:
-      //     return 'tree-1_0'
-      // case 4:
-      //     return 'tree-1_1'
-      // default: 
-  //   }
-  // }
-
-// const grassPatch = mapMatrix.map((location) => {
-//   getTileImage(location)
-// }) 
 
 let grassPatch = []
 
@@ -73,4 +55,4 @@ mapMatrix.forEach((index) => {
 return grassPatch.join('')
 })
 
-export { grassPatch } 
+export { grassPatch, mapMatrix }

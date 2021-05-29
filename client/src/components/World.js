@@ -4,10 +4,18 @@ import solar from '../assets/images/energies/solar.png'
 import flashlight from '../assets/images/objects/flashlight.png'
 import Object from './Object'
 
+const height = 640
+const width = 640
+
+const columns = width / constants.spriteSize
+const rows = height / constants.spriteSize
+
 export default function World({ image }) {
     // const { height, width } = useWindowSize()
     const height = 640
     const width = 640
+
+
 
     return (
         <div className="world-container" id="world-container">
@@ -29,3 +37,5 @@ export default function World({ image }) {
         </div>
     )
 }
+
+export {columns, rows}

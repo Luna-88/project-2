@@ -11,16 +11,6 @@ export default function useCanvas(draw) {
 
         requestAnimationFrame(() => draw(context))
 
-        const handleResize = e => {
-            context.canvas.height = window.innerHeight
-            context.canvas.width = window.innerWidth
-        }
-
-        handleResize()
-        window.addEventListener('resize', handleResize)
-
-        return () => window.removeEventListener('resize', handleResize)
-
     }, [draw])
 
 

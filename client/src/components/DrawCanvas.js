@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import GameCanvas from './GameCanvas'
 import { useWindowResize } from 'beautiful-react-hooks'
 
+import grass from '../assets/tileset/tiles/grass.png'
 
 
 export default function DrawCanvas() {
@@ -22,12 +23,11 @@ export default function DrawCanvas() {
     let h = 640
 
     const draw = ctx => {
-        ctx.fillStyle = 'salmon'
         ctx.beginPath()
         ctx.clearRect( 0, 0, width, height)
         ctx.fillRect( ((width-w)/2), ((height-h)/2), w, h)
     }
 
-    return ( <div> {windowWidth} {windowHeight} <GameCanvas draw={draw} /> </div>)
+    return ( <div><GameCanvas draw={draw} /></div>)
 }
 

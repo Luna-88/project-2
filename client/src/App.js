@@ -16,14 +16,8 @@ import mainSkin from './assets/images/skins/main.png'
 import sidekickSkin from './assets/images/skins/ghost.png'
 import world from './assets/images/worlds/world_1.png'
 import lightbeam from './assets/images/energies/lightbeam2.png'
-import GroundTile from './features/groundTile'
 
-// import grass from './assets/tileset/tiles/grass.png'
-import tree from './assets/tileset/tiles/tree-0_0.png'
-import tile, { tileValuePairs } from './features/tileValuePairs'
-
-import { grassPatch } from './features/getTileImage'
-import DrawCanvas from './components/DrawCanvas'
+import DrawTileMap from './components/drawTileMap'
 
 function App() {
     return (
@@ -32,14 +26,6 @@ function App() {
                 <Switch>
                     <Route exact path="/">
                     {/* <GroundTile tile={tileValuePairs[0]}/> */}
-                    <div id='parent' width='640px' height='640px'>
-                        <DrawCanvas />
-                        <div className="fullscreen-container">
-                        <div className="fullscreen-container-grass">
-                            {grassPatch}
-                        </div>
-                        </div>
-                    </div>
                         {/* <Maptest /> */}
                     </Route>
                     {/* <Route exact path="/">
@@ -67,9 +53,10 @@ function App() {
                     <Route exact path="/gaia">
                         {/* <World image={world} /> */}
 
-                        <div className="fullscreen-container">
-                      <div className="fullscreen-container-grass" id="heres-your-id-name-duh">
-                          {grassPatch}
+                        
+                        <div className='camera'>
+                        <div id='parent' >
+                            <DrawTileMap />
                           {/* <Player
                             skin={lightbeam}
                             sidekick={true}
@@ -84,8 +71,9 @@ function App() {
                             xOffset={16}
                             yOffset={32}
                         /> */}
-
-                      </div>
+                          
+                        </div>      
+    
                     </div>
 
                         <InGameMenu />

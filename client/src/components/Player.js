@@ -10,6 +10,7 @@ export default function Player({ skin, sidekick, xOffset, yOffset, light=false }
         w: 32,
     }
 
+
     useKeyPress((e) => {
         let arrowKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
         //console.log(e.key)
