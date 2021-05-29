@@ -1,30 +1,28 @@
 import { useState } from 'react'
+
 import * as constants from '../models/constants'
+
 import useWorldOffset from './useWorldOffset'
 import useSpriteOffset from './useSpriteOffset'
 
+import buttonDown from '../assets/images/objects/buttonDown.png'
+
 export default function useWalk(maxSteps) {
-    // Set initial location of user 
-    const { topOffset, leftOffset } = useWorldOffset()
+    const initTop = document.documentElement.clientHeight / 2
+    const initLeft = document.documentElement.clientWidth / 2
+    const height = 640
+    const width = 640
+    const stepSize = 8
+
+    const { worldTopOffset, worldLeftOffset } = useWorldOffset(initTop, initLeft)
     const { spriteTopOffset, spriteLeftOffset } = useSpriteOffset()
 
-    console.log('spriteTop ', spriteTopOffset)
-    console.log('spriteLeft ', spriteLeftOffset)
-    console.log('Top ', topOffset)
-    console.log('Left ', leftOffset)
-
-    const leftOffsetInit = leftOffset //+ (width/2) + 32
-    const topOffsetInit = topOffset //+ (height/2) + 32
-
     const [position, setPosition] = useState({
-        x: leftOffsetInit,
-        y: topOffsetInit,
+        x: worldLeftOffset,
+        y: worldTopOffset,
     })
     const [dir, setDir] = useState(0)
     const [step, setStep] = useState(0)
-
-    const height = 640
-    const width = 640
 
     const directions = {
         down: 0,
@@ -32,8 +30,6 @@ export default function useWalk(maxSteps) {
         right: 2,
         up: 3,
     }
-
-    const stepSize = 8
 
     const modifier = {
         down: { x: 0, y: stepSize },
@@ -52,63 +48,73 @@ export default function useWalk(maxSteps) {
     }
 
     function move(dir) {
-        
-        // console.log("topOffset: ", topOffset)
-        // console.log("leftOffset: ", leftOffset)
-        
-        // New world bounds
-        function currentPosition() {
-            const currentX = position.x - leftOffset
-            const currentY = position.y - topOffset
-            return { currentX: currentX, currentY: currentY }
-        }
-        
-        // we will change this later
-        function neighbouringTiles() {
-            const myPosition = currentPosition()
-            const neighbours = {
-                north: myPosition.currentY * myPosition.currentX - 20,
-                west: myPosition.currentX * myPosition.currentY - 1,
-                south: myPosition.currentY * myPosition.currentX + 20,
-                east: myPosition.currentX * myPosition.currentY + 1,
-            }
-            return neighbours
-        }
-        
+        // New world bounds        
         let worldBounds = (
-            position.x + modifier[dir].x >= leftOffset &&
+            position.x + modifier[dir].x >= worldLeftOffset &&
             position.x + modifier[dir].x <=
-            width - constants.spriteSize.width + leftOffset &&
-            position.y + modifier[dir].y >= +topOffset &&
+            width + worldLeftOffset - constants.spriteSize.width &&
+            position.y + modifier[dir].y >= worldTopOffset &&
             position.y + modifier[dir].y <=
-            height - constants.spriteSize.height + topOffset
-            )
-            
-            let myPosition = currentPosition()
-            let neighbours = neighbouringTiles()
-            
-            if (worldBounds) {
-                setPosition((prev) => ({
-                    x: prev.x + modifier[dir].x,
-                    y: prev.y + modifier[dir].y,
-                }))
+            height + worldTopOffset - constants.spriteSize.height
+        )
+
+        if (worldBounds) {
+            setPosition((prev) => ({
+                x: prev.x + modifier[dir].x,
+                y: prev.y + modifier[dir].y,
+            }))
+        }
+
+        const square = document.getElementById('square')
+        const squareTopOffset = square.offsetTop
+        const squareLeftOffset = square.offsetLeft
+
+
+        if (dir === 0) {
+            if (
+                spriteTopOffset + 32 >= squareTopOffset &&
+                spriteTopOffset + 32 <= squareTopOffset + 32 &&
+                spriteLeftOffset + 32 >= squareLeftOffset &&
+                spriteLeftOffset + 32 <= squareLeftOffset + 32
+            ) {
+                square.style.backgroundImage = `url(${buttonDown})`
+            }
+        } else if (dir === 3) {
+            if (
+                spriteTopOffset + 32 >= squareTopOffset &&
+                spriteTopOffset + 32 <= squareTopOffset + 32 &&
+                spriteLeftOffset + 32 >= squareLeftOffset &&
+                spriteLeftOffset + 32 <= squareLeftOffset + 32
+            ) {
+                square.style.backgroundImage = `url(${buttonDown})`
+            }
+        } else if (dir === 'left') {
+                if (
+                    spriteTopOffset >= squareTopOffset &&
+                    spriteTopOffset <= squareTopOffset + 32 &&
+                    spriteLeftOffset <= squareLeftOffset + 16 &&
+                    spriteLeftOffset >= squareLeftOffset
+                ) {
+                    square.style.backgroundImage = `url(${buttonDown})`
+                }
+            } else if (dir === 'right') {
+                if (
+                    spriteTopOffset >= squareTopOffset &&
+                    spriteTopOffset <= squareTopOffset + 32 &&
+                    spriteLeftOffset + 16 >= squareLeftOffset &&
+                    spriteLeftOffset + 16 <= squareLeftOffset + 32
+                ) {
+                    square.style.backgroundImage = `url(${buttonDown})`
+                }
             }
 
-            const sprite = document.getElementById('square')
-            // const rect = sprite.getBoundingClientRect()
-            
-            // console.log("position x: ", rect.left)
-            // console.log("position y: ", rect.top)
+        console.log("sqTop ", squareTopOffset)
+        console.log("sqLeft ", squareLeftOffset)
 
-            if (spriteTopOffset === topOffset && spriteLeftOffset=== leftOffset) {
-                sprite.style.backgroundColor = 'red'
-            }
+        console.log("spTop ", spriteTopOffset)
+        console.log("spLeft ", spriteLeftOffset)
 
-        // console.log('current ', currentPosition())
-        // console.log('neighbours ', neighbouringTiles())
-        
-        // console.log(topOffset, "top")
-        // console.log(leftOffset, "left")
+        console.log("dir", dir)
     }
 
     return {

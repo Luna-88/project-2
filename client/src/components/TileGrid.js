@@ -1,4 +1,5 @@
 import * as constants from "../models/constants"
+
 import world from '../assets/images/worlds/world_1.png'
 
 export default function TileGrid({ image }) {

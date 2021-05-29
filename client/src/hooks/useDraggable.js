@@ -5,7 +5,7 @@ export default function useDraggable(id) {
 
 
     useEffect(() => {
-        const handle = document.getElementById("handle")
+        const handle = document.getElementById("in-game-menu")
         handle.addEventListener("mousedown", function (e) {
             e.preventDefault()
             handle.style.pointerEvents = "none"
