@@ -1,12 +1,17 @@
 import { useState } from 'react'
 import * as constants from '../models/constants'
-// import useWindowSize from '../hooks/useWindowSize'
 import useWorldOffset from './useWorldOffset'
+import useSpriteOffset from './useSpriteOffset'
 
 export default function useWalk(maxSteps) {
-    // Set initial location of user
-    // const { height, width } = useWindowSize()
+    // Set initial location of user 
     const { topOffset, leftOffset } = useWorldOffset()
+    const { spriteTopOffset, spriteLeftOffset } = useSpriteOffset()
+
+    console.log('spriteTop ', spriteTopOffset)
+    console.log('spriteLeft ', spriteLeftOffset)
+    console.log('Top ', topOffset)
+    console.log('Left ', leftOffset)
 
     const leftOffsetInit = leftOffset //+ (width/2) + 32
     const topOffsetInit = topOffset //+ (height/2) + 32
@@ -47,20 +52,17 @@ export default function useWalk(maxSteps) {
     }
 
     function move(dir) {
-        // const rect = world.getBoundingClientRect()
-        // const rect = world.offsetTop
-        // console.log("position x: ", rect)
-        // console.log("position y: ", rect)
-
+        
+        // console.log("topOffset: ", topOffset)
+        // console.log("leftOffset: ", leftOffset)
+        
         // New world bounds
         function currentPosition() {
-            const currentX = Math.ceil(
-                (Math.floor(position.x) - leftOffset) / 32
-            )
-            const currentY = Math.ceil((position.y - topOffset) / 32)
+            const currentX = position.x - leftOffset
+            const currentY = position.y - topOffset
             return { currentX: currentX, currentY: currentY }
         }
-
+        
         // we will change this later
         function neighbouringTiles() {
             const myPosition = currentPosition()
@@ -72,30 +74,39 @@ export default function useWalk(maxSteps) {
             }
             return neighbours
         }
-
-        let worldBounds = position.x + modifier[dir].x >= leftOffset &&
+        
+        let worldBounds = (
+            position.x + modifier[dir].x >= leftOffset &&
             position.x + modifier[dir].x <=
             width - constants.spriteSize.width + leftOffset &&
             position.y + modifier[dir].y >= +topOffset &&
             position.y + modifier[dir].y <=
             height - constants.spriteSize.height + topOffset
+            )
+            
+            let myPosition = currentPosition()
+            let neighbours = neighbouringTiles()
+            
+            if (worldBounds) {
+                setPosition((prev) => ({
+                    x: prev.x + modifier[dir].x,
+                    y: prev.y + modifier[dir].y,
+                }))
+            }
 
-        let myPosition = currentPosition()
-        let neighbours = neighbouringTiles()
+            const sprite = document.getElementById('square')
+            // const rect = sprite.getBoundingClientRect()
+            
+            // console.log("position x: ", rect.left)
+            // console.log("position y: ", rect.top)
 
-        if (worldBounds) {
-             //if () { //add collisions here?
-            setPosition((prev) => ({
-                x: prev.x + modifier[dir].x,
-                y: prev.y + modifier[dir].y,
-            }))
-             //}
-        }
+            if (spriteTopOffset === topOffset && spriteLeftOffset=== leftOffset) {
+                sprite.style.backgroundColor = 'red'
+            }
 
-
-        console.log('current ', currentPosition())
-        console.log('neighbours ', neighbouringTiles())
-
+        // console.log('current ', currentPosition())
+        // console.log('neighbours ', neighbouringTiles())
+        
         // console.log(topOffset, "top")
         // console.log(leftOffset, "left")
     }

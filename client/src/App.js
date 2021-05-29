@@ -26,6 +26,9 @@ import AdminState from './contexts/admin/AdminState'
 import PlayerState from './contexts/player/PlayerState'
 
 import { grassPatch } from './features/getTileImage'
+import Square from './components/Square'
+
+
 
 function App() {
     return (
@@ -64,10 +67,7 @@ function App() {
                         <PlayerMenu multiplayer={true} />
                     </Route>
                     <Route exact path="/gaia">
-                        {/* <World image={world} /> */}
-
-                        {/* <TileGrid /> */}
-
+                        <Square />
                         <div className="fullscreen-container">
                             <div
                                 className="fullscreen-container-grass"
