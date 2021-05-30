@@ -3,9 +3,11 @@ const Games = require('../models/game')
 
 async function createGame(request, response) {
     let userId = verifyTokenFromCookies(request, 'accessToken', 'userId')
+    let username = verifyTokenFromCookies(request, 'accessToken', 'username')
 
     const game = {
         userId: userId,
+        username: username, 
         inventory: {
             gaiaGun: false,
             cartridge: [],
