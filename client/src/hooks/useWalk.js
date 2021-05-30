@@ -70,21 +70,21 @@ export default function useWalk(maxSteps) {
         const squareLeftOffset = square.offsetLeft
 
 
-        if (dir === 0) {
+        if (dir === 'down') {
             if (
                 spriteTopOffset + 32 >= squareTopOffset &&
-                spriteTopOffset + 32 <= squareTopOffset + 32 &&
-                spriteLeftOffset + 32 >= squareLeftOffset &&
-                spriteLeftOffset + 32 <= squareLeftOffset + 32
+                spriteTopOffset <= squareTopOffset + 32 &&
+                spriteLeftOffset >= squareLeftOffset &&
+                spriteLeftOffset <= squareLeftOffset + 32
             ) {
                 square.style.backgroundImage = `url(${buttonDown})`
             }
-        } else if (dir === 3) {
+        } else if (dir === 'up') {
             if (
-                spriteTopOffset + 32 >= squareTopOffset &&
-                spriteTopOffset + 32 <= squareTopOffset + 32 &&
-                spriteLeftOffset + 32 >= squareLeftOffset &&
-                spriteLeftOffset + 32 <= squareLeftOffset + 32
+                spriteTopOffset + 24 <= squareTopOffset + 32 &&
+                spriteTopOffset >= squareTopOffset &&
+                spriteLeftOffset >= squareLeftOffset &&
+                spriteLeftOffset <= squareLeftOffset + 32
             ) {
                 square.style.backgroundImage = `url(${buttonDown})`
             }
@@ -92,8 +92,8 @@ export default function useWalk(maxSteps) {
                 if (
                     spriteTopOffset >= squareTopOffset &&
                     spriteTopOffset <= squareTopOffset + 32 &&
-                    spriteLeftOffset <= squareLeftOffset + 16 &&
-                    spriteLeftOffset >= squareLeftOffset
+                    spriteLeftOffset + 24 <= squareLeftOffset + 32 &&
+                    spriteLeftOffset + 24 >= squareLeftOffset
                 ) {
                     square.style.backgroundImage = `url(${buttonDown})`
                 }
@@ -101,8 +101,8 @@ export default function useWalk(maxSteps) {
                 if (
                     spriteTopOffset >= squareTopOffset &&
                     spriteTopOffset <= squareTopOffset + 32 &&
-                    spriteLeftOffset + 16 >= squareLeftOffset &&
-                    spriteLeftOffset + 16 <= squareLeftOffset + 32
+                    spriteLeftOffset + 24 >= squareLeftOffset &&
+                    spriteLeftOffset + 24 <= squareLeftOffset + 32
                 ) {
                     square.style.backgroundImage = `url(${buttonDown})`
                 }
@@ -113,8 +113,6 @@ export default function useWalk(maxSteps) {
 
         console.log("spTop ", spriteTopOffset)
         console.log("spLeft ", spriteLeftOffset)
-
-        console.log("dir", dir)
     }
 
     return {
