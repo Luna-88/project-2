@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import adminContext from './adminContext'
+import adminContext from './AdminContext'
 
 const AdminState = (props) => {
     const [isAdmin, setIsAdmin] = useState(false)

@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import Sound from 'react-sound'
 import handleClickWithFetch from '../models/handleClickWithFetch'
 import useGameMenu from '../hooks/useGameMenu'
 import AmbientMusic from '../assets/audio/ambient-music.mp3'
 
-import AdminContext from '../contexts/admin/adminContext'
+import AdminContext from '../contexts/admin/AdminContext'
 // import PlayerContext from '../contexts/player/PlayerContext'
 
 export default function InGameMenu() {
