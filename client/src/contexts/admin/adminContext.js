@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
 // default value from database can be included
-const AdminContext = createContext()
+const adminContext = createContext()
 
-export default AdminContext
+export default adminContext

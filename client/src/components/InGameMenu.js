@@ -4,7 +4,7 @@ import handleClickWithFetch from '../models/handleClickWithFetch'
 import useGameMenu from '../hooks/useGameMenu'
 import AmbientMusic from '../assets/audio/ambient-music.mp3'
 
-import AdminContext from '../contexts/admin/AdminContext'
+import AdminContext from '../contexts/admin/adminContext'
 // import PlayerContext from '../contexts/player/PlayerContext'
 
 export default function InGameMenu() {

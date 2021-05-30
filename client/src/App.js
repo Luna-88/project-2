@@ -9,7 +9,6 @@ import Admin from './pages/AdminPage'
 import PlayerMenu from './components/PlayerMenu'
 import InGameMenu from './components/InGameMenu'
 import Player from './components/Player'
-import DrawCanvas from './components/DrawCanvas'
 
 import mainSkin from './assets/images/skins/main.png'
 
