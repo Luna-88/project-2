@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import useWindowSize from '../hooks/useWindowSize'
-import { mapMatrix } from "../models/maps"
+import { mapMatrix } from '../data/maps/mapMatrix'
 
 import * as constants from '../models/constants'
 
