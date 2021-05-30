@@ -408,3 +408,14 @@ Game Titlescreen */
     background: red;
 
 } */
+
+.superhero-table {
+    display: flex;
+    justify-content: center;
+}
+  
+.superhero-table th {
+    background-color: grey;
+    color: white;
+    padding: 2px 20px 2px 20px;
+}

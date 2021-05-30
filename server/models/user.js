@@ -3,16 +3,17 @@ require('./db')
 
 const userSchema = new mongoose.Schema({
     username: {
-        type: String, 
+        type: String,
         trim: true,
         required: true,
         unique: true,
     },
     password: {
-        type: String, 
+        type: String,
         trim: true,
         required: true,
-    }
+    },
+    isAdmin: Boolean
 })
 
 module.exports = mongoose.model('User', userSchema, 'user')
