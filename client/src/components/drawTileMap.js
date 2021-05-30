@@ -43,6 +43,15 @@ const DrawTileMap = () => {
                     constants.sizes.tileWidth, constants.sizes.tileHeight,
                 )
             }
+            if(mapMatrix[index] === 2) {
+                ctx.drawImage(
+                    image,
+                    256, 128,
+                    32, 32,
+                    (index % (mapMatrix.length/constants.sizes.column)) * constants.sizes.tileWidth, Math.floor(index / (mapMatrix.length/constants.sizes.row)) * constants.sizes.tileHeight,
+                    constants.sizes.tileWidth, constants.sizes.tileHeight,
+                )
+            }
         }
     }
   }, [image, width, height])
