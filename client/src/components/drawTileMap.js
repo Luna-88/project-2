@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import useWindowSize from '../hooks/useWindowSize'
+import useWalk from '../hooks/useWalk'
+
 import { mapMatrix } from '../data/maps/mapMatrix'
 
 import * as constants from '../models/constants'
@@ -10,6 +12,7 @@ import tileMap from '../assets/tileset/tileSetTest.png'
 
 const DrawTileMap = () => {
     const { height, width } = useWindowSize()
+    const { dir, step, walk, position, index } = useWalk(3)
     const [image, setImage] = useState(null)
     const canvas = useRef(null)
 
@@ -23,55 +26,56 @@ const DrawTileMap = () => {
         if (image && canvas) {
             const ctx = canvas.current.getContext('2d')
             ctx.beginPath()
-            for (let index = mapMatrix.length - 1; index > -1; --index) {
-                if (mapMatrix[index] === 0) {
+            for (let Index = mapMatrix.length - 1; Index > -1; --Index) {
+                if (mapMatrix[Index] === 0) {
                     ctx.drawImage(
                         image,
                         192,
                         160,
                         32,
                         32,
-                        (index % (mapMatrix.length / constants.sizes.column)) *
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
                             constants.sizes.tileWidth,
                         Math.floor(
-                            index / (mapMatrix.length / constants.sizes.row)
+                            Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
                         constants.sizes.tileWidth,
                         constants.sizes.tileHeight
                     )
                 }
-                if (mapMatrix[index] === 1) {
+                if (mapMatrix[Index] === 1) {
                     ctx.drawImage(
                         image,
-                        160,
+                        192,
                         128,
                         32,
                         32,
-                        (index % (mapMatrix.length / constants.sizes.column)) *
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
                             constants.sizes.tileWidth,
                         Math.floor(
-                            index / (mapMatrix.length / constants.sizes.row)
+                            Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
                         constants.sizes.tileWidth,
                         constants.sizes.tileHeight
                     )
                 }
-                if (mapMatrix[index] === 2) {
+                if (mapMatrix[Index] === 2) {
                     ctx.drawImage(
                         image,
-                        256,
+                        300,
                         128,
                         32,
                         32,
-                        (index % (mapMatrix.length / constants.sizes.column)) *
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
                             constants.sizes.tileWidth,
                         Math.floor(
-                            index / (mapMatrix.length / constants.sizes.row)
+                            Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
                         constants.sizes.tileWidth,
                         constants.sizes.tileHeight
                     )
                 }
+
             }
         }
     }, [image, width, height])
