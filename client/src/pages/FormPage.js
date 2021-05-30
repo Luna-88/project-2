@@ -18,15 +18,9 @@ export default function FormPage({ isRegister = false }) {
 
     return (
 
-<<<<<<< HEAD
-        <div className="fullscreen-container login-image">
-            <section className="game-title">
-                <img src={title} width={1920 * .55} height={1080 * .55} alt="img" />
-=======
         <div className='fullscreen-container login-image'>
             <section className='game-title'>
                 <img src={title} width={1920 * .55} height={1080 * .55} alt='img' />
->>>>>>> 4dec93d7e8c78a214800b8bfc2383cd5c9223078
                 {/* <div>
                         <center>
                 <a href='/register'>Begin</a>

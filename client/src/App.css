@@ -401,17 +401,6 @@ Game Titlescreen */
 
 } */
 
-<<<<<<< HEAD
-.superhero-table {
-    display: flex;
-    justify-content: center;
-}
-  
-.superhero-table th {
-    background-color: grey;
-    color: white;
-    padding: 2px 20px 2px 20px;
-=======
 .camera {
     width: 640px;
     height: 640px;
@@ -433,5 +422,15 @@ Game Titlescreen */
 
 #parent {
     position: relative;
->>>>>>> 4dec93d7e8c78a214800b8bfc2383cd5c9223078
+}
+
+.superhero-table {
+    display: flex;
+    justify-content: center;
+}
+  
+.superhero-table th {
+    background-color: grey;
+    color: white;
+    padding: 2px 20px 2px 20px;
 }
