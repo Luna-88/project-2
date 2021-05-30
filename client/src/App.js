@@ -9,16 +9,12 @@ import Admin from './pages/AdminPage'
 import PlayerMenu from './components/PlayerMenu'
 import InGameMenu from './components/InGameMenu'
 import Player from './components/Player'
-import Square from './components/Square'
 
 import mainSkin from './assets/images/skins/main.png'
-import sidekickSkin from './assets/images/skins/ghost.png'
-import lightbeam from './assets/images/energies/lightbeam.png'
 
 import AdminState from './contexts/admin/AdminState'
-import PlayerState from './contexts/player/PlayerState'
-
-import { grassPatch } from './features/getTileImage'
+// import PlayerState from './contexts/player/PlayerState'
+import DrawTileMap from './components/DrawTileMap'
 
 function App() {
     return (
@@ -48,15 +44,12 @@ function App() {
                         <PlayerMenu multiplayer={true} />
                     </Route>
                     <Route exact path="/gaia">
-                        <Square />
-                        <div className="fullscreen-container">
-                            <div
-                                className="fullscreen-container-grass"
-                                id="heres-your-id-name-duh"
-                            >
-                                {grassPatch}
+                        <div className='camera'>
+                            <div id='parent' >
+                                <DrawTileMap />
                                 <Player skin={mainSkin} />
                             </div>
+
                         </div>
                         <AdminState>
                             {/* <PlayerState> */}

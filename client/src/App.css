@@ -28,6 +28,7 @@ ROOT VARIABLES */
 
     /* Font Sizes */
     --font-size-label: 0.625rem;
+
 }
 
 /* 
@@ -266,16 +267,6 @@ FORM POSITIONING */
     height: 100vh;
 }
 
-.fullscreen-container-grass {
-    width: 640px;
-    height: 640px;
-    margin: 0;
-    padding: 0;
-    display: flex !important;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
 .login-image {
     background-image: url('../src/assets/images/titles/world_2.png');
     background-position: center;
@@ -399,6 +390,7 @@ Game Titlescreen */
     padding: 0;
     height: 32px;
     width: 32px;
+    z-index: 2;
 }
 
 /* .wrapper {
@@ -409,6 +401,7 @@ Game Titlescreen */
 
 } */
 
+<<<<<<< HEAD
 .superhero-table {
     display: flex;
     justify-content: center;
@@ -418,4 +411,27 @@ Game Titlescreen */
     background-color: grey;
     color: white;
     padding: 2px 20px 2px 20px;
+=======
+.camera {
+    width: 640px;
+    height: 640px;
+    position: absolute;
+    overflow: hidden;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#canvas {
+    position: absolute;
+    display: grid;
+    z-index: 3;
+    overflow: hidden;
+    
+}
+
+#parent {
+    position: relative;
+>>>>>>> 4dec93d7e8c78a214800b8bfc2383cd5c9223078
 }

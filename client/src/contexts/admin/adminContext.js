@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import { createContext } from 'react'
 
 // default value from database can be included
 const adminContext = createContext()

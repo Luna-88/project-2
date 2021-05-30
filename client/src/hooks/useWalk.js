@@ -2,25 +2,18 @@ import { useState } from 'react'
 
 import * as constants from '../models/constants'
 
-import useWorldOffset from './useWorldOffset'
-import useSpriteOffset from './useSpriteOffset'
-
-import buttonDown from '../assets/images/objects/buttonDown.png'
+import useWindowSize from '../hooks/useWindowSize'
 
 export default function useWalk(maxSteps) {
-    const initTop = document.documentElement.clientHeight / 2
-    const initLeft = document.documentElement.clientWidth / 2
-    const height = 640
-    const width = 640
-    const stepSize = 8
-
-    const { worldTopOffset, worldLeftOffset } = useWorldOffset(initTop, initLeft)
-    const { spriteTopOffset, spriteLeftOffset } = useSpriteOffset()
+    // Set initial location of user
+    const { height, width } = useWindowSize()
 
     const [position, setPosition] = useState({
-        x: worldLeftOffset,
-        y: worldTopOffset,
+        x: width / 2,
+        y: height / 2,
     })
+
+    const [index, setIndex] = useState(0)
     const [dir, setDir] = useState(0)
     const [step, setStep] = useState(0)
 
@@ -31,11 +24,14 @@ export default function useWalk(maxSteps) {
         up: 3,
     }
 
+    const stepSize = 4
+
     const modifier = {
         down: { x: 0, y: stepSize },
         left: { x: -stepSize, y: 0 },
         right: { x: stepSize, y: 0 },
         up: { x: 0, y: -stepSize },
+
     }
 
     function walk(dir) {
@@ -49,14 +45,11 @@ export default function useWalk(maxSteps) {
 
     function move(dir) {
         // New world bounds        
-        let worldBounds = (
-            position.x + modifier[dir].x >= worldLeftOffset &&
-            position.x + modifier[dir].x <=
-            width + worldLeftOffset - constants.spriteSize.width &&
-            position.y + modifier[dir].y >= worldTopOffset &&
-            position.y + modifier[dir].y <=
-            height + worldTopOffset - constants.spriteSize.height
-        )
+        let worldBounds =
+        position.x + modifier[dir].x >= 0 &&
+        position.x + modifier[dir].x <= 640 - constants.spriteSize.width &&
+        position.y + modifier[dir].y >= 0 &&
+        position.y + modifier[dir].y <= 640 - constants.spriteSize.height
 
         if (worldBounds) {
             setPosition((prev) => ({
@@ -65,54 +58,63 @@ export default function useWalk(maxSteps) {
             }))
         }
 
-        const square = document.getElementById('square')
-        const squareTopOffset = square.offsetTop
-        const squareLeftOffset = square.offsetLeft
+        setIndex(Math.floor(position.y / constants.sizes.tileHeight) * constants.sizes.row + Math.floor(position.x / constants.sizes.tileWidth))
 
+        // if (dir === 'down') {
+        //     if (
+        //         spriteTopOffset + 32 >= squareTopOffset &&
+        //         spriteTopOffset <= squareTopOffset + 32 &&
+        //         spriteLeftOffset >= squareLeftOffset &&
+        //         spriteLeftOffset <= squareLeftOffset + 32
+        //     ) {
+        //         square.style.backgroundImage = `url(${buttonDown})`
+        //     }
+        // } else if (dir === 'up') {
+        //     if (
+        //         spriteTopOffset + 24 <= squareTopOffset + 32 &&
+        //         spriteTopOffset >= squareTopOffset &&
+        //         spriteLeftOffset >= squareLeftOffset &&
+        //         spriteLeftOffset <= squareLeftOffset + 32
+        //     ) {
+        //         square.style.backgroundImage = `url(${buttonDown})`
+        //     }
+        // } else if (dir === 'left') {
+        //         if (
+        //             spriteTopOffset >= squareTopOffset &&
+        //             spriteTopOffset <= squareTopOffset + 32 &&
+        //             spriteLeftOffset + 24 <= squareLeftOffset + 32 &&
+        //             spriteLeftOffset + 24 >= squareLeftOffset
+        //         ) {
+        //             square.style.backgroundImage = `url(${buttonDown})`
+        //         }
+        //     } else if (dir === 'right') {
+        //         if (
+        //             spriteTopOffset >= squareTopOffset &&
+        //             spriteTopOffset <= squareTopOffset + 32 &&
+        //             spriteLeftOffset + 24 >= squareLeftOffset &&
+        //             spriteLeftOffset + 24 <= squareLeftOffset + 32
+        //         ) {
+        //             square.style.backgroundImage = `url(${buttonDown})`
+        //         }
+        //     }
 
-        if (dir === 'down') {
-            if (
-                spriteTopOffset + 32 >= squareTopOffset &&
-                spriteTopOffset <= squareTopOffset + 32 &&
-                spriteLeftOffset >= squareLeftOffset &&
-                spriteLeftOffset <= squareLeftOffset + 32
-            ) {
-                square.style.backgroundImage = `url(${buttonDown})`
-            }
-        } else if (dir === 'up') {
-            if (
-                spriteTopOffset + 24 <= squareTopOffset + 32 &&
-                spriteTopOffset >= squareTopOffset &&
-                spriteLeftOffset >= squareLeftOffset &&
-                spriteLeftOffset <= squareLeftOffset + 32
-            ) {
-                square.style.backgroundImage = `url(${buttonDown})`
-            }
-        } else if (dir === 'left') {
-                if (
-                    spriteTopOffset >= squareTopOffset &&
-                    spriteTopOffset <= squareTopOffset + 32 &&
-                    spriteLeftOffset + 24 <= squareLeftOffset + 32 &&
-                    spriteLeftOffset + 24 >= squareLeftOffset
-                ) {
-                    square.style.backgroundImage = `url(${buttonDown})`
-                }
-            } else if (dir === 'right') {
-                if (
-                    spriteTopOffset >= squareTopOffset &&
-                    spriteTopOffset <= squareTopOffset + 32 &&
-                    spriteLeftOffset + 24 >= squareLeftOffset &&
-                    spriteLeftOffset + 24 <= squareLeftOffset + 32
-                ) {
-                    square.style.backgroundImage = `url(${buttonDown})`
-                }
-            }
+        // function topCollision(prev) {
+        //     // New world bounds
+        //     let collide = null
+        //     console.log('index', index)
 
-        console.log("sqTop ", squareTopOffset)
-        console.log("sqLeft ", squareLeftOffset)
+        //     for ( let item in mapMatrix ) { 
+        //         if ( mapMatrix[item] == 3 && index === 63) {
+        //             console.log('collide')
 
-        console.log("spTop ", spriteTopOffset)
-        console.log("spLeft ", spriteLeftOffset)
+        //             if (index === item ){
+        //                 collide = true
+        //             }
+        //         }
+        //     }   
+        //     return collide
+        // } 
+        // topCollision()
     }
 
     return {
@@ -120,5 +122,6 @@ export default function useWalk(maxSteps) {
         dir,
         step,
         position,
+        modifier,
     }
 }

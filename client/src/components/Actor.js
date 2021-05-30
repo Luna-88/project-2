@@ -13,9 +13,6 @@ export default function Actor({ sprite, data, position = { x: 0, y: 0 }, step = 
                 w,
                 h,
             }}
-            sidekick={sidekick}
-            xOffset={xOffset}
-            yOffset={yOffset}
         />
     )
 }
