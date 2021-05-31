@@ -17,16 +17,20 @@ const DrawTileMap = () => {
 
     const [image, setImage] = useState(null)
 
+    let mapMatrix = redFlower
+
     useKeyPress((e) => {
         let arrowKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
 
         if (arrowKeys.includes(e.key)) {
             walk(e.key.replace("Arrow", "").toLowerCase())
             e.preventDefault()
-        }
+        } //else if (e.key === " ") {
+        //     console.log("spacebar ", e.key)
+        //     mapMatrix = yellowFlower
+        //     e.preventDefault()
+        // }
     })
-
-    let mapMatrix = redFlower
 
     console.log("index DrawTile", index)
 
