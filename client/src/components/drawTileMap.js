@@ -24,11 +24,7 @@ const DrawTileMap = () => {
         if (arrowKeys.includes(e.key)) {
             walk(e.key.replace("Arrow", "").toLowerCase())
             e.preventDefault()
-        } //else if (e.key === " ") {
-        //     console.log("spacebar ", e.key)
-        //     mapMatrix = yellowFlower
-        //     e.preventDefault()
-        // }
+        }
     })
 
     useEffect(() => {
@@ -37,18 +33,12 @@ const DrawTileMap = () => {
         image.onload = () => setImage(image)
     }, [])
 
-    // let mapMatrix = redFlower
-    // if (index === 23) {
-    //     mapMatrix = yellowFlower
-    // }
-    
-    
     console.log("index DrawTile", index)
-    
-    useEffect(() => {    
+
+    useEffect(() => {
         if (index === 23) {
             setMapMatrix(yellowFlower)
-        } 
+        }
         if (index === 24) {
             setMapMatrix(noBuddha)
         }
@@ -57,7 +47,8 @@ const DrawTileMap = () => {
             const ctx = canvas.current.getContext('2d')
             ctx.beginPath()
             for (let Index = mapMatrix.length - 1; Index > -1; --Index) {
-                if (mapMatrix[Index] === 0) { //Grass
+                if (mapMatrix[Index] === 0) {
+                    //Grass
                     ctx.drawImage(
                         image,
                         192,
@@ -73,12 +64,13 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
-                if (mapMatrix[Index] === 1) { //Red flowers
+                if (mapMatrix[Index] === 1) {
+                    //Red flowers
                     ctx.drawImage(
                         image,
                         224,
-                        32,
-                        32,
+                        0,
+                        0,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
                         constants.sizes.tileWidth,
@@ -89,7 +81,8 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
-                if (mapMatrix[Index] === 2) { //Blue flowers
+                if (mapMatrix[Index] === 2) {
+                    //Blue flowers
                     ctx.drawImage(
                         image,
                         224,
@@ -105,7 +98,8 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
-                if (mapMatrix[Index] === 3) { //Yellow flowers
+                if (mapMatrix[Index] === 3) {
+                    //Yellow flowers
                     ctx.drawImage(
                         image,
                         224,
@@ -121,7 +115,8 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
-                if (mapMatrix[Index] === 4) { //Buddha
+                if (mapMatrix[Index] === 4) {
+                    //Buddha
                     ctx.drawImage(
                         image,
                         448,
@@ -139,7 +134,7 @@ const DrawTileMap = () => {
                 }
             }
         }
-        const updateMapMatrix = () => setMapMatrix(mapMatrix) 
+        const updateMapMatrix = () => setMapMatrix(mapMatrix)
 
         if (index < 23 && index > 24) {
             updateMapMatrix()

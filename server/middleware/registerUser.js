@@ -10,7 +10,8 @@ async function registerUser(request, response, next) {
         if ((username.length >= 5 && password.length >= 5) && (username.length <= 15 && password.length <= 15)) {
             const user = {
                 username: username,
-                password: bcrypt.hashSync(password, 8)
+                password: bcrypt.hashSync(password, 8),
+                isAdmin: false
             }
             const newUser = new Users(user)
             await newUser.save()

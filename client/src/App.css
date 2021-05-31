@@ -417,9 +417,22 @@ Game Titlescreen */
     display: grid;
     z-index: 3;
     overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid red;
     
 }
 
 #parent {
     position: relative;
+}
+
+.superhero-table {
+    display: flex;
+    justify-content: center;
+}
+  
+.superhero-table th {
+    background-color: grey;
+    color: white;
+    padding: 2px 20px 2px 20px;
 }
