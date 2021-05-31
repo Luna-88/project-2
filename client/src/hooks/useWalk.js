@@ -63,15 +63,18 @@ export default function useWalk(maxSteps) {
             if ( mapMatrix[i] == 1 ) {
                 if (Math.floor(index) == Math.floor(i)){
                     // if( Math.floor(position.x) + constants.spriteSize.width < (i % constants.sizes.column)*constants.sizes.tileWidth || Math.floor(position.x) > constants.sizes.tileWidth + (i % constants.sizes.column)*constants.sizes.tileWidth || (i / constants.sizes.column)*constants.sizes.tileHeight > constants.spriteSize.height + Math.floor(position.y) || Math.floor(position.y) > constants.sizes.tileHeight + (i / constants.sizes.column)*constants.sizes.tileHeight){
-                        console.log(mapMatrix[i])
+                        
+                    if( dir === 'right' && mapMatrix[Math.floor(index)] == 1 ) {
+                        modifier[dir].x = 0
+                        console.log('right barrier')
+                        // this fucking works! 
+                    }
+                
     
                         
                         // if ((position.y + modifier[dir].y) > (constants.sizes.tileHeight *  i / constants.sizes.row ) && position.y + constants.spriteSize.height <= (constants.sizes.tileHeight *  i / constants.sizes.row )  ){
                         //     modifier[dir].y = 0 
                         // }
-                        
-                        
-                        
                     // }
                 }   
             }
@@ -85,16 +88,16 @@ export default function useWalk(maxSteps) {
         }
 
         if ( dir === 'left' ) {
-            setIndex((Math.floor(((position.y )/ constants.sizes.tileHeight) * constants.sizes.row)) + Math.floor(((position.x)/ constants.sizes.tileWidth)))
+            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))))
         }
         if ( dir === 'right' ) {
-            setIndex((Math.floor(((position.y )/ constants.sizes.tileHeight) * constants.sizes.row)) + Math.floor(((position.x ) / constants.sizes.tileWidth)))
+            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))))
         }
         if (dir === 'up' ) {
             setIndex((Math.floor((position.y )/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x  )/ constants.sizes.tileWidth))))
         }
         if ( dir === 'down' ) {
-            setIndex((Math.floor((position.y )/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))))
+            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))))
         }
         
         
