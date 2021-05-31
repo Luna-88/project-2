@@ -27,13 +27,21 @@ export default function useWalk(maxSteps) {
         up: 3,
     }
 
-    const stepSize = 1
+    const stepSize = 2
+    const stepOffset = 1
 
     const modifier = {
         down: { x: 0, y: stepSize },
         left: { x: -stepSize, y: 0 },
         right: { x: stepSize, y: 0 },
         up: { x: 0, y: -stepSize },
+
+    }
+    const indexModifier = {
+        down: { x: 0, y: stepOffset },
+        left: { x: -stepOffset, y: 0 },
+        right: { x: stepOffset, y: 0 },
+        up: { x: 0, y: -stepOffset },
 
     }
 
@@ -55,27 +63,40 @@ export default function useWalk(maxSteps) {
         position.x + modifier[dir].x <= 640 - constants.spriteSize.width &&
         position.y + modifier[dir].y >= 0 &&
         position.y + modifier[dir].y <= 640 - constants.spriteSize.height
-        
-        
+
+
         console.log("index:", index, 'item:', mapMatrix[Math.floor(index)])
         
+
+        // COLLISION MATH
         for ( let i = 0; i < mapMatrix.length; i++) {
             if ( mapMatrix[i] == 1 ) {
-                if (Math.floor(index) == Math.floor(i)){
-                    // if( Math.floor(position.x) + constants.spriteSize.width < (i % constants.sizes.column)*constants.sizes.tileWidth || Math.floor(position.x) > constants.sizes.tileWidth + (i % constants.sizes.column)*constants.sizes.tileWidth || (i / constants.sizes.column)*constants.sizes.tileHeight > constants.spriteSize.height + Math.floor(position.y) || Math.floor(position.y) > constants.sizes.tileHeight + (i / constants.sizes.column)*constants.sizes.tileHeight){
-                        
+                if (Math.floor(index) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 1 ) {
                         modifier[dir].x = 0
                         console.log('right barrier')
                         // this fucking works! 
                     }
-                
-    
+                    if( dir === 'left' && mapMatrix[Math.floor(index)] == 1 ) {
+                        modifier[dir].x = 0
+                        console.log('left barrier')
+                        // this fucking works! 
+                    }
+                    if( dir === 'up' && mapMatrix[Math.floor(index)] == 1 ) {
+                        modifier[dir].y = 0
+                        console.log('up barrier')
+                        // this fucking works! 
+                    }
+
+                    if( dir === 'down' && mapMatrix[Math.floor(index)] == 1 ) {
+                        modifier[dir].y = 0
+                        console.log('down barrier')
+                        // this fucking works! 
+                    }
                         
                         // if ((position.y + modifier[dir].y) > (constants.sizes.tileHeight *  i / constants.sizes.row ) && position.y + constants.spriteSize.height <= (constants.sizes.tileHeight *  i / constants.sizes.row )  ){
                         //     modifier[dir].y = 0 
                         // }
-                    // }
                 }   
             }
         }
@@ -91,13 +112,13 @@ export default function useWalk(maxSteps) {
             setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))))
         }
         if ( dir === 'right' ) {
-            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))))
+            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))) + 1) 
         }
         if (dir === 'up' ) {
             setIndex((Math.floor((position.y )/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x  )/ constants.sizes.tileWidth))))
         }
         if ( dir === 'down' ) {
-            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))))
+            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))) +1)
         }
         
         
