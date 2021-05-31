@@ -5,8 +5,8 @@ import useWindowSize from '../hooks/useWindowSize'
 import { redFlower, blueFlower, yellowFlower, noBuddha } from '../data/maps/mapMatrix'
 
 import * as constants from '../models/constants'
-
 import tileMap from '../assets/tileset/tileSetTest.png'
+
 import useWalk from '../hooks/useWalk'
 import useKeyPress from '../hooks/useKeyPress'
 
@@ -69,8 +69,8 @@ const DrawTileMap = () => {
                     ctx.drawImage(
                         image,
                         224,
-                        0,
-                        0,
+                        32,
+                        32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
                         constants.sizes.tileWidth,
