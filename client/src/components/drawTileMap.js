@@ -2,12 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 
 import useWindowSize from '../hooks/useWindowSize'
 
-import {
-    redFlower,
-    blueFlower,
-    yellowFlower,
-    mapMatrix,
-} from '../data/maps/mapMatrix'
+import { redFlower, blueFlower, yellowFlower, noBuddha } from '../data/maps/mapMatrix'
 
 import * as constants from '../models/constants'
 
@@ -15,38 +10,22 @@ import tileMap from '../assets/tileset/tileSetTest.png'
 import useWalk from '../hooks/useWalk'
 import useKeyPress from '../hooks/useKeyPress'
 
-// changed filename to capital D
-
 const DrawTileMap = () => {
+    const canvas = useRef(null)
+    const [image, setImage] = useState(null)
+    const [mapMatrix, setMapMatrix] = useState(redFlower)
+
     const { height, width } = useWindowSize()
     const { dir, step, walk, position, index } = useWalk(3)
-    const canvas = useRef(null)
 
-    const [image, setImage] = useState(null)
+    useKeyPress((e) => {
+        let arrowKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
 
-    // let mapMatrix = redFlower
-
-    // useKeyPress((e) => {
-    //     let arrowKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
-
-    //     if (arrowKeys.includes(e.key)) {
-    //         walk(e.key.replace("Arrow", "").toLowerCase())
-    //         e.preventDefault()
-    //     } //else if (e.key === " ") {
-    //     //     console.log("spacebar ", e.key)
-    //     //     mapMatrix = yellowFlower
-    //     //     e.preventDefault()
-    //     // }
-    // })
-
-    // console.log("index DrawTile", index)
-
-    // if (index !== 23) {
-    //     mapMatrix = redFlower
-    // }
-    // if (index === 23) {
-    //     mapMatrix = yellowFlower
-    // }
+        if (arrowKeys.includes(e.key)) {
+            walk(e.key.replace("Arrow", "").toLowerCase())
+            e.preventDefault()
+        }
+    })
 
     useEffect(() => {
         const image = new Image()
@@ -54,7 +33,16 @@ const DrawTileMap = () => {
         image.onload = () => setImage(image)
     }, [])
 
+    console.log("index DrawTile", index)
+
     useEffect(() => {
+        if (index === 23) {
+            setMapMatrix(yellowFlower)
+        }
+        if (index === 24) {
+            setMapMatrix(noBuddha)
+        }
+
         if (image && canvas) {
             const ctx = canvas.current.getContext('2d')
             ctx.beginPath()
@@ -68,7 +56,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                            constants.sizes.tileWidth,
+                        constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -85,7 +73,7 @@ const DrawTileMap = () => {
                         0,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                            constants.sizes.tileWidth,
+                        constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -102,7 +90,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                            constants.sizes.tileWidth,
+                        constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -119,7 +107,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                            constants.sizes.tileWidth,
+                        constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -136,7 +124,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                            constants.sizes.tileWidth,
+                        constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -146,7 +134,13 @@ const DrawTileMap = () => {
                 }
             }
         }
-    }, [image, width, height]) // took out mapMatrix from dependencies array
+        const updateMapMatrix = () => setMapMatrix(mapMatrix)
+
+        if (index < 23 && index > 24) {
+            updateMapMatrix()
+        }
+
+    }, [image, width, height, mapMatrix, index])
 
     return (
         <div>
