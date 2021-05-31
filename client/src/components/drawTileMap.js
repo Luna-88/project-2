@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 
 import useWindowSize from '../hooks/useWindowSize'
 
-import { redFlower, blueFlower, yellowFlower } from '../data/maps/mapMatrix'
+import { redFlower, blueFlower, yellowFlower, noBuddha } from '../data/maps/mapMatrix'
 
 import * as constants from '../models/constants'
 
@@ -11,13 +11,12 @@ import useWalk from '../hooks/useWalk'
 import useKeyPress from '../hooks/useKeyPress'
 
 const DrawTileMap = () => {
+    const canvas = useRef(null)
+    const [image, setImage] = useState(null)
+    const [mapMatrix, setMapMatrix] = useState(redFlower)
+
     const { height, width } = useWindowSize()
     const { dir, step, walk, position, index } = useWalk(3)
-    const canvas = useRef(null)
-
-    const [image, setImage] = useState(null)
-
-    let mapMatrix = redFlower
 
     useKeyPress((e) => {
         let arrowKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
@@ -32,22 +31,28 @@ const DrawTileMap = () => {
         // }
     })
 
-    console.log("index DrawTile", index)
-
-    if (index !== 23) {
-        mapMatrix = redFlower
-    }
-    if (index === 23) {
-        mapMatrix = yellowFlower
-    }
-
     useEffect(() => {
         const image = new Image()
         image.src = tileMap
         image.onload = () => setImage(image)
     }, [])
 
-    useEffect(() => {
+    // let mapMatrix = redFlower
+    // if (index === 23) {
+    //     mapMatrix = yellowFlower
+    // }
+    
+    
+    console.log("index DrawTile", index)
+    
+    useEffect(() => {    
+        if (index === 23) {
+            setMapMatrix(yellowFlower)
+        } 
+        if (index === 24) {
+            setMapMatrix(noBuddha)
+        }
+
         if (image && canvas) {
             const ctx = canvas.current.getContext('2d')
             ctx.beginPath()
@@ -134,7 +139,13 @@ const DrawTileMap = () => {
                 }
             }
         }
-    }, [image, width, height, mapMatrix])
+        const updateMapMatrix = () => setMapMatrix(mapMatrix) 
+
+        if (index < 23 && index > 24) {
+            updateMapMatrix()
+        }
+
+    }, [image, width, height, mapMatrix, index])
 
     return (
         <div>
