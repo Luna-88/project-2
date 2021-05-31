@@ -20,6 +20,8 @@ export default function Sprite({ image, data, position, sidekick = false, xOffse
                 backgroundImage: `url(${image})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: `-${x}px -${y}px`,
+                // boxSizing: 'border-box',
+                border: '1px solid red'
             }}
         />
     )

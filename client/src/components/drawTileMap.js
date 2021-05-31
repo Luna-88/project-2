@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 
 import useWindowSize from '../hooks/useWindowSize'
 
-import { redFlower, blueFlower, yellowFlower } from '../data/maps/mapMatrix'
+import { redFlower, blueFlower, yellowFlower, mapMatrix } from '../data/maps/mapMatrix'
 
 import * as constants from '../models/constants'
 
@@ -17,29 +17,29 @@ const DrawTileMap = () => {
 
     const [image, setImage] = useState(null)
 
-    let mapMatrix = redFlower
+    // let mapMatrix = redFlower
 
-    useKeyPress((e) => {
-        let arrowKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
+    // useKeyPress((e) => {
+    //     let arrowKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
 
-        if (arrowKeys.includes(e.key)) {
-            walk(e.key.replace("Arrow", "").toLowerCase())
-            e.preventDefault()
-        } //else if (e.key === " ") {
-        //     console.log("spacebar ", e.key)
-        //     mapMatrix = yellowFlower
-        //     e.preventDefault()
-        // }
-    })
+    //     if (arrowKeys.includes(e.key)) {
+    //         walk(e.key.replace("Arrow", "").toLowerCase())
+    //         e.preventDefault()
+    //     } //else if (e.key === " ") {
+    //     //     console.log("spacebar ", e.key)
+    //     //     mapMatrix = yellowFlower
+    //     //     e.preventDefault()
+    //     // }
+    // })
 
-    console.log("index DrawTile", index)
+    // console.log("index DrawTile", index)
 
-    if (index !== 23) {
-        mapMatrix = redFlower
-    }
-    if (index === 23) {
-        mapMatrix = yellowFlower
-    }
+    // if (index !== 23) {
+    //     mapMatrix = redFlower
+    // }
+    // if (index === 23) {
+    //     mapMatrix = yellowFlower
+    // }
 
     useEffect(() => {
         const image = new Image()
@@ -72,8 +72,8 @@ const DrawTileMap = () => {
                     ctx.drawImage(
                         image,
                         224,
-                        32,
-                        32,
+                        0,
+                        0,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
                         constants.sizes.tileWidth,
@@ -134,7 +134,7 @@ const DrawTileMap = () => {
                 }
             }
         }
-    }, [image, width, height, mapMatrix])
+    }, [image, width, height, ]) // took out mapMatrix from dependencies array
 
     return (
         <div>
