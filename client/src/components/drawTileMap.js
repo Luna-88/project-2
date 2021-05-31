@@ -2,13 +2,20 @@ import { useState, useEffect, useRef } from 'react'
 
 import useWindowSize from '../hooks/useWindowSize'
 
-import { redFlower, blueFlower, yellowFlower, mapMatrix } from '../data/maps/mapMatrix'
+import {
+    redFlower,
+    blueFlower,
+    yellowFlower,
+    mapMatrix,
+} from '../data/maps/mapMatrix'
 
 import * as constants from '../models/constants'
 
 import tileMap from '../assets/tileset/tileSetTest.png'
 import useWalk from '../hooks/useWalk'
 import useKeyPress from '../hooks/useKeyPress'
+
+// changed filename to capital D
 
 const DrawTileMap = () => {
     const { height, width } = useWindowSize()
@@ -52,7 +59,8 @@ const DrawTileMap = () => {
             const ctx = canvas.current.getContext('2d')
             ctx.beginPath()
             for (let Index = mapMatrix.length - 1; Index > -1; --Index) {
-                if (mapMatrix[Index] === 0) { //Grass
+                if (mapMatrix[Index] === 0) {
+                    //Grass
                     ctx.drawImage(
                         image,
                         192,
@@ -60,7 +68,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                        constants.sizes.tileWidth,
+                            constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -68,7 +76,8 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
-                if (mapMatrix[Index] === 1) { //Red flowers
+                if (mapMatrix[Index] === 1) {
+                    //Red flowers
                     ctx.drawImage(
                         image,
                         224,
@@ -76,7 +85,7 @@ const DrawTileMap = () => {
                         0,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                        constants.sizes.tileWidth,
+                            constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -84,7 +93,8 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
-                if (mapMatrix[Index] === 2) { //Blue flowers
+                if (mapMatrix[Index] === 2) {
+                    //Blue flowers
                     ctx.drawImage(
                         image,
                         224,
@@ -92,7 +102,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                        constants.sizes.tileWidth,
+                            constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -100,7 +110,8 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
-                if (mapMatrix[Index] === 3) { //Yellow flowers
+                if (mapMatrix[Index] === 3) {
+                    //Yellow flowers
                     ctx.drawImage(
                         image,
                         224,
@@ -108,7 +119,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                        constants.sizes.tileWidth,
+                            constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -116,7 +127,8 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
-                if (mapMatrix[Index] === 4) { //Buddha
+                if (mapMatrix[Index] === 4) {
+                    //Buddha
                     ctx.drawImage(
                         image,
                         448,
@@ -124,7 +136,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                        constants.sizes.tileWidth,
+                            constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -134,7 +146,7 @@ const DrawTileMap = () => {
                 }
             }
         }
-    }, [image, width, height, ]) // took out mapMatrix from dependencies array
+    }, [image, width, height]) // took out mapMatrix from dependencies array
 
     return (
         <div>
