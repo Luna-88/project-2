@@ -53,7 +53,7 @@ function App() {
                         </div>
                         <AdminState>
                             {/* <PlayerState> */}
-                            <InGameMenu />
+                            {/* <InGameMenu /> */}
                             {/* </PlayerState> */}
                         </AdminState>
                     </Route>

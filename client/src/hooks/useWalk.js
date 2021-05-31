@@ -24,7 +24,7 @@ export default function useWalk(maxSteps) {
         up: 3,
     }
 
-    const stepSize = 4
+    const stepSize = 8
 
     const modifier = {
         down: { x: 0, y: stepSize },
@@ -44,7 +44,6 @@ export default function useWalk(maxSteps) {
     }
 
     function move(dir) {
-        console.log("index", index)
         // New world bounds        
         let worldBounds =
             position.x + modifier[dir].x >= 0 &&
@@ -59,8 +58,17 @@ export default function useWalk(maxSteps) {
             }))
         }
 
-        if (dir === 'left' || dir === 'right') {
-            setIndex((((position.y + (modifier[dir].y / stepSize)) / constants.sizes.tileHeight) * constants.sizes.row + ((position.x + (modifier[dir].x / stepSize)) / constants.sizes.tileWidth)) + 0.8)
+        if ( dir === 'left' ) {
+            setIndex((Math.floor((position.y / constants.sizes.tileHeight) * constants.sizes.row)) + Math.floor((position.x / constants.sizes.tileWidth)))
+        }
+        if ( dir === 'right' ) {
+            setIndex((Math.floor((position.y / constants.sizes.tileHeight) * constants.sizes.row)) + Math.floor(((position.x + 31) / constants.sizes.tileWidth)))
+        }
+        if (dir === 'up' ) {
+            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor((position.x / constants.sizes.tileWidth))))
+        }
+        if ( dir === 'down' ) {
+            setIndex((Math.floor((position.y + 31)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor((position.x / constants.sizes.tileWidth))))
         }
     }
 
