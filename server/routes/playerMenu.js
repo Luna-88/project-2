@@ -2,7 +2,7 @@ const express = require('express')
 const playerMenuRouter = express.Router()
 const Games = require('../models/game')
 
-const { verifyTokenFromCookies } = require('../models/cookies')
+const { verifyTokenFromCookies, getCookies } = require('../models/cookies')
 const { createGame } = require('../models/playerMenu')
 const { loadGame } = require('../middleware/loadGame')
 const { deleteGame } = require('../models/playerMenu')
@@ -27,9 +27,28 @@ playerMenuRouter.post('/new-game', async (request, response) => {
     }
 })
 
-playerMenuRouter.get('/load-game', loadGame, async (request, response) => {
+//ADD DATA TO COOKIES
+playerMenuRouter.post('/load-game', async (request, response) => {
     try {
-        response.status(200).send('Game loaded')
+        let userId = verifyTokenFromCookies(request, 'accessToken', 'userId')
+        let gameId = request.body.gameId
+console.log("gameId ", gameId)
+        let loadGameCookie = getCookies(request)['loadedGame']
+
+        if (loadGameCookie === undefined) {
+            let loadGame = []
+
+            await Games.find({ _id: gameId, userId: userId })
+                .sort({ _id: -1 })
+                // .select("-_id")
+                // .select("-__v")
+                .then((game) => {
+
+                    response.send(game)
+                }
+                )
+            // response.status(200).send('Game loaded')
+        }
     }
     catch (error) {
         console.log(error)
@@ -38,16 +57,14 @@ playerMenuRouter.get('/load-game', loadGame, async (request, response) => {
 })
 
 playerMenuRouter.get('/select-game', async (request, response) => {
-    let userId = verifyTokenFromCookies(request, 'accessToken', 'userId')
     try {
+        let userId = verifyTokenFromCookies(request, 'accessToken', 'userId')
         let selectedGames = []
+
         await Games.find({ userId: userId })
             .sort({ _id: -1 })
-            .select("-_id")
-            .select("-__v")
-            .then((game) => {
-                selectedGames.push(game)
-            })
+            .then(document => selectedGames.push(document))
+        response.send(selectedGames)
     }
     catch (error) {
         console.log(error)

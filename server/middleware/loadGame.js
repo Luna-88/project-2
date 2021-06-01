@@ -6,19 +6,20 @@ const config = require('../config/authentication')
 
 async function loadGame(request, response, next) {
     let userId = verifyTokenFromCookies(request, 'accessToken', 'userId')
+    // let gameId = request.body.gameId
 
     let loadGameCookie = getCookies(request)['loadedGame']
 
     if (loadGameCookie === undefined) {
         let loadGame = []
 
-        await Games.find({ userId: userId })
+        await Games.find({ _id: gameId, userId: userId })
             .sort({ _id: -1 })
             .limit(1)
             .select("-_id")
             .select("-__v")
             .then((game) => {
-                try {
+                try { response.send(game)
                     if (game.length === 0) {
                         return response.status(404).send('You need to start a new game first')
                     }
