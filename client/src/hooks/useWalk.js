@@ -98,10 +98,6 @@ export default function useWalk(maxSteps) {
                         console.log('down barrier')
                         // this fucking works! 
                     }
-                        
-                        // if ((position.y + modifier[dir].y) > (constants.sizes.tileHeight *  i / constants.sizes.row ) && position.y + constants.spriteSize.height <= (constants.sizes.tileHeight *  i / constants.sizes.row )  ){
-                        //     modifier[dir].y = 0 
-                        // }
                 }   
             }
         }
