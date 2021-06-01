@@ -2,7 +2,9 @@ import { useState } from 'react'
 
 import * as constants from '../models/constants'
 
-import useWindowSize from '../hooks/useWindowSize'
+import useWindowSize from './useWindowSize'
+import { puzzleMap } from '../data/maps/mapMatrix'
+
 
 export default function useWalk(maxSteps) {
     // Set initial location of user
@@ -13,9 +15,11 @@ export default function useWalk(maxSteps) {
         y: height / 2,
     })
 
+
     const [dir, setDir] = useState(0)
     const [step, setStep] = useState(0)
-    const [index, setIndex] = useState(200)
+    const [index, setIndex] = useState(230)
+    const [offsetIndex, setOffsetIndex] = useState(231)
 
     const directions = {
         down: 0,
@@ -24,7 +28,8 @@ export default function useWalk(maxSteps) {
         up: 3,
     }
 
-    const stepSize = 8
+    const stepSize = 4
+    const stepOffset = 1
 
     const modifier = {
         down: { x: 0, y: stepSize },
@@ -34,23 +39,69 @@ export default function useWalk(maxSteps) {
 
     }
 
+
     function walk(dir) {
         setDir((prev) => {
             if (directions[dir] === prev) move(dir)
             return directions[dir]
         })
-
+        
         setStep((prev) => (prev < maxSteps - 1 ? prev + 1 : 0))
     }
-
+    
     function move(dir) {
         // New world bounds        
         let worldBounds =
-            position.x + modifier[dir].x >= 0 &&
-            position.x + modifier[dir].x <= 640 - constants.spriteSize.width &&
-            position.y + modifier[dir].y >= 0 &&
-            position.y + modifier[dir].y <= 640 - constants.spriteSize.height
+        position.x + modifier[dir].x >= 0 &&
+        position.x + modifier[dir].x <= 640 - constants.spriteSize.width &&
+        position.y + modifier[dir].y >= 0 &&
+        position.y + modifier[dir].y <= 640 - constants.spriteSize.height
 
+
+        console.log("index:", index, 'item:', puzzleMap[Math.floor(index)], 'Offset Index:', offsetIndex)
+        
+        if ( dir === 'left') {
+            setOffsetIndex((Math.floor((position.y + 31)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x) / constants.sizes.tileWidth))))
+        }
+        if ( dir === 'right') {
+            setOffsetIndex((Math.floor((position.y + 31)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x + 31) / constants.sizes.tileWidth))))
+        }
+        if ( dir === 'up') {
+            setOffsetIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x + 31) / constants.sizes.tileWidth))))
+        }
+        if ( dir === 'down') {
+            setOffsetIndex((Math.floor((position.y + 31)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x + 31) / constants.sizes.tileWidth))))
+        }
+
+        // COLLISION MATH
+        for ( let i = 0; i < puzzleMap.length; i++) {
+            if ( puzzleMap[i] == 5 ) {
+                if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
+                    if( dir === 'right' && puzzleMap[Math.floor(index)] == 5  || dir === 'right' && puzzleMap[Math.floor(offsetIndex)] == 5) {
+                        modifier[dir].x = 0
+                        console.log('right barrier')
+                        // this fucking works! 
+                    }
+                    if( dir === 'left' && puzzleMap[Math.floor(index)] == 5 ||  (dir === 'left' && puzzleMap[Math.floor(offsetIndex)] == 5) ) {
+                        modifier[dir].x = 0
+                        console.log('left barrier')
+                        // this fucking works! 
+                    }
+                    if( dir === 'up' && puzzleMap[Math.floor(index)] == 5 || dir === 'up' && puzzleMap[Math.floor(offsetIndex)] == 5 ) {
+                        modifier[dir].y = 0
+                        console.log('up barrier')
+                        // this fucking works! 
+                    }
+
+                    if( dir === 'down' && puzzleMap[Math.floor(index)] == 5 || (dir === 'down' && puzzleMap[Math.floor(offsetIndex)] == 5) ) {
+                        modifier[dir].y = 0
+                        console.log('down barrier')
+                        // this fucking works! 
+                    }
+                }   
+            }
+        }
+        
         if (worldBounds) {
             setPosition((prev) => ({
                 x: prev.x + modifier[dir].x,
@@ -59,19 +110,20 @@ export default function useWalk(maxSteps) {
         }
 
         if ( dir === 'left' ) {
-            setIndex((Math.floor((position.y / constants.sizes.tileHeight) * constants.sizes.row)) + Math.floor((position.x / constants.sizes.tileWidth)))
+            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))))
         }
         if ( dir === 'right' ) {
-            setIndex((Math.floor((position.y / constants.sizes.tileHeight) * constants.sizes.row)) + Math.floor(((position.x + 31) / constants.sizes.tileWidth)))
+            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x + 31) / constants.sizes.tileWidth)))) 
         }
         if (dir === 'up' ) {
-            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor((position.x / constants.sizes.tileWidth))))
+            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x)/ constants.sizes.tileWidth))))
         }
         if ( dir === 'down' ) {
-            setIndex((Math.floor((position.y + 31)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor((position.x / constants.sizes.tileWidth))))
+            setIndex((Math.floor((position.y + 31)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x) / constants.sizes.tileWidth))))
         }
+        
+        
     }
-
     return {
         walk,
         dir,

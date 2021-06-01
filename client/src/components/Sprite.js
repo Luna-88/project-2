@@ -4,10 +4,10 @@ export default function Sprite({ image, data, position, sidekick = false, xOffse
     let styleTop = position.y
     let styleLeft = position.x
 
-    if (sidekick === true) {
-        styleTop = position.y - yOffset
-        styleLeft = position.x - xOffset
-    }
+    // if (sidekick === true) {
+    //     styleTop = position.y - yOffset
+    //     styleLeft = position.x - xOffset
+    // }
 
     return (
         <div className='sprite' id='sprite'
@@ -20,6 +20,8 @@ export default function Sprite({ image, data, position, sidekick = false, xOffse
                 backgroundImage: `url(${image})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: `-${x}px -${y}px`,
+                boxSizing: 'border-box',
+                border: '1px solid red'
             }}
         />
     )

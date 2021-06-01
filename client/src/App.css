@@ -417,6 +417,8 @@ Game Titlescreen */
     display: grid;
     z-index: 3;
     overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid red;
     
 }
 
