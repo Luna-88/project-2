@@ -38,14 +38,6 @@ export default function useWalk(maxSteps) {
         up: { x: 0, y: -stepSize },
 
     }
-    const indexModifier = {
-        down: { x: 0, y: stepOffset },
-        left: { x: -stepOffset, y: 0 },
-        right: { x: stepOffset, y: 0 },
-        up: { x: 0, y: -stepOffset },
-
-    }
-
 
 
     function walk(dir) {
