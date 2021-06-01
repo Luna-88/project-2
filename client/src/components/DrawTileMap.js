@@ -19,10 +19,10 @@ const DrawTileMap = () => {
     const { dir, step, walk, position, index } = useWalk(3)
 
     useKeyPress((e) => {
-        let arrowKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
+        let arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
 
         if (arrowKeys.includes(e.key)) {
-            walk(e.key.replace("Arrow", "").toLowerCase())
+            walk(e.key.replace('Arrow', '').toLowerCase())
             e.preventDefault()
         }
     })
@@ -33,7 +33,7 @@ const DrawTileMap = () => {
         image.onload = () => setImage(image)
     }, [])
 
-    console.log("index DrawTile", index)
+    console.log('index DrawTile', index)
 
         useEffect(() => {
         if (index === 23) {
@@ -56,7 +56,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                        constants.sizes.tileWidth,
+                            constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -73,7 +73,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                        constants.sizes.tileWidth,
+                            constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -90,7 +90,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                        constants.sizes.tileWidth,
+                            constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -107,7 +107,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                        constants.sizes.tileWidth,
+                            constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -141,7 +141,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                        constants.sizes.tileWidth,
+                            constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -156,10 +156,9 @@ const DrawTileMap = () => {
         }
         const updateMapMatrix = () => setMapMatrix(mapMatrix)
 
-        // if (index < 23 && index > 24) {
-        //     updateMapMatrix()
-        // }
-
+        if (index < 23 && index > 24) {
+            updateMapMatrix()
+        }
     }, [image, width, height, mapMatrix, index])
 
     // useEffect(() => {
