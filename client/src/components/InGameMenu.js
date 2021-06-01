@@ -4,12 +4,12 @@ import handleClickWithFetch from '../models/handleClickWithFetch'
 import useGameMenu from '../hooks/useGameMenu'
 import AmbientMusic from '../assets/audio/ambient-music.mp3'
 
-import AdminContext from '../contexts/admin/adminContext'
-// import PlayerContext from '../contexts/player/PlayerContext'
+// import AdminContext from '../contexts/admin/AdminContext'
+import UserContext from '../contexts/user/UserContext'
 
 export default function InGameMenu() {
-    const { isAdmin, setIsAdmin } = useContext(AdminContext)
-    // const { isLoggedIn, setIsLoggedIn } = useContext(PlayerContext)
+    // const { isAdmin, setIsAdmin } = useContext(AdminContext)
+    // const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const { serverResponse,
@@ -29,7 +29,7 @@ export default function InGameMenu() {
     return (
         <div className="in-menu-container">
             <div class="dropdown">
-                {isAdmin ?
+                {/* {isAdmin ?
                     <a href='http://localhost:3000/admin'>
                         <button
                             class="menu-button"
@@ -45,7 +45,7 @@ export default function InGameMenu() {
                             ADMIN Options
                     </button>
                     </a>
-                    : null}
+                    : null} */}
                 <button class="menu-button">Inventory</button>
                 {inventoryItem && (
                     <div class="dropdown-content">
@@ -56,10 +56,6 @@ export default function InGameMenu() {
                         <div>
                             Spaceship Pieces:{' '}
                             {hasItem(inventoryItem.spaceshipPieces)}
-                        </div>
-                        <div>
-                            Hard Drive Pieces:{' '}
-                            {hasItem(inventoryItem.hardDrivePieces)}
                         </div>
                     </div>
                 )}
@@ -114,7 +110,7 @@ export default function InGameMenu() {
             >
                 Exit Game
             </button>
-            { isAdmin ? (
+            {/* { isAdmin ? (
                 <button
                     class="menu-button"
 
@@ -127,7 +123,7 @@ export default function InGameMenu() {
                     onClick={() => setIsAdmin(true)}>
                     ADMIN MODE OFF
                 </button>
-            )}
+            )} */}
             <div class="server-response">
                 {serverResponse && <div>{serverResponse}</div>}
             </div>

@@ -30,7 +30,6 @@ async function loadGame(request, response, next) {
                             username: loadGame[0].username,
                             cartridge: loadGame[0].inventory.cartridge,
                             spaceshipPieces: loadGame[0].inventory.spaceshipPieces,
-                            hardDrivePieces: loadGame[0].inventory.hardDrivePieces,
                             gaiaGun: loadGame[0].inventory.gaiaGun,
                             puzzles: loadGame[0].puzzles
                         }),
