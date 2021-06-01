@@ -3,7 +3,7 @@ import { useState } from 'react'
 import * as constants from '../models/constants'
 
 import useWindowSize from './useWindowSize'
-import { mapMatrix } from '../data/maps/mapMatrix'
+import { puzzleMap } from '../data/maps/mapMatrix'
 
 
 export default function useWalk(maxSteps) {
@@ -65,30 +65,30 @@ export default function useWalk(maxSteps) {
         position.y + modifier[dir].y <= 640 - constants.spriteSize.height
 
 
-        console.log("index:", index, 'item:', mapMatrix[Math.floor(index)])
+        console.log("index:", index, 'item:', puzzleMap[Math.floor(index)])
         
 
         // COLLISION MATH
-        for ( let i = 0; i < mapMatrix.length; i++) {
-            if ( mapMatrix[i] == 1 ) {
+        for ( let i = 0; i < puzzleMap.length; i++) {
+            if ( puzzleMap[i] == 5 ) {
                 if (Math.floor(index) == Math.floor(i)){                        
-                    if( dir === 'right' && mapMatrix[Math.floor(index)] == 1 ) {
+                    if( dir === 'right' && puzzleMap[Math.floor(index)] == 5 ) {
                         modifier[dir].x = 0
                         console.log('right barrier')
                         // this fucking works! 
                     }
-                    if( dir === 'left' && mapMatrix[Math.floor(index)] == 1 ) {
+                    if( dir === 'left' && puzzleMap[Math.floor(index)] == 5 ) {
                         modifier[dir].x = 0
                         console.log('left barrier')
                         // this fucking works! 
                     }
-                    if( dir === 'up' && mapMatrix[Math.floor(index)] == 1 ) {
+                    if( dir === 'up' && puzzleMap[Math.floor(index)] == 5 ) {
                         modifier[dir].y = 0
                         console.log('up barrier')
                         // this fucking works! 
                     }
 
-                    if( dir === 'down' && mapMatrix[Math.floor(index)] == 1 ) {
+                    if( dir === 'down' && puzzleMap[Math.floor(index)] == 5 ) {
                         modifier[dir].y = 0
                         console.log('down barrier')
                         // this fucking works! 
@@ -118,7 +118,7 @@ export default function useWalk(maxSteps) {
             setIndex((Math.floor((position.y )/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x  )/ constants.sizes.tileWidth))))
         }
         if ( dir === 'down' ) {
-            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))) +1)
+            setIndex((Math.floor((position.y)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x ) / constants.sizes.tileWidth))))
         }
         
         
