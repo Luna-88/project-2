@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getGaiaGun, getPuzzle, getCartridge, getSpaceshipPiece, getHardDrivePiece } from '../components/ItemIcon'
+import { getGaiaGun, getPuzzle, getCartridge, getSpaceshipPiece } from '../components/ItemIcon'
 // import { deleteRecord } from '../models/adminActions'
 
 
@@ -32,17 +32,17 @@ export default function Admin() {
     const [message, setMessage] = useState()
 
     function deleteOnClick() {
-        let display = 'block'
-        console.log('Open: ' + display)
+
         function noOnClick() {
-            display = 'none'
-            let confirmDelete = document.getElementById('confirm-delete')
-            confirmDelete.style.display = display
-            console.log('Close: ' + display)
+            document.getElementById('confirm-delete').style.display = 'none'
         }
 
         return (
-            <div id='confirm-delete'>Are you sure?
+            <div
+                id='confirm-delete'
+                style={{ textAlign: 'center', display: 'block' }}
+            >
+                Are you sure?<br />
                 <button onClick={() => handleClickWithFetch(
                     setServerResponse,
                     'DELETE',

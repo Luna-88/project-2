@@ -1,7 +1,7 @@
-export default function AccountOption({ link, label }) {
+export default function AccountOption({ link, label, textDisplay }) {
     return (
         <div className="form-container">
-            Already have an account?{' '}
+            {textDisplay}
             <a href={`/${link}`}>{label}</a>
         </div>
     )

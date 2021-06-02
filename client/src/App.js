@@ -4,8 +4,8 @@ import './App.css'
 import WelcomePage from './pages/WelcomePage'
 import FormPage from './pages/FormPage'
 import Admin from './pages/AdminPage'
+import HomePage from './pages/HomePage'
 
-import PlayerMenu from './components/PlayerMenu'
 import InGameMenu from './components/InGameMenu'
 import Player from './components/Player'
 
@@ -33,7 +33,7 @@ function App() {
                         <FormPage isRegister={true} />
                     </Route>
                     <Route exact path="/home-page">
-                        <PlayerMenu />
+                        <HomePage />
                         <a href="/gaia">Explore Gaia</a>
                     </Route>
                     <UserState>
