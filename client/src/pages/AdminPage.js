@@ -1,44 +1,57 @@
 import { useState, useEffect } from 'react'
 import { getGaiaGun, getPuzzle, getCartridge, getSpaceshipPiece, getHardDrivePiece } from '../components/ItemIcon'
-import { deleteRecord } from '../models/adminActions'
-
-// import { useHistory } from 'react-router'
-// import handleClickWithFetch from '../models/handleClickWithFetch'
-
-function ExpireMessage(props) {
-    const [isVisible, setIsVisible] = useState(true);
-    const [children, setChildren] = useState(props.children)
-
-    useEffect(() => {
-        setChildren(props.children)
-        setIsVisible(true)
-        setTimer(props.delay);
-    }, [props.children]);
+// import { deleteRecord } from '../models/adminActions'
 
 
-    const setTimer = (delay) => {
-        setTimeout(() => setIsVisible(false), delay);
+import handleClickWithFetch from '../models/handleClickWithFetch'
+
+
+function deleteRecord(record) {
+
+    switch (record.isAdmin) {
+        case undefined: // delete game record
+            console.log('0: Games Record ', record.isAdmin)
+            console.log(record)
+            return ('Deleted game record: ' + record._id)
+        case false: // delete user record
+            console.log('1: User Record ', record.isAdmin)
+            return (record.username + ' user record was deleted')
+        case true: // admin user flag
+            console.log('2: User Record', record.isAdmin)
+            return (record.username + ' is an administrator and cannot be deleted')
+        default:
+            return null
     }
-
-    return (
-        isVisible
-            ? <div>{children}</div>
-            : <span />
-    )
 }
 
+
 export default function Admin() {
-    // let [serverResponse, setServerResponse] = useState()
+    let [serverResponse, setServerResponse] = useState()
     const [userRows, setUserRows] = useState([])
     const [gameRows, setGameRows] = useState([])
-    const [message, setMessage] = useState([])
-    const [key, setKey] = useState(0);
+    const [message, setMessage] = useState()
 
-    let onClick = () => {
-        setKey(key + 1);
+    function deleteOnClick() {
+        let display = 'block'
+        console.log('Open: ' + display)
+        function noOnClick() {
+            display = 'none'
+            let confirmDelete = document.getElementById('confirm-delete')
+            confirmDelete.style.display = display
+            console.log('Close: ' + display)
+        }
+
+        return (
+            <div id='confirm-delete'>Are you sure?
+                <button onClick={() => handleClickWithFetch(
+                    setServerResponse,
+                    'DELETE',
+                    '/api/player/delete-game')}
+                >Yes</button>
+                <button onClick={noOnClick}>No</button>
+            </div>
+        )
     }
-
-    // const history = useHistory()
 
     useEffect(() => {
         const getUsers = async () => {
@@ -76,7 +89,7 @@ export default function Admin() {
                                             onClick={() => setMessage(deleteRecord(row))}
                                         >
                                             Delete Game
-                                </button>
+                                        </button>
                                     </td>
                                 </tr>
                             )
@@ -94,24 +107,21 @@ export default function Admin() {
                             <th>Puzzles</th>
                             <th>Cartridge</th>
                             <th>Spaceship</th>
-                            <th>Hard Drive</th>
                         </tr>
                         {gameRows.map((row) => {
-
                             return (
                                 <tr key={row._id}>
                                     <td>{row.username}</td>
-                                    <td>{getGaiaGun(row.inventory.gaiaGun)}</td>
+                                    <td><button>{getGaiaGun(row.inventory.gaiaGun)}</button></td>
                                     <td>{getPuzzle((row.puzzles[0]), 0)}{getPuzzle((row.puzzles[1]), 1)}{getPuzzle((row.puzzles[2]), 2)}{getPuzzle((row.puzzles[3]), 3)}</td>
                                     <td>{getCartridge((row.inventory.cartridge[0]), 0)}{getCartridge((row.inventory.cartridge[1]), 1)}{getCartridge((row.inventory.cartridge[2]), 2)}{getCartridge((row.inventory.cartridge[3]), 3)}</td>
                                     <td>{getSpaceshipPiece((row.inventory.spaceshipPieces[0]), 0)}{getSpaceshipPiece((row.inventory.spaceshipPieces[1]), 1)}{getSpaceshipPiece((row.inventory.spaceshipPieces[2]), 2)}{getSpaceshipPiece((row.inventory.spaceshipPieces[3]), 3)}</td>
-                                    <td>{getHardDrivePiece((row.inventory.hardDrivePieces[0]), 0)}{getHardDrivePiece((row.inventory.hardDrivePieces[1]), 1)}{getHardDrivePiece((row.inventory.hardDrivePieces[2]), 2)}{getHardDrivePiece((row.inventory.hardDrivePieces[3]), 3)}</td>
                                     <td>
                                         <button
-                                            onClick={() => setMessage(deleteRecord(row))}
+                                            onClick={() => setMessage(deleteOnClick(row))}
                                         >
                                             Delete Game
-                                    </button>
+                                        </button>
                                     </td>
                                 </tr>
                             )
@@ -124,9 +134,9 @@ export default function Admin() {
                 <table>
                     <tbody>
                         <tr>
-                            <td><ExpireMessage delay="5000" key={key}>
+                            <td>
                                 {message}
-                            </ExpireMessage></td>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -134,6 +144,8 @@ export default function Admin() {
         </div>
     )
 }
+
+
         // <div className='admin-container'>
         //     <button
         //         onClick={() => handleClickWithFetch(

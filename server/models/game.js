@@ -8,7 +8,6 @@ const gameSchema = new mongoose.Schema({
         gaiaGun: { type: Boolean },
         cartridge: { type: Array },
         spaceshipPieces: { type: Array },
-        hardDrivePieces: { type: Array }
     },
     puzzles: { type: Array }
 })

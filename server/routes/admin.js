@@ -28,6 +28,18 @@ adminRouter.get('/games', async (request, response) => {
     }
 })
 
+adminRouter.get('/games/:id', async (request, response) => {
+    try {
+        let data = await Game.find({});
+        response.send(data);
+        // response.status(200).send('Games retrieved')
+    }
+    catch (error) {
+        console.log(error)
+        response.status(500).send('There was a problem retrieving games')
+    }
+})
+
 adminRouter.delete('/:_id', async (request, response) => {
     try {
         const data = await game.findByIdAndDelete(req.params.id)

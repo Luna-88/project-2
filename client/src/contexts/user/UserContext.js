@@ -1,6 +1,6 @@
 import React, { createContext } from 'react'
 
 // default value from database can be included
-const playerContext = createContext()
+const UserContext = createContext(null)
 
-export default playerContext
+export default UserContext

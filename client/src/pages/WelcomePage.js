@@ -9,7 +9,7 @@ export default function WelcomePage() {
             <section className="entry-section">
                 <center>
                     <h1 className="entry-title">Welcome to Gaia</h1>
-                    <a href="/register">Begin</a>
+                    <a href="/sign-in">Begin</a>
                 </center>
             </section>
         </div>
