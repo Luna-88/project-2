@@ -14,9 +14,7 @@ export default function InGameMenu() {
     // const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
     const [isPlaying, setIsPlaying] = useState(false)
 
-    const { serverResponse,
-        setServerResponse,
-        inventoryItem } = useGameMenu()
+    const { serverResponse, setServerResponse, inventoryItem } = useGameMenu()
 
     return (
         <div className="in-menu-container">
@@ -42,7 +40,7 @@ export default function InGameMenu() {
                 {inventoryItem && (
                     <div class="dropdown-content">
                         <div>
-                            Puzzles: 
+                            Puzzles:
                             {getPuzzle(inventoryItem.puzzles[0])}
                             {getPuzzle(inventoryItem.puzzles[1])}
                             {getPuzzle(inventoryItem.puzzles[2])}
@@ -50,10 +48,18 @@ export default function InGameMenu() {
                         </div>
                         <div>
                             Spaceship Pieces:
-                            {getSpaceshipPiece(inventoryItem.spaceshipPieces[0])}
-                            {getSpaceshipPiece(inventoryItem.spaceshipPieces[1])}
-                            {getSpaceshipPiece(inventoryItem.spaceshipPieces[2])}
-                            {getSpaceshipPiece(inventoryItem.spaceshipPieces[3])}
+                            {getSpaceshipPiece(
+                                inventoryItem.spaceshipPieces[0]
+                            )}
+                            {getSpaceshipPiece(
+                                inventoryItem.spaceshipPieces[1]
+                            )}
+                            {getSpaceshipPiece(
+                                inventoryItem.spaceshipPieces[2]
+                            )}
+                            {getSpaceshipPiece(
+                                inventoryItem.spaceshipPieces[3]
+                            )}
                         </div>
                     </div>
                 )}
@@ -61,7 +67,10 @@ export default function InGameMenu() {
             <div>
                 <button
                     class="menu-button"
-                    onClick={() => setIsPlaying(!isPlaying)}>{!isPlaying ? 'Play Music' : 'Stop Music'}</button>
+                    onClick={() => setIsPlaying(!isPlaying)}
+                >
+                    {!isPlaying ? 'Play Music' : 'Stop Music'}
+                </button>
                 <Sound
                     url={AmbientMusic}
                     playStatus={
@@ -69,7 +78,8 @@ export default function InGameMenu() {
                     }
                     autoLoad={true}
                     loop={true}
-                    volume={10} />
+                    volume={10}
+                />
             </div>
             <button
                 class="menu-button"
@@ -109,7 +119,7 @@ export default function InGameMenu() {
                     ADMIN MODE OFF
                 </button>
             )} */}
-            <div class="server-response">
+            <div class="server-response alert">
                 {serverResponse && <div>{serverResponse}</div>}
             </div>
         </div>
