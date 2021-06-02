@@ -23,19 +23,9 @@ inGameMenuRouter.get('/tooltips', async (request, response) => {
     }
 })
 
-inGameMenuRouter.get('/options', async (request, response) => {
-    try {
-        response.status(200).send('Opened options')
-    }
-    catch (error) {
-        console.log(error)
-        response.status(500).send('There was a problem with options')
-    }
-})
-
 inGameMenuRouter.get('/save-game', async (request, response) => {
     try {
-        response.status(200).json(await saveGame(request, response))
+        await saveGame(request, response)
     }
     catch (error) {
         console.log(error)
