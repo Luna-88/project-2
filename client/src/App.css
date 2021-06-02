@@ -243,7 +243,7 @@ GAME WORLD POSITIONING */
     width: 100vw;
     height: 100vh;
 
-    background-image: url('../src/assets/images/backgrounds/field_bg_lowqual.png');
+    background-image: url('../src/assets/images/backgrounds/field_bg.png');
     background-position: center;
     background-size: cover;
 }
