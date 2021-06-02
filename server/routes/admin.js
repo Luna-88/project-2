@@ -1,14 +1,14 @@
 const express = require('express')
 const adminRouter = express.Router()
 
-const User = require('../models/user');
-const Game = require('../models/game');
+const { deleteUser, deleteGame } = require('../models/admin')
+const User = require('../models/user')
+const Game = require('../models/game')
 
-adminRouter.get('/users', async (request, response) => {
+adminRouter.get('/user-database', async (request, response) => {
     try {
-        let data = await User.find({});
-        response.send(data);
-        // response.status(200).send('Users retrieved')
+        let data = await User.find({})
+        response.status(200).send(data)
     }
     catch (error) {
         console.log(error)
@@ -16,76 +16,58 @@ adminRouter.get('/users', async (request, response) => {
     }
 })
 
-adminRouter.get('/games', async (request, response) => {
+adminRouter.get('/game-database', async (request, response) => {
     try {
-        let data = await Game.find({});
-        response.send(data);
-        // response.status(200).send('Games retrieved')
+        let data = await Game.find({})
+        response.status(200).send(data)
     }
     catch (error) {
         console.log(error)
         response.status(500).send('There was a problem retrieving games')
-    }
-})
-
-adminRouter.get('/games/:id', async (request, response) => {
-    try {
-        let data = await Game.find({});
-        response.send(data);
-        // response.status(200).send('Games retrieved')
-    }
-    catch (error) {
-        console.log(error)
-        response.status(500).send('There was a problem retrieving games')
-    }
-})
-
-adminRouter.delete('/:_id', async (request, response) => {
-    try {
-        const data = await game.findByIdAndDelete(req.params.id)
-
-        if (!data) {
-            response.sendStatus(404)
-        } else {
-            response.send(data)
-        }
-    } catch (error) {
-        console.log(error)
-        response.status(500)
-    }
-})
-
-
-//
-
-
-adminRouter.post('/add-user', async (request, response) => {
-    try {
-        response.status(200).send('User added')
-    }
-    catch (error) {
-        console.log(error)
-        response.status(500).send('There was a problem adding user')
     }
 })
 
 adminRouter.delete('/delete-user', async (request, response) => {
     try {
-        response.status(200).send('User deleted')
+        response.status(200).send(await deleteUser(request, response))
     }
     catch (error) {
         console.log(error)
-        response.status(500).send('There was a problem deleting user')
+        response.status(500).send('There was a problem deleting your game')
     }
 })
 
-adminRouter.put('/modify-user', async (request, response) => {
+adminRouter.delete('/delete-game', async (request, response) => {
     try {
-        response.status(200).send('User modified')
+        response.status(200).send(await deleteGame(request, response))
     }
     catch (error) {
         console.log(error)
-        response.status(500).send('There was a problem modifying user')
+        response.status(500).send('There was a problem deleting your game')
+    }
+})
+
+adminRouter.put('/user/:userId', async (request, response) => {
+    try {
+        let userId = request.params.id
+        let data = await User.find({_id: userId})
+        response.status(200).send(data)
+    }
+    catch (error) {
+        console.log(error)
+        response.status(500).send('There was a problem retrieving games')
+    }
+})
+
+adminRouter.put('/game/:gameId', async (request, response) => {
+    try {
+        let gameId = request.params.gameId
+        let data = await Game.find({_id: gameId})
+        response.status(200).send(data)
+    }
+    catch (error) {
+        console.log(error)
+        response.status(500).send('There was a problem retrieving games')
     }
 })
 

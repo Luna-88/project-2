@@ -6,12 +6,14 @@ import title from '../assets/images/titles/title-heroside.png'
 export default function FormPage({ isRegister = false }) {
     let api = '/api/register'
     let redirect = '/sign-in'
+    let textDisplay = 'Already have an account?'
     let link = 'sign-in'
     let label = 'Sign In'
 
     if (isRegister === true) {
         api = '/api/sign-in'
         redirect = '/home-page'
+        textDisplay = "Don't have an account?"
         link = 'register'
         label = 'Register'
     }
@@ -35,7 +37,7 @@ export default function FormPage({ isRegister = false }) {
                 <div className="form-section">
                     <Form api={api} redirect={redirect} />
                 </div>
-                <AccountOption link={link} label={label} />
+                <AccountOption link={link} label={label} textDisplay={textDisplay} />
             </section>
         </div>
     )

@@ -28,12 +28,25 @@ const DrawTileMap = () => {
     })
 
     useEffect(() => {
+        const mapData = localStorage.getItem('my-previous-map-matrix')
+        if (mapData){
+            setMapMatrix(JSON.parse(mapData))
+        }
+    }, [])
+
+
+    useEffect(() => {
+        localStorage.setItem('my-previous-map-matrix', JSON.stringify(mapMatrix))
+ 
+    }, [])
+
+    useEffect(() => {
         const image = new Image()
         image.src = tileMap
         image.onload = () => setImage(image)
     }, [])
 
-    console.log('index DrawTile', index)
+    // console.log('index DrawTile', index)
 
         useEffect(() => {
         if (index === 23) {

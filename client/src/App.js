@@ -4,8 +4,8 @@ import './App.css'
 import WelcomePage from './pages/WelcomePage'
 import FormPage from './pages/FormPage'
 import Admin from './pages/AdminPage'
+import HomePage from './pages/HomePage'
 
-import PlayerMenu from './components/PlayerMenu'
 import InGameMenu from './components/InGameMenu'
 import Player from './components/Player'
 
@@ -14,6 +14,7 @@ import mainSkin from './assets/images/skins/main.png'
 // import AdminState from './contexts/admin/AdminState'
 import UserState from './contexts/user/UserState'
 import DrawTileMap from './components/DrawTileMap'
+import EditForm from './components/EditForm'
 
 function App() {
     return (
@@ -33,7 +34,7 @@ function App() {
                         <FormPage isRegister={true} />
                     </Route>
                     <Route exact path="/home-page">
-                        <PlayerMenu />
+                        <HomePage />
                         <a href="/gaia">Explore Gaia</a>
                     </Route>
                     <UserState>
@@ -52,6 +53,10 @@ function App() {
                             {/* </AdminState> */}
                         </Route>
                     </UserState>
+                    <Route path="/edits">
+                        <div>EDITS</div>
+                        {/* <EditForm /> */}
+                    </Route>
                 </Switch>
             </BrowserRouter>
         </div>

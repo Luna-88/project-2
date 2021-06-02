@@ -54,25 +54,9 @@ function getSpaceshipPiece(shipPiece, index) {
     }
 }
 
-function getHardDrivePiece(drivePiece, index) {
-    switch (index) {
-        case 0: // actuator
-            if (!drivePiece) { return '❌' } else { return '🔫' }
-        case 1: // platter
-            if (!drivePiece) { return '❌' } else { return '🔫' }
-        case 2: // spindle
-            if (!drivePiece) { return '❌' } else { return '🔫' }
-        case 3: // controller
-            if (!drivePiece) { return '❌' } else { return '🔫' }
-        default:
-            return '❌'
-    }
-}
-
 module.exports = {
     getGaiaGun,
     getPuzzle,
     getCartridge,
     getSpaceshipPiece,
-    getHardDrivePiece,
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import * as constants from '../models/constants'
 
@@ -10,10 +10,34 @@ export default function useWalk(maxSteps) {
     // Set initial location of user
     const { height, width } = useWindowSize()
 
-    const [position, setPosition] = useState({
-        x: width / 2,
-        y: height / 2,
-    })
+    // Initial position of sprite
+    const init = {
+        x: width/2, 
+        y: height/2
+    }
+    
+    // Store initial data to local storage
+    localStorage.setItem('initial-player-position', JSON.stringify(init))
+    
+    // function for state on refresh, if no local storage it will return initial state. If there is it will return the previous state.
+    function initialState() {
+        const playerPositionData = JSON.parse(localStorage.getItem('last-player-position'))
+        const playerInitialData = JSON.parse(localStorage.getItem('initial-player-position'))
+        if (playerPositionData) {
+            return playerPositionData
+        } else {
+            return playerInitialData
+        }
+    }
+
+    // Lazy initial state for position
+    const [position, setPosition] = useState(() => initialState())
+
+    // useEffect to store existing position in local storage
+    useEffect(() => {
+        localStorage.setItem('last-player-position', JSON.stringify(position))
+
+    }, [position])
 
 
     const [dir, setDir] = useState(0)
@@ -27,8 +51,12 @@ export default function useWalk(maxSteps) {
         right: 2,
         up: 3,
     }
+   
 
-    const stepSize = 4
+  
+
+
+    const stepSize = 2
     const stepOffset = 1
 
     const modifier = {
@@ -58,7 +86,7 @@ export default function useWalk(maxSteps) {
         position.y + modifier[dir].y <= 640 - constants.spriteSize.height
 
 
-        console.log("index:", index, 'item:', puzzleMap[Math.floor(index)], 'Offset Index:', offsetIndex)
+        // console.log("index:", index, 'item:', puzzleMap[Math.floor(index)], 'Offset Index:', offsetIndex)
         
         if ( dir === 'left') {
             setOffsetIndex((Math.floor((position.y + 31)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x) / constants.sizes.tileWidth))))
@@ -122,8 +150,10 @@ export default function useWalk(maxSteps) {
             setIndex((Math.floor((position.y + 31)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x) / constants.sizes.tileWidth))))
         }
         
-        
+    
     }
+
+   
     return {
         walk,
         dir,
