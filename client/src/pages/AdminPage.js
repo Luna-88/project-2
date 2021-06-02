@@ -237,7 +237,7 @@ export default function Admin() {
                     </tbody>
                 </table>
             </div>
-            {serverResponse}
+            {serverResponse && <div className="server-response alert">{serverResponse}</div>}
         </div>
     )
 }

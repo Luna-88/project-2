@@ -128,7 +128,7 @@ export default function PlayerMenu() {
                 // 'POST',
                 // '/api/player/new-game')}
                 >New Game</button>
-                {serverResponse && <div>{serverResponse}</div>}
+                {serverResponse && <div className="server-response alert">{serverResponse}</div>}
             </div>
         </div>
     )

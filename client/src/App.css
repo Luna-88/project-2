@@ -28,6 +28,10 @@ ROOT VARIABLES */
 
     /* Font Sizes */
     --font-size-label: 0.625rem;
+
+    /* Game dialogue dialog size */
+    --dialog-height: 5rem;
+    --dialog-padding: 1.5rem;
 }
 
 /* 
@@ -232,31 +236,43 @@ GAME WORLD POSITIONING */
 
 .world-container {
     display: grid;
-    justify-items: center;
+    justify-items: safe center;
     align-items: center;
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100vh;
 
-    background-image: url('../src/assets/images/backgrounds/field_bg_lowqual.png');
+    background-image: url('../src/assets/images/backgrounds/field_bg.png');
     background-position: center;
     background-size: cover;
 }
 
-.game-parent-container {
+.game-parent {
     display: grid;
-    grid-template-rows: 640px 1fr;
+    grid-template-rows: 640px 5rem;
     gap: 1rem;
 
     justify-items: center;
-    align-items: center;
+    align-items: start;
 
-    background-color: mediumturquoise;
+    /* overflow-y: visible;
+    position: absolute; */
+
+    /* background-color: mediumturquoise; */
 }
 
 .game-child {
+    /* nothing goes here yet */
     /* background-color: magenta; */
+}
+
+.item-1 {
+    grid-row: 1/2;
+}
+
+.item-2 {
+    grid-row: 2/3;
 }
 
 #canvas {
@@ -265,17 +281,16 @@ GAME WORLD POSITIONING */
     z-index: 3;
     overflow: hidden;
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
-/* 
-#parent {
-    position: relative;
-} */
 
 .camera {
     width: 640px;
-    height: 640px;
+    /* height: 640px; */
+    height: calc(640px + var(--dialog-height) + var(--dialog-padding));
     position: absolute;
+    /* overflow-x: hidden;
+    overflow-y: visible; */
     overflow: hidden;
     top: 50%;
     left: 50%;
@@ -296,21 +311,24 @@ GAME WORLD POSITIONING */
 }
 
 .dialog-box {
-    position: absolute;
+    /* position: absolute;
     left: calc(50% - 640px / 2);
-    bottom: 5%;
+    bottom: 5%; */
+
     width: 640px;
     z-index: 1;
+    min-height: var(--dialog-height);
 }
 
 .dialog-box div:first-child {
     background-color: rgba(245, 251, 240, 100);
-    margin-top: 1.5rem;
+    margin-top: var(--dialog-padding);
     padding: 1.5rem;
 
     /* to be prettied: */
     border: 0.0625rem solid darkgrey;
     margin: 0.125rem;
+    margin-top: 1.5rem;
 
     border: 0.0125rem solid rgba(162, 187, 145, 100);
     border-radius: 0.5rem;

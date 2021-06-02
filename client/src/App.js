@@ -36,30 +36,31 @@ function App() {
                         <HomePage />
                         <a href="/gaia">Explore Gaia</a>
                     </Route>
+                    <Route path="/edits">
+                        <div>EDITS</div>
+                        {/* <EditForm /> */}
+                    </Route>
+
                     <Route exact path="/gaia">
                         <div className="world-container">
-                            <div className="game-parent-container">
-                                <div className="camera game-child">
+                            <div className="game-parent">
+                                <div className="camera game-child item-1">
                                     <div id="parent">
                                         <DrawTileMap />
                                         <Player skin={mainSkin} />
                                     </div>
                                 </div>
-                                <div className="dialog-box game-child">
-                                    <div>Game dialogue goes here?</div>{' '}
-                                </div>
+                                <section className="dialog-box game-child item-2">
+                                    <div>Game dialogue goes here?</div>
+                                </section>
+                            </div>
+                            <div className="dialog-box game-child">
+                                <div>Game dialogue goes here?</div>{' '}
                             </div>
                         </div>
-                        {/* <AdminState> */}
-
                         <InGameMenu />
+                    </Route>
 
-                        {/* </AdminState> */}
-                    </Route>
-                    <Route path="/edits">
-                        <div>EDITS</div>
-                        {/* <EditForm /> */}
-                    </Route>
                 </Switch>
             </BrowserRouter>
         </div>

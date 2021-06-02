@@ -59,7 +59,7 @@ export default function EditForm() {
                         onClick={handleSaveOnClick}
                     >
                         Save
-                        </button>{' '}
+                        </button>
                     {serverResponse && <div>{serverResponse}</div>}
                 </div>
             </form>
