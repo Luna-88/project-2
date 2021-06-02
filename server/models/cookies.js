@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 
 const config = require('../config/authentication')
 
-
 function getCookies(request) {
     const rawCookies = request.headers.cookie.split('; ')
     const parsedCookies = {}

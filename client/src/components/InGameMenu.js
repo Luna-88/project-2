@@ -1,11 +1,13 @@
 import { useState, useContext } from 'react'
 import Sound from 'react-sound'
+
+import { getPuzzle, getSpaceshipPiece } from './ItemIcon'
 import handleClickWithFetch from '../models/handleClickWithFetch'
 import useGameMenu from '../hooks/useGameMenu'
 import AmbientMusic from '../assets/audio/ambient-music.mp3'
 
 // import AdminContext from '../contexts/admin/AdminContext'
-import UserContext from '../contexts/user/UserContext'
+// import UserContext from '../contexts/user/UserContext'
 
 export default function InGameMenu() {
     // const { isAdmin, setIsAdmin } = useContext(AdminContext)
@@ -15,16 +17,6 @@ export default function InGameMenu() {
     const { serverResponse,
         setServerResponse,
         inventoryItem } = useGameMenu()
-
-    function hasItem(item) {
-        if (item === false || item.length === 0) {
-            return '❌'
-        } else if (item === true) {
-            return '🔫'
-        } else {
-            return item
-        }
-    }
 
     return (
         <div className="in-menu-container">
@@ -49,30 +41,23 @@ export default function InGameMenu() {
                 <button class="menu-button">Inventory</button>
                 {inventoryItem && (
                     <div class="dropdown-content">
-                        <div>Gaia Gun: {hasItem(inventoryItem.gaiaGun)}</div>
                         <div>
-                            Cartridges: {hasItem(inventoryItem.cartridge)}
+                            Puzzles: 
+                            {getPuzzle(inventoryItem.puzzles[0])}
+                            {getPuzzle(inventoryItem.puzzles[1])}
+                            {getPuzzle(inventoryItem.puzzles[2])}
+                            {getPuzzle(inventoryItem.puzzles[3])}
                         </div>
                         <div>
-                            Spaceship Pieces:{' '}
-                            {hasItem(inventoryItem.spaceshipPieces)}
+                            Spaceship Pieces:
+                            {getSpaceshipPiece(inventoryItem.spaceshipPieces[0])}
+                            {getSpaceshipPiece(inventoryItem.spaceshipPieces[1])}
+                            {getSpaceshipPiece(inventoryItem.spaceshipPieces[2])}
+                            {getSpaceshipPiece(inventoryItem.spaceshipPieces[3])}
                         </div>
                     </div>
                 )}
             </div>
-
-            <button
-                class="menu-button"
-                onClick={() =>
-                    handleClickWithFetch(
-                        setServerResponse,
-                        'GET',
-                        '/api/in-game-menu/tooltips'
-                    )
-                }
-            >
-                Tooltips
-            </button>
             <div>
                 <button
                     class="menu-button"

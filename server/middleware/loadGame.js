@@ -1,15 +1,15 @@
 const jwt = require('jsonwebtoken')
 
-const { verifyTokenFromCookies } = require('../models/cookies')
+const { verifyTokenFromCookies, getCookies } = require('../models/cookies')
 const Games = require('../models/game')
 const config = require('../config/authentication')
 
 async function loadGame(request, response, next) {
     let userId = verifyTokenFromCookies(request, 'accessToken', 'userId')
-    let loadGameCookie = verifyTokenFromCookies(request, 'loadedGame', '_id')
+    let loadCookie = getCookies(request)['loadedGame']
     let gameId = request.body.gameId
 
-    if (loadGameCookie === undefined || loadGameCookie !== gameId) {
+    async function loadGameToCookies(response, next) {
         await Games.find({ _id: gameId, userId: userId })
             .sort({ _id: -1 })
             .select("-_id")
@@ -28,10 +28,8 @@ async function loadGame(request, response, next) {
                             _id: gameId,
                             userId: loadGame[0].userId,
                             username: loadGame[0].username,
-                            cartridge: loadGame[0].inventory.cartridge,
                             spaceshipPieces: loadGame[0].inventory.spaceshipPieces,
-                            gaiaGun: loadGame[0].inventory.gaiaGun,
-                            puzzles: loadGame[0].puzzles
+                            puzzles: loadGame[0].inventory.puzzles
                         }),
                         config.secret)
 
@@ -43,9 +41,15 @@ async function loadGame(request, response, next) {
                     console.log(error)
                 }
             })
-        } else {
-            return response.send('Game already loaded')
-        }
+    }
+
+    if (loadCookie === undefined) {
+        loadGameToCookies(response, next)
+    } else if (verifyTokenFromCookies(request, 'loadedGame', '_id') !== gameId) {
+        loadGameToCookies(response, next)
+    } else {
+        return response.send('Game already loaded')
+    }
 }
 
 module.exports = {
