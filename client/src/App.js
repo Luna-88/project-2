@@ -14,6 +14,7 @@ import mainSkin from './assets/images/skins/main.png'
 // import AdminState from './contexts/admin/AdminState'
 import UserState from './contexts/user/UserState'
 import DrawTileMap from './components/DrawTileMap'
+import EditForm from './components/EditForm'
 
 function App() {
     return (
@@ -53,7 +54,8 @@ function App() {
                         </Route>
                     </UserState>
                     <Route path="/edits">
-                        {/* ADD EDIT FORM COMPONENT */}
+                        <div>EDITS</div>
+                        {/* <EditForm /> */}
                     </Route>
                 </Switch>
             </BrowserRouter>
