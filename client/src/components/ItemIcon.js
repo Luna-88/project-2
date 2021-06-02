@@ -1,14 +1,3 @@
-function getGaiaGun(gun) {
-    switch (gun) {
-        case false:
-            return '❌'
-        case true:
-            return '🔫'
-        default:
-            return '❌'
-    }
-}
-
 function getPuzzle(puzzle, index) {
     switch (index) {
         case 0: // solar puzzle
@@ -19,21 +8,6 @@ function getPuzzle(puzzle, index) {
             if (!puzzle) { return '❌' } else { return '🔫' }
         case 3: // thermal puzzle
             if (!puzzle) { return '❌' } else { return '🔫' }
-        default:
-            return '❌'
-    }
-}
-
-function getCartridge(cartridge, index) {
-    switch (index) {
-        case 0: // solar cartridge
-            if (!cartridge) { return '❌' } else { return '🔫' }
-        case 1: // hydro cartridge
-            if (!cartridge) { return '❌' } else { return '🔫' }
-        case 2: // wind cartridge
-            if (!cartridge) { return '❌' } else { return '🔫' }
-        case 3: // thermal cartridge
-            if (!cartridge) { return '❌' } else { return '🔫' }
         default:
             return '❌'
     }
@@ -55,8 +29,6 @@ function getSpaceshipPiece(shipPiece, index) {
 }
 
 module.exports = {
-    getGaiaGun,
     getPuzzle,
-    getCartridge,
     getSpaceshipPiece,
 }

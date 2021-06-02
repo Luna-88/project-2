@@ -25,7 +25,7 @@ playerMenuRouter.post('/load-game', loadGame, async (request, response) => {
 })
 
 playerMenuRouter.get('/select-game', async (request, response) => {
-    try { 
+    try {
         await selectGame(request, response)
     }
     catch (error) {
@@ -43,7 +43,6 @@ playerMenuRouter.delete('/delete-game', async (request, response) => {
         response.status(500).send('There was a problem deleting your game')
     }
 })
-
 
 module.exports = {
     playerMenuRouter,

@@ -9,12 +9,9 @@ async function createGame(request, response) {
         userId: userId,
         username: username,
         inventory: {
-            gaiaGun: false,
-            cartridge: [0, 0, 0, 0],
             spaceshipPieces: [0, 0, 0, 0],
-            hardDrivePieces: [0, 0, 0, 0]
+            puzzles: [0, 0, 0, 0]
         },
-        puzzles: [0, 0, 0, 0]
     }
 
     const newGame = new Game(game)

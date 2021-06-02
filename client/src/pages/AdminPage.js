@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import { getGaiaGun, getPuzzle, getCartridge, getSpaceshipPiece } from '../components/ItemIcon'
+import { getPuzzle, getSpaceshipPiece } from '../components/ItemIcon'
 
 // ADD THIS LOGIC TO DELETE USER AND GAME
 function deleteRecord(record) {
@@ -194,20 +194,18 @@ export default function Admin() {
                     <tbody>
                         <tr>
                             <th>Player</th>
+                            <th>Player ID</th>
                             <th>Game ID</th>
-                            <th>Gaia Gun</th>
                             <th>Puzzles</th>
-                            <th>Cartridge</th>
                             <th>Spaceship</th>
                         </tr>
                         {gameRows.map((row) => {
                             return (
                                 <tr key={row._id}>
                                     <td>{row.username}</td>
+                                    <td>{row.userId.slice(row.userId.length - 4, row.userId.length)}</td>
                                     <td>{row._id.slice(row._id.length - 4, row._id.length)}</td>
-                                    <td>{getGaiaGun(row.inventory.gaiaGun)}</td>
                                     <td>{getPuzzle((row.puzzles[0]), 0)}{getPuzzle((row.puzzles[1]), 1)}{getPuzzle((row.puzzles[2]), 2)}{getPuzzle((row.puzzles[3]), 3)}</td>
-                                    <td>{getCartridge((row.inventory.cartridge[0]), 0)}{getCartridge((row.inventory.cartridge[1]), 1)}{getCartridge((row.inventory.cartridge[2]), 2)}{getCartridge((row.inventory.cartridge[3]), 3)}</td>
                                     <td>{getSpaceshipPiece((row.inventory.spaceshipPieces[0]), 0)}{getSpaceshipPiece((row.inventory.spaceshipPieces[1]), 1)}{getSpaceshipPiece((row.inventory.spaceshipPieces[2]), 2)}{getSpaceshipPiece((row.inventory.spaceshipPieces[3]), 3)}</td>
                                     <td>
                                         <button

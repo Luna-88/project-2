@@ -23,11 +23,8 @@ async function saveGame(request, response) {
         await Games.updateMany({ userId: userId },
             {
                 $set: {
-                    'inventory.cartridge': loadedGame.cartridge,
                     'inventory.spaceshipPieces': loadedGame.spaceshipPieces,
-                    'inventory.hardDrivePieces': loadedGame.hardDrivePieces,
-                    'inventory.gaiaGun': loadedGame.gaiaGun,
-                    'puzzles': loadedGame.puzzles
+                    'inventory.puzzles': loadedGame.puzzles
                 }
             })
     }
