@@ -15,6 +15,7 @@ import mainSkin from './assets/images/skins/main.png'
 import UserState from './contexts/user/UserState'
 import DrawTileMap from './components/DrawTileMap'
 import EditForm from './components/EditForm'
+import Dialogue from './components/Dialogue'
 
 function App() {
     return (
@@ -51,9 +52,7 @@ function App() {
                                             <Player skin={mainSkin} />
                                         </div>
                                     </div>
-                                    <div className="dialog-box game-child">
-                                        <div>Game dialogue goes here?</div>{' '}
-                                    </div>
+                                    <Dialogue />
                                 </div>
                             </div>
                             <InGameMenu />

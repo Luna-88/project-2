@@ -9,17 +9,17 @@ inGameMenuRouter.get('/inventory', (request, response) => {
     }
     catch (error) {
         console.log(error)
-        response.status(500).send('There was a problem accessing your inventory')
+        response.status(500).send('There was a problem with your inventory. Please, try signing in.')
     }
 })
 
-inGameMenuRouter.get('/tooltips', async (request, response) => {
+inGameMenuRouter.get('/dialogue', async (request, response) => {
     try {
-        response.status(200).send('Opened tooltips')
+        response.status(200).send('Opened dialogue')
     }
     catch (error) {
         console.log(error)
-        response.status(500).send('There was a problem with tooltips')
+        response.status(500).send('There was a problem with dialogue')
     }
 })
 
