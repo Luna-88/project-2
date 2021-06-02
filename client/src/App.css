@@ -282,6 +282,19 @@ GAME WORLD POSITIONING */
     transform: translate(-50%, -50%);
 }
 
+.alert {
+    background-color: rgba(245, 251, 240, 100);
+    padding: 1rem;
+
+    /* to be prettied: */
+    border: 0.0625rem solid darkgrey;
+    margin: 0.125rem;
+    margin-top: 1.5rem;
+
+    border: 0.0125rem solid rgba(162, 187, 145, 100);
+    border-radius: 0.5rem;
+}
+
 .dialog-box {
     position: absolute;
     left: calc(50% - 640px / 2);
@@ -291,15 +304,12 @@ GAME WORLD POSITIONING */
 }
 
 .dialog-box div:first-child {
-    /* background-color: hsla(96, 50, 96, 100); */
     background-color: rgba(245, 251, 240, 100);
     margin-top: 1.5rem;
     padding: 1.5rem;
 
     /* to be prettied: */
     border: 0.0625rem solid darkgrey;
-    /* display: inline-block; */
-    /* padding: 0.5rem 1rem; */
     margin: 0.125rem;
 
     border: 0.0125rem solid rgba(162, 187, 145, 100);
