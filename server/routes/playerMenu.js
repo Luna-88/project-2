@@ -1,9 +1,7 @@
 const express = require('express')
 const playerMenuRouter = express.Router()
-const Games = require('../models/game')
 
-const { verifyTokenFromCookies, getCookies } = require('../models/cookies')
-const { createGame, deleteGame } = require('../models/playerMenu')
+const { createGame, deleteGame, selectGame } = require('../models/playerMenu')
 const { loadGame } = require('../middleware/loadGame')
 
 playerMenuRouter.post('/new-game', async (request, response) => {
@@ -27,14 +25,8 @@ playerMenuRouter.post('/load-game', loadGame, async (request, response) => {
 })
 
 playerMenuRouter.get('/select-game', async (request, response) => {
-    try {
-        let userId = verifyTokenFromCookies(request, 'accessToken', 'userId')
-        let selectedGames = []
-
-        await Games.find({ userId: userId })
-            .sort({ _id: -1 })
-            .then(document => selectedGames.push(document))
-        response.send(selectedGames)
+    try { 
+        await selectGame(request, response)
     }
     catch (error) {
         console.log(error)
