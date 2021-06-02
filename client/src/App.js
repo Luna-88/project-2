@@ -40,16 +40,19 @@ function App() {
                     <UserState>
                         <Route exact path="/gaia">
                             <div className="world-container">
-                                <div className="game-parent-container">
-                                    <div className="camera game-child">
+                                <div className="game-parent">
+                                    <div className="camera game-child item-1">
                                         <div id="parent">
                                             <DrawTileMap />
                                             <Player skin={mainSkin} />
+                                            {/* <div className="dialog">
+                                                Game dialogue goes here?
+                                            </div> */}
                                         </div>
                                     </div>
-                                    <div className="dialog-box game-child">
-                                        <div>Game dialogue goes here?</div>{' '}
-                                    </div>
+                                    <section className="dialog-box game-child item-2">
+                                        <div>Game dialogue goes here?</div>
+                                    </section>
                                 </div>
                             </div>
                             {/* <AdminState> */}
