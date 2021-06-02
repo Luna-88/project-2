@@ -1,14 +1,14 @@
 const express = require('express')
 const adminRouter = express.Router()
 
-const User = require('../models/user');
-const Game = require('../models/game');
+const { deleteUser, deleteGame } = require('../models/admin')
+const User = require('../models/user')
+const Game = require('../models/game')
 
-adminRouter.get('/users', async (request, response) => {
+adminRouter.get('/user-database', async (request, response) => {
     try {
-        let data = await User.find({});
-        response.send(data);
-        // response.status(200).send('Users retrieved')
+        let data = await User.find({})
+        response.send(data)
     }
     catch (error) {
         console.log(error)
@@ -16,11 +16,10 @@ adminRouter.get('/users', async (request, response) => {
     }
 })
 
-adminRouter.get('/games', async (request, response) => {
+adminRouter.get('/game-database', async (request, response) => {
     try {
-        let data = await Game.find({});
-        response.send(data);
-        // response.status(200).send('Games retrieved')
+        let data = await Game.find({})
+        response.send(data)
     }
     catch (error) {
         console.log(error)
@@ -28,10 +27,30 @@ adminRouter.get('/games', async (request, response) => {
     }
 })
 
+adminRouter.delete('/delete-user', async (request, response) => {
+    try {
+        response.send(await deleteUser(request, response))
+    }
+    catch (error) {
+        console.log(error)
+        response.status(500).send('There was a problem deleting your game')
+    }
+})
+
+adminRouter.delete('/delete-game', async (request, response) => {
+    try {
+        response.send(await deleteGame(request, response))
+    }
+    catch (error) {
+        console.log(error)
+        response.status(500).send('There was a problem deleting your game')
+    }
+})
+
 adminRouter.get('/games/:id', async (request, response) => {
     try {
-        let data = await Game.find({});
-        response.send(data);
+        let data = await Game.find({})
+        response.send(data)
         // response.status(200).send('Games retrieved')
     }
     catch (error) {

@@ -1,5 +1,5 @@
 const { verifyTokenFromCookies } = require('../models/cookies')
-const Games = require('../models/game')
+const Game = require('../models/game')
 
 async function createGame(request, response) {
     let userId = verifyTokenFromCookies(request, 'accessToken', 'userId')
@@ -17,7 +17,7 @@ async function createGame(request, response) {
         puzzles: [0, 0, 0, 0]
     }
 
-    const newGame = new Games(game)
+    const newGame = new Game(game)
     await newGame.save()
 
     response.status(200).send('Game created')
@@ -28,7 +28,7 @@ async function selectGame(request, response) {
 
         let selectedGames = []
 
-        await Games.find({ userId: userId })
+        await Game.find({ userId: userId })
             .sort({ _id: -1 })
             .then(document => selectedGames.push(document))
         response.send(selectedGames)
@@ -42,7 +42,7 @@ async function deleteGame(request, response) {
         return response.status(404).send('Game not found')
     }
 
-    await Games.deleteMany({ _id: gameId })
+    await Game.deleteMany({ _id: gameId })
     response.status(200).send('Game deleted')
 }
 

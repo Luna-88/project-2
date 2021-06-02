@@ -83,11 +83,6 @@ export default function PlayerMenu() {
     }
 
     useEffect(() => {
-        // const getGames = async () => {
-        //     let response = await fetch('/api/player/select-game')
-        //     let data = await response.json()
-        //     setGameRows(data[0])
-        // }
         getGames()
     }, [])
 

@@ -2,12 +2,7 @@ import { useState, useEffect } from 'react'
 import { getGaiaGun, getPuzzle, getCartridge, getSpaceshipPiece } from '../components/ItemIcon'
 // import { deleteRecord } from '../models/adminActions'
 
-
-import handleClickWithFetch from '../models/handleClickWithFetch'
-
-
 function deleteRecord(record) {
-
     switch (record.isAdmin) {
         case undefined: // delete game record
             console.log('0: Games Record ', record.isAdmin)
@@ -24,52 +19,84 @@ function deleteRecord(record) {
     }
 }
 
-
 export default function Admin() {
     let [serverResponse, setServerResponse] = useState()
     const [userRows, setUserRows] = useState([])
     const [gameRows, setGameRows] = useState([])
     const [message, setMessage] = useState()
 
-    function deleteOnClick() {
+    const getUsers = async () => {
+        let response = await fetch('/api/admin/user-database')
+        let data = await response.json()
+        setUserRows(data)
+    }
 
-        function noOnClick() {
-            document.getElementById('confirm-delete').style.display = 'none'
+    const getGames = async () => {
+        let response = await fetch('/api/admin/game-database')
+        let data = await response.json()
+        setGameRows(data)
+    }
+
+    const handleDeleteUserOnClick = async (record) => {
+        let userId = { userId: record._id }
+
+        const requestOptions = {
+            method: 'DELETE',
+            body: JSON.stringify(userId),
+            headers: {
+                'Content-Type': 'application/json',
+            },
         }
+        try {
+            let userResponse = await fetch('/api/admin/delete-user', requestOptions)
 
-        return (
-            <div
-                id='confirm-delete'
-                style={{ textAlign: 'center', display: 'block' }}
-            >
-                Are you sure?<br />
-                <button onClick={() => handleClickWithFetch(
-                    setServerResponse,
-                    'DELETE',
-                    '/api/player/delete-game')}
-                >Yes</button>
-                <button onClick={noOnClick}>No</button>
-            </div>
-        )
+            if (userResponse.status !== 200) {
+                let errorMessage = await userResponse.text()
+                console.log('We had an error: ', errorMessage)
+                setServerResponse(errorMessage)
+            } else if (userResponse.status === 200) {
+                let serverMessage = await userResponse.text()
+                setServerResponse(serverMessage)
+                getUsers()
+            } else {
+                setServerResponse(undefined)
+            }
+        } catch (error) {
+            console.error('Failed to reach the server')
+        }
+    }
+
+    const handleDeleteGameOnClick = async (record) => {
+        let gameId = { gameId: record._id }
+
+        const requestOptions = {
+            method: 'DELETE',
+            body: JSON.stringify(gameId),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }
+        try {
+            let userResponse = await fetch('/api/admin/delete-game', requestOptions)
+
+            if (userResponse.status !== 200) {
+                let errorMessage = await userResponse.text()
+                console.log('We had an error: ', errorMessage)
+                setServerResponse(errorMessage)
+            } else if (userResponse.status === 200) {
+                let serverMessage = await userResponse.text()
+                setServerResponse(serverMessage)
+                getGames()
+            } else {
+                setServerResponse(undefined)
+            }
+        } catch (error) {
+            console.error('Failed to reach the server')
+        }
     }
 
     useEffect(() => {
-        const getUsers = async () => {
-            // fetch uses the "proxy" value set in client/package.json
-            let response = await fetch('/api/admin/users')
-            let data = await response.json()
-            setUserRows(data)
-        }
         getUsers()
-    }, [])
-
-    useEffect(() => {
-        const getGames = async () => {
-            // fetch uses the "proxy" value set in client/package.json
-            let response = await fetch('/api/admin/games')
-            let data = await response.json()
-            setGameRows(data)
-        }
         getGames()
     }, [])
 
@@ -79,16 +106,25 @@ export default function Admin() {
             <div className="superhero-table">
                 <table>
                     <tbody>
-                        <tr><th>Player</th></tr>
+                        <tr>
+                            <th>Player</th>
+                            <th>Player ID</th>
+                        </tr>
                         {userRows.map((row) => {
                             return (
                                 <tr key={row._id}>
                                     <td>{row.username}</td>
+                                    <td>{row._id.slice(row._id.length - 4, row._id.length)}</td>
                                     <td>
+                                        <button
+                                            onClick={() => handleDeleteUserOnClick(row)}
+                                        >
+                                            Delete
+                                        </button>
                                         <button
                                             onClick={() => setMessage(deleteRecord(row))}
                                         >
-                                            Delete Game
+                                            Edit
                                         </button>
                                     </td>
                                 </tr>
@@ -103,6 +139,7 @@ export default function Admin() {
                     <tbody>
                         <tr>
                             <th>Player</th>
+                            <th>Game ID</th>
                             <th>Gaia Gun</th>
                             <th>Puzzles</th>
                             <th>Cartridge</th>
@@ -112,15 +149,21 @@ export default function Admin() {
                             return (
                                 <tr key={row._id}>
                                     <td>{row.username}</td>
-                                    <td><button>{getGaiaGun(row.inventory.gaiaGun)}</button></td>
+                                    <td>{row._id.slice(row._id.length - 4, row._id.length)}</td>
+                                    <td>{getGaiaGun(row.inventory.gaiaGun)}</td>
                                     <td>{getPuzzle((row.puzzles[0]), 0)}{getPuzzle((row.puzzles[1]), 1)}{getPuzzle((row.puzzles[2]), 2)}{getPuzzle((row.puzzles[3]), 3)}</td>
                                     <td>{getCartridge((row.inventory.cartridge[0]), 0)}{getCartridge((row.inventory.cartridge[1]), 1)}{getCartridge((row.inventory.cartridge[2]), 2)}{getCartridge((row.inventory.cartridge[3]), 3)}</td>
                                     <td>{getSpaceshipPiece((row.inventory.spaceshipPieces[0]), 0)}{getSpaceshipPiece((row.inventory.spaceshipPieces[1]), 1)}{getSpaceshipPiece((row.inventory.spaceshipPieces[2]), 2)}{getSpaceshipPiece((row.inventory.spaceshipPieces[3]), 3)}</td>
                                     <td>
                                         <button
-                                            onClick={() => setMessage(deleteOnClick(row))}
+                                            onClick={() => handleDeleteGameOnClick(row)}
                                         >
-                                            Delete Game
+                                            Delete
+                                        </button>
+                                        <button
+                                        // onClick={() => setMessage(handleDeleteGameOnClick(row))}
+                                        >
+                                            Edit
                                         </button>
                                     </td>
                                 </tr>
@@ -141,46 +184,7 @@ export default function Admin() {
                     </tbody>
                 </table>
             </div>
+            {serverResponse}
         </div>
     )
 }
-
-
-        // <div className='admin-container'>
-        //     <button
-        //         onClick={() => handleClickWithFetch(
-        //             setServerResponse,
-        //             'POST',
-        //             '/api/admin/add-user')}
-        //     >Add User</button>
-        //     <button
-        //         onClick={() => handleClickWithFetch(
-        //             setServerResponse,
-        //             'DELETE',
-        //             '/api/admin/delete-user')}
-        //     >Delete User</button>
-        //     <button
-        //         onClick={() => handleClickWithFetch(
-        //             setServerResponse,
-        //             'PUT',
-        //             '/api/admin/modify-user')}
-        //     >Modify User</button>
-        //     {serverResponse && <div>{serverResponse}</div>}
-        // </div>
-
-        // <div className="superhero-table">
-        //     <table>
-        //         <tbody>
-        //             <tr><th>Player</th><th>Password</th><th>Admin</th></tr>
-        //             {rows.map((row) => {
-        //                 return (
-        //                     <tr key={row._id} onClick={() => { history.push('/superhero/' + row._id) }}>
-        //                         <td>{row.username}</td>
-        //                         <td>{row.password}</td>
-        //                         <td>{row.isAdmin}</td>
-        //                     </tr>
-        //                 )
-        //             })}
-        //         </tbody>
-        //     </table>
-        // </div>
