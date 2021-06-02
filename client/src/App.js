@@ -52,6 +52,9 @@ function App() {
                             {/* </AdminState> */}
                         </Route>
                     </UserState>
+                    <Route path="/edits">
+                        {/* ADD EDIT FORM COMPONENT */}
+                    </Route>
                 </Switch>
             </BrowserRouter>
         </div>

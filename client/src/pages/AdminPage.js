@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
-import { getGaiaGun, getPuzzle, getCartridge, getSpaceshipPiece } from '../components/ItemIcon'
-// import { deleteRecord } from '../models/adminActions'
+import { useHistory } from 'react-router-dom'
 
+import { getGaiaGun, getPuzzle, getCartridge, getSpaceshipPiece } from '../components/ItemIcon'
+
+// ADD THIS LOGIC TO DELETE USER AND GAME
 function deleteRecord(record) {
     switch (record.isAdmin) {
         case undefined: // delete game record
@@ -24,6 +26,8 @@ export default function Admin() {
     const [userRows, setUserRows] = useState([])
     const [gameRows, setGameRows] = useState([])
     const [message, setMessage] = useState()
+
+    let history = useHistory()
 
     const getUsers = async () => {
         let response = await fetch('/api/admin/user-database')
@@ -66,6 +70,31 @@ export default function Admin() {
         }
     }
 
+    const handleEditUserOnClick = async (record) => {
+        let userId = record._id
+
+        const requestOptions = {
+            method: 'PUT',
+        }
+        try {
+            let userResponse = await fetch('/api/admin/user/' + userId, requestOptions)
+
+            if (userResponse.status !== 200) {
+                let errorMessage = await userResponse.text()
+                console.log('We had an error: ', errorMessage)
+                setServerResponse(errorMessage)
+            } else if (userResponse.status === 200) {
+                let serverMessage = await userResponse.text()
+                setServerResponse(serverMessage)
+                history.push('/edits/' + userId)
+            } else {
+                setServerResponse(undefined)
+            }
+        } catch (error) {
+            console.error('Failed to reach the server')
+        }
+    }
+
     const handleDeleteGameOnClick = async (record) => {
         let gameId = { gameId: record._id }
 
@@ -87,6 +116,32 @@ export default function Admin() {
                 let serverMessage = await userResponse.text()
                 setServerResponse(serverMessage)
                 getGames()
+            } else {
+                setServerResponse(undefined)
+            }
+        } catch (error) {
+            console.error('Failed to reach the server')
+        }
+    }
+
+    const handleEditGameOnClick = async (record) => {
+        let gameId = record._id
+
+        const requestOptions = {
+            method: 'PUT',
+        }
+        try {
+            let userResponse = await fetch('/api/admin/game/' + gameId, requestOptions)
+
+            if (userResponse.status !== 200) {
+                let errorMessage = await userResponse.text()
+                console.log('We had an error: ', errorMessage)
+                setServerResponse(errorMessage)
+            } else if (userResponse.status === 200) {
+                let serverMessage = await userResponse.text()
+                setServerResponse(serverMessage)
+                history.push('/edits/' + gameId)
+
             } else {
                 setServerResponse(undefined)
             }
@@ -122,7 +177,7 @@ export default function Admin() {
                                             Delete
                                         </button>
                                         <button
-                                            onClick={() => setMessage(deleteRecord(row))}
+                                            onClick={() => handleEditUserOnClick(row)}
                                         >
                                             Edit
                                         </button>
@@ -161,7 +216,7 @@ export default function Admin() {
                                             Delete
                                         </button>
                                         <button
-                                        // onClick={() => setMessage(handleDeleteGameOnClick(row))}
+                                        onClick={() => handleEditGameOnClick(row)}
                                         >
                                             Edit
                                         </button>
