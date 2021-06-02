@@ -39,12 +39,13 @@ function App() {
                     </Route>
                     <UserState>
                         <Route exact path="/gaia">
-                            <div className='camera'>
-                                <div id='parent' >
-                                    <DrawTileMap />
-                                    <Player skin={mainSkin} />
+                            <div className="game-container">
+                                <div className="camera">
+                                    <div id="parent">
+                                        <DrawTileMap />
+                                        <Player skin={mainSkin} />
+                                    </div>
                                 </div>
-
                             </div>
                             {/* <AdminState> */}
 
