@@ -12,7 +12,6 @@ import Player from './components/Player'
 import mainSkin from './assets/images/skins/main.png'
 
 // import AdminState from './contexts/admin/AdminState'
-import UserState from './contexts/user/UserState'
 import DrawTileMap from './components/DrawTileMap'
 import EditForm from './components/EditForm'
 import Dialogue from './components/Dialogue'
@@ -42,22 +41,24 @@ function App() {
                         <div>EDITS</div>
                         {/* <EditForm /> */}
                     </Route>
-                    <UserState>
-                        <Route exact path="/gaia">
-                            <div className="world-container">
-                                <div className="game-parent-container">
-                                    <div className="camera game-child">
-                                        <div id="parent">
-                                            <DrawTileMap />
-                                            <Player skin={mainSkin} />
-                                        </div>
+
+                    <Route exact path="/gaia">
+                        <div className="world-container">
+                            <div className="game-parent">
+                                <div className="camera game-child item-1">
+                                    <div id="parent">
+                                        <DrawTileMap />
+                                        <Player skin={mainSkin} />
                                     </div>
-                                    <Dialogue />
                                 </div>
+                                <section className="dialog-box game-child item-2">
+                                    <div>Game dialogue goes here?</div>
+                                </section>
                             </div>
-                            <InGameMenu />
-                        </Route>
-                    </UserState>
+                        </div>
+                        <InGameMenu />
+                    </Route>
+
                 </Switch>
             </BrowserRouter>
         </div>

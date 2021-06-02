@@ -7,10 +7,10 @@ import useGameMenu from '../hooks/useGameMenu'
 import AmbientMusic from '../assets/audio/ambient-music.mp3'
 import { useHistory } from 'react-router'
 
-// import UserContext from '../contexts/user/UserContext'
+// import AdminContext from '../contexts/admin/AdminContext'
 
 export default function InGameMenu() {
-    // const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
+    // const { isAdmin, setIsAdmin } = useContext(AdminContext)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const { serverResponse, setServerResponse, inventoryItem } = useGameMenu()
@@ -48,8 +48,6 @@ export default function InGameMenu() {
                             Puzzles:
                             {getPuzzle(inventoryItem.puzzles[0])}
                             {getPuzzle(inventoryItem.puzzles[1])}
-                            {getPuzzle(inventoryItem.puzzles[2])}
-                            {getPuzzle(inventoryItem.puzzles[3])}
                         </div>
                         <div>
                             Spaceship Pieces:
@@ -58,12 +56,6 @@ export default function InGameMenu() {
                         )}
                             {getSpaceshipPiece(
                                 inventoryItem.spaceshipPieces[1]
-                            )}
-                            {getSpaceshipPiece(
-                                inventoryItem.spaceshipPieces[2]
-                            )}
-                            {getSpaceshipPiece(
-                                inventoryItem.spaceshipPieces[3]
                             )}
                         </div>
                     </div>
