@@ -49,9 +49,6 @@ function App() {
                                         <div id="parent">
                                             <DrawTileMap />
                                             <Player skin={mainSkin} />
-                                            {/* <div className="dialog">
-                                                Game dialogue goes here?
-                                            </div> */}
                                         </div>
                                     </div>
                                     <section className="dialog-box game-child item-2">
