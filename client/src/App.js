@@ -38,10 +38,8 @@ function App() {
                         <a href="/gaia">Explore Gaia</a>
                     </Route>
                     <Route path="/edits">
-                        <div>EDITS</div>
-                        {/* <EditForm /> */}
+                        <EditForm />
                     </Route>
-
                     <Route exact path="/gaia">
                         <div className="world-container">
                             <div className="game-parent">
@@ -51,14 +49,11 @@ function App() {
                                         <Player skin={mainSkin} />
                                     </div>
                                 </div>
-                                <section className="dialog-box game-child item-2">
-                                    <div>Game dialogue goes here?</div>
-                                </section>
                             </div>
+                            <Dialogue />
                         </div>
                         <InGameMenu />
                     </Route>
-
                 </Switch>
             </BrowserRouter>
         </div>

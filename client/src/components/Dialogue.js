@@ -6,16 +6,16 @@ export default function Dialogue() {
     const getDialogue = async () => {
         let response = await fetch('/api/in-game-menu/dialogue')
         let data = await response.json()
-        console.log("dialogue data", data)
+        setDialogue(data)
     }
 
     useEffect(() => {
         getDialogue()
     }, [])
-    
+
     return (
-        <div className="dialog-box game-child">
-            <div>Game dialogue goes here?</div>{' '}
-        </div>
+        <section className="dialog-box game-child item-2">
+            <div>{dialogue}</div>
+        </section>
     )
 }

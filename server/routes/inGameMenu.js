@@ -1,4 +1,5 @@
 const express = require('express')
+const { displayDialogue } = require('../models/displayDialogue')
 const inGameMenuRouter = express.Router()
 
 const { accessInventory, saveGame, exitGame } = require('../models/inGameMenu')
@@ -9,13 +10,13 @@ inGameMenuRouter.get('/inventory', (request, response) => {
     }
     catch (error) {
         console.log(error)
-        response.status(500).send('There was a problem with your inventory. Please, try signing in.')
+        response.status(500).send('There was a problem with your inventory. Please, try loading a game.')
     }
 })
 
 inGameMenuRouter.get('/dialogue', async (request, response) => {
     try {
-        response.status(200).send('Opened dialogue')
+       displayDialogue(response)
     }
     catch (error) {
         console.log(error)
