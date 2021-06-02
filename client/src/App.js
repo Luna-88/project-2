@@ -54,9 +54,6 @@ function App() {
                                     <div>Game dialogue goes here?</div>
                                 </section>
                             </div>
-                            <div className="dialog-box game-child">
-                                <div>Game dialogue goes here?</div>{' '}
-                            </div>
                         </div>
                         <InGameMenu />
                     </Route>
