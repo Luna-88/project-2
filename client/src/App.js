@@ -37,6 +37,10 @@ function App() {
                         <HomePage />
                         <a href="/gaia">Explore Gaia</a>
                     </Route>
+                    <Route path="/edits">
+                        <div>EDITS</div>
+                        {/* <EditForm /> */}
+                    </Route>
                     <UserState>
                         <Route exact path="/gaia">
                             <div className="world-container">
@@ -52,17 +56,9 @@ function App() {
                                     </div>
                                 </div>
                             </div>
-                            {/* <AdminState> */}
-
                             <InGameMenu />
-
-                            {/* </AdminState> */}
                         </Route>
                     </UserState>
-                    <Route path="/edits">
-                        <div>EDITS</div>
-                        {/* <EditForm /> */}
-                    </Route>
                 </Switch>
             </BrowserRouter>
         </div>

@@ -205,7 +205,7 @@ export default function Admin() {
                                     <td>{row.username}</td>
                                     <td>{row.userId.slice(row.userId.length - 4, row.userId.length)}</td>
                                     <td>{row._id.slice(row._id.length - 4, row._id.length)}</td>
-                                    <td>{getPuzzle((row.puzzles[0]), 0)}{getPuzzle((row.puzzles[1]), 1)}{getPuzzle((row.puzzles[2]), 2)}{getPuzzle((row.puzzles[3]), 3)}</td>
+                                    <td>{getPuzzle((row.inventory.puzzles[0]), 0)}{getPuzzle((row.inventory.puzzles[1]), 1)}{getPuzzle((row.inventory.puzzles[2]), 2)}{getPuzzle((row.inventory.puzzles[3]), 3)}</td>
                                     <td>{getSpaceshipPiece((row.inventory.spaceshipPieces[0]), 0)}{getSpaceshipPiece((row.inventory.spaceshipPieces[1]), 1)}{getSpaceshipPiece((row.inventory.spaceshipPieces[2]), 2)}{getSpaceshipPiece((row.inventory.spaceshipPieces[3]), 3)}</td>
                                     <td>
                                         <button
@@ -237,7 +237,7 @@ export default function Admin() {
                     </tbody>
                 </table>
             </div>
-            {serverResponse}
+            {serverResponse && <div className="server-response alert">{serverResponse}</div>}
         </div>
     )
 }
