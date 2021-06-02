@@ -28,7 +28,6 @@ ROOT VARIABLES */
 
     /* Font Sizes */
     --font-size-label: 0.625rem;
-
 }
 
 /* 
@@ -56,6 +55,11 @@ html,
 body {
     overflow: hidden;
     /* background: #4087ff; */
+}
+
+/* HELP */
+.identify-me {
+    background-color: magenta;
 }
 
 .in-menu-container {
@@ -217,6 +221,27 @@ PRE-EXISTING MENUS */
 
 .world {
     background-color: red;
+}
+
+/* 
+*******
+*******
+*******
+GAME WORLD STYLING */
+/* VDR */
+
+.game-container {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url('../src/assets/images/backgrounds/field_bg_lowqual.png');
+    background-position: center;
+    background-size: cover;
 }
 
 /* 
@@ -409,7 +434,6 @@ Game Titlescreen */
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 #canvas {
@@ -419,7 +443,6 @@ Game Titlescreen */
     overflow: hidden;
     box-sizing: border-box;
     border: 1px solid red;
-    
 }
 
 #parent {
@@ -430,7 +453,7 @@ Game Titlescreen */
     display: flex;
     justify-content: center;
 }
-  
+
 .superhero-table th {
     background-color: grey;
     color: white;
