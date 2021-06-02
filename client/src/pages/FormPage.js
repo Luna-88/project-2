@@ -5,7 +5,7 @@ import title from '../assets/images/titles/title-heroside.png'
 
 export default function FormPage({ isRegister = false }) {
     let api = '/api/register'
-    let redirect = '/sign-in'
+    let redirect = '/home-page'
     let textDisplay = 'Already have an account?'
     let link = 'sign-in'
     let label = 'Sign In'

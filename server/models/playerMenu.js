@@ -9,8 +9,8 @@ async function createGame(request, response) {
         userId: userId,
         username: username,
         inventory: {
-            spaceshipPieces: [0, 0, 0, 0],
-            puzzles: [0, 0, 0, 0]
+            spaceshipPieces: [0, 0],
+            puzzles: [0, 0]
         },
     }
 
@@ -23,12 +23,12 @@ async function createGame(request, response) {
 async function selectGame(request, response) {
     let userId = verifyTokenFromCookies(request, 'accessToken', 'userId')
 
-        let selectedGames = []
+    let selectedGames = []
 
-        await Game.find({ userId: userId })
-            .sort({ _id: -1 })
-            .then(document => selectedGames.push(document))
-        response.send(selectedGames)
+    await Game.find({ userId: userId })
+        .sort({ _id: -1 })
+        .then(document => selectedGames.push(document))
+    response.send(selectedGames)
 }
 
 async function deleteGame(request, response) {

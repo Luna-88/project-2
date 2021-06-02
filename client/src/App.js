@@ -12,7 +12,6 @@ import Player from './components/Player'
 import mainSkin from './assets/images/skins/main.png'
 
 // import AdminState from './contexts/admin/AdminState'
-import UserState from './contexts/user/UserState'
 import DrawTileMap from './components/DrawTileMap'
 import EditForm from './components/EditForm'
 
@@ -37,28 +36,26 @@ function App() {
                         <HomePage />
                         <a href="/gaia">Explore Gaia</a>
                     </Route>
-                    <UserState>
-                        <Route exact path="/gaia">
-                            <div className="world-container">
-                                <div className="game-parent-container">
-                                    <div className="camera game-child">
-                                        <div id="parent">
-                                            <DrawTileMap />
-                                            <Player skin={mainSkin} />
-                                        </div>
-                                    </div>
-                                    <div className="dialog-box game-child">
-                                        <div>Game dialogue goes here?</div>{' '}
+                    <Route exact path="/gaia">
+                        <div className="world-container">
+                            <div className="game-parent-container">
+                                <div className="camera game-child">
+                                    <div id="parent">
+                                        <DrawTileMap />
+                                        <Player skin={mainSkin} />
                                     </div>
                                 </div>
+                                <div className="dialog-box game-child">
+                                    <div>Game dialogue goes here?</div>{' '}
+                                </div>
                             </div>
-                            {/* <AdminState> */}
+                        </div>
+                        {/* <AdminState> */}
 
-                            <InGameMenu />
+                        <InGameMenu />
 
-                            {/* </AdminState> */}
-                        </Route>
-                    </UserState>
+                        {/* </AdminState> */}
+                    </Route>
                     <Route path="/edits">
                         <div>EDITS</div>
                         {/* <EditForm /> */}
