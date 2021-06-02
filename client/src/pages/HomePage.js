@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getGaiaGun, getPuzzle, getCartridge, getSpaceshipPiece } from '../components/ItemIcon'
-
-// import { UserContext } from '../contexts/user/UserContext'
-// import { login } from '../models/userLogin'
+import { getPuzzle, getSpaceshipPiece } from '../components/ItemIcon'
 
 import handleClickWithFetch from '../models/handleClickWithFetch'
 
@@ -83,11 +80,6 @@ export default function PlayerMenu() {
     }
 
     useEffect(() => {
-        // const getGames = async () => {
-        //     let response = await fetch('/api/player/select-game')
-        //     let data = await response.json()
-        //     setGameRows(data[0])
-        // }
         getGames()
     }, [])
 
@@ -99,9 +91,7 @@ export default function PlayerMenu() {
                         <tr>
                             <th>Game ID</th>
                             <th>Player</th>
-                            <th>Gaia Gun</th>
                             <th>Puzzles</th>
-                            <th>Cartridge</th>
                             <th>Spaceship</th>
                         </tr>
                         {gameRows.map((row) => {
@@ -109,10 +99,8 @@ export default function PlayerMenu() {
                                 <tr key={row._id}>
                                     <td>{row._id.slice(row._id.length - 4, row._id.length)}</td>
                                     <td>{row.username}</td>
-                                    <td>{getGaiaGun(row.inventory.gaiaGun)}</td>
-                                    <td>{getPuzzle((row.puzzles[0]), 0)}{getPuzzle((row.puzzles[1]), 1)}{getPuzzle((row.puzzles[2]), 2)}{getPuzzle((row.puzzles[3]), 3)}</td>
-                                    <td>{getCartridge((row.inventory.cartridge[0]), 0)}{getCartridge((row.inventory.cartridge[1]), 1)}{getCartridge((row.inventory.cartridge[2]), 2)}{getCartridge((row.inventory.cartridge[3]), 3)}</td>
-                                    <td>{getSpaceshipPiece((row.inventory.spaceshipPieces[0]), 0)}{getSpaceshipPiece((row.inventory.spaceshipPieces[1]), 1)}{getSpaceshipPiece((row.inventory.spaceshipPieces[2]), 2)}{getSpaceshipPiece((row.inventory.spaceshipPieces[3]), 3)}</td>
+                                    <td>{getPuzzle((row.inventory.puzzles[0]), 0)}{getPuzzle((row.inventory.puzzles[1]), 1)}</td>
+                                    <td>{getSpaceshipPiece((row.inventory.spaceshipPieces[0]), 0)}{getSpaceshipPiece((row.inventory.spaceshipPieces[1]), 1)}</td>
                                     <td>
                                         <button onClick={() => handleLoadOnClick(row)}>
                                             Load
@@ -140,7 +128,7 @@ export default function PlayerMenu() {
                 // 'POST',
                 // '/api/player/new-game')}
                 >New Game</button>
-                {serverResponse && <div>{serverResponse}</div>}
+                {serverResponse && <div className="server-response alert">{serverResponse}</div>}
             </div>
         </div>
     )

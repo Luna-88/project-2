@@ -1,28 +1,40 @@
 import { useState, useContext } from 'react'
 import Sound from 'react-sound'
+
+import { getPuzzle, getSpaceshipPiece } from './ItemIcon'
 import handleClickWithFetch from '../models/handleClickWithFetch'
 import useGameMenu from '../hooks/useGameMenu'
 import AmbientMusic from '../assets/audio/ambient-music.mp3'
+import { useHistory } from 'react-router'
 
 // import AdminContext from '../contexts/admin/AdminContext'
-import UserContext from '../contexts/user/UserContext'
 
 export default function InGameMenu() {
     // const { isAdmin, setIsAdmin } = useContext(AdminContext)
-    // const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
     const [isPlaying, setIsPlaying] = useState(false)
 
-    const { serverResponse,
-        setServerResponse,
-        inventoryItem } = useGameMenu()
+    const { serverResponse, setServerResponse, inventoryItem } = useGameMenu()
 
-    function hasItem(item) {
-        if (item === false || item.length === 0) {
-            return '❌'
-        } else if (item === true) {
-            return '🔫'
-        } else {
-            return item
+    let history = useHistory()
+
+    const handleExitOnClick = async () => {
+        try {
+            let serverResponse = await fetch('/api/in-game-menu/exit-game')
+            if (serverResponse.status !== 200) {
+                let errorMessage = await serverResponse.text()
+                console.log('We had an error: ', errorMessage)
+                setServerResponse(errorMessage)
+            } else if (serverResponse.status === 200) {
+                let serverMessage = await serverResponse.text()
+                setServerResponse(serverMessage)
+                history.push('/')
+            }
+            else {
+                setServerResponse(undefined)
+            }
+        }
+        catch (error) {
+            console.error("Failed to reach the server")
         }
     }
 
@@ -49,34 +61,30 @@ export default function InGameMenu() {
                 <button class="menu-button">Inventory</button>
                 {inventoryItem && (
                     <div class="dropdown-content">
-                        <div>Gaia Gun: {hasItem(inventoryItem.gaiaGun)}</div>
                         <div>
-                            Cartridges: {hasItem(inventoryItem.cartridge)}
+                            Puzzles:
+                            {getPuzzle(inventoryItem.puzzles[0])}
+                            {getPuzzle(inventoryItem.puzzles[1])}
                         </div>
                         <div>
-                            Spaceship Pieces:{' '}
-                            {hasItem(inventoryItem.spaceshipPieces)}
+                            Spaceship Pieces:
+                            {getSpaceshipPiece(
+                            inventoryItem.spaceshipPieces[0]
+                        )}
+                            {getSpaceshipPiece(
+                                inventoryItem.spaceshipPieces[1]
+                            )}
                         </div>
                     </div>
                 )}
             </div>
-
-            <button
-                class="menu-button"
-                onClick={() =>
-                    handleClickWithFetch(
-                        setServerResponse,
-                        'GET',
-                        '/api/in-game-menu/tooltips'
-                    )
-                }
-            >
-                Tooltips
-            </button>
             <div>
                 <button
                     class="menu-button"
-                    onClick={() => setIsPlaying(!isPlaying)}>{!isPlaying ? 'Play Music' : 'Stop Music'}</button>
+                    onClick={() => setIsPlaying(!isPlaying)}
+                >
+                    {!isPlaying ? 'Play Music' : 'Stop Music'}
+                </button>
                 <Sound
                     url={AmbientMusic}
                     playStatus={
@@ -84,7 +92,8 @@ export default function InGameMenu() {
                     }
                     autoLoad={true}
                     loop={true}
-                    volume={10} />
+                    volume={10}
+                />
             </div>
             <button
                 class="menu-button"
@@ -100,13 +109,7 @@ export default function InGameMenu() {
             </button>
             <button
                 class="menu-button"
-                onClick={() =>
-                    handleClickWithFetch(
-                        setServerResponse,
-                        'GET',
-                        '/api/in-game-menu/exit-game'
-                    )
-                }
+                onClick={() => handleExitOnClick()}
             >
                 Exit Game
             </button>
@@ -124,9 +127,9 @@ export default function InGameMenu() {
                     ADMIN MODE OFF
                 </button>
             )} */}
-            <div class="server-response">
-                {serverResponse && <div>{serverResponse}</div>}
-            </div>
+            {/* <div class="server-response alert"> */}
+            {serverResponse && <div className="server-response alert">{serverResponse}</div>}
+            {/* </div> */}
         </div>
     )
 }

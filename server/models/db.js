@@ -10,10 +10,6 @@ const url =
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
-// .then(() => console.log('Connected to MongoDB Atlas...'))
-// .catch(err => console.error('Could not connect to MongoDB Atlas...', err))
-
-// Taking Tony Grimes' advice and using Greg's way of coding this MongoDB connection algorithm
 const db = mongoose.connection
 db.once('open', (_) =>
     console.log('MongoDB is now connected:', `${mongoUser}@${mongoServer}/${mongoDBName}`)

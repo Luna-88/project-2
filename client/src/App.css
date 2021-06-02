@@ -29,6 +29,9 @@ ROOT VARIABLES */
     /* Font Sizes */
     --font-size-label: 0.625rem;
 
+    /* Game dialogue dialog size */
+    --dialog-height: 5rem;
+    --dialog-padding: 1.5rem;
 }
 
 /* 
@@ -56,6 +59,11 @@ html,
 body {
     overflow: hidden;
     /* background: #4087ff; */
+}
+
+/* HELP */
+.identify-me {
+    background-color: magenta;
 }
 
 .in-menu-container {
@@ -223,6 +231,113 @@ PRE-EXISTING MENUS */
 *******
 *******
 *******
+GAME WORLD POSITIONING */
+/* VDR */
+
+.world-container {
+    display: grid;
+    justify-items: safe center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url('../src/assets/images/backgrounds/field_bg.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.game-parent {
+    display: grid;
+    grid-template-rows: 640px 5rem;
+    gap: 1rem;
+
+    justify-items: center;
+    align-items: start;
+
+    /* overflow-y: visible;
+    position: absolute; */
+
+    /* background-color: mediumturquoise; */
+}
+
+.game-child {
+    /* nothing goes here yet */
+    /* background-color: magenta; */
+}
+
+.item-1 {
+    grid-row: 1/2;
+}
+
+.item-2 {
+    grid-row: 2/3;
+}
+
+#canvas {
+    position: absolute;
+    display: grid;
+    z-index: 3;
+    overflow: hidden;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+
+.camera {
+    width: 640px;
+    /* height: 640px; */
+    height: calc(640px + var(--dialog-height) + var(--dialog-padding));
+    position: absolute;
+    /* overflow-x: hidden;
+    overflow-y: visible; */
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.alert {
+    background-color: rgba(245, 251, 240, 100);
+    padding: 1rem;
+
+    /* to be prettied: */
+    border: 0.0625rem solid darkgrey;
+    margin: 0.125rem;
+    margin-top: 1.5rem;
+
+    border: 0.0125rem solid rgba(162, 187, 145, 100);
+    border-radius: 0.5rem;
+}
+
+.dialog-box {
+    /* position: absolute;
+    left: calc(50% - 640px / 2);
+    bottom: 5%; */
+
+    width: 640px;
+    z-index: 1;
+    min-height: var(--dialog-height);
+}
+
+.dialog-box div:first-child {
+    background-color: rgba(245, 251, 240, 100);
+    margin-top: var(--dialog-padding);
+    padding: 1.5rem;
+
+    /* to be prettied: */
+    border: 0.0625rem solid darkgrey;
+    margin: 0.125rem;
+    margin-top: 1.5rem;
+
+    border: 0.0125rem solid rgba(162, 187, 145, 100);
+    border-radius: 0.5rem;
+}
+
+/* 
+*******
+*******
+*******
 BODY TEXT STYLING */
 /* VDR */
 
@@ -372,8 +487,6 @@ input[type='password'] {
 
 /* 
 
-
-
 Game Titlescreen */
 .entry-section {
     border: 0px solid red;
@@ -401,36 +514,11 @@ Game Titlescreen */
 
 } */
 
-.camera {
-    width: 640px;
-    height: 640px;
-    position: absolute;
-    overflow: hidden;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-}
-
-#canvas {
-    position: absolute;
-    display: grid;
-    z-index: 3;
-    overflow: hidden;
-    box-sizing: border-box;
-    border: 1px solid red;
-    
-}
-
-#parent {
-    position: relative;
-}
-
 .superhero-table {
     display: flex;
     justify-content: center;
 }
-  
+
 .superhero-table th {
     background-color: grey;
     color: white;

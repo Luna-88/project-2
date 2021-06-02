@@ -12,8 +12,8 @@ import Player from './components/Player'
 import mainSkin from './assets/images/skins/main.png'
 
 // import AdminState from './contexts/admin/AdminState'
-import UserState from './contexts/user/UserState'
 import DrawTileMap from './components/DrawTileMap'
+import EditForm from './components/EditForm'
 
 function App() {
     return (
@@ -36,22 +36,28 @@ function App() {
                         <HomePage />
                         <a href="/gaia">Explore Gaia</a>
                     </Route>
-                    <UserState>
-                        <Route exact path="/gaia">
-                            <div className='camera'>
-                                <div id='parent' >
-                                    <DrawTileMap />
-                                    <Player skin={mainSkin} />
+                    <Route path="/edits">
+                        <div>EDITS</div>
+                        {/* <EditForm /> */}
+                    </Route>
+
+                    <Route exact path="/gaia">
+                        <div className="world-container">
+                            <div className="game-parent">
+                                <div className="camera game-child item-1">
+                                    <div id="parent">
+                                        <DrawTileMap />
+                                        <Player skin={mainSkin} />
+                                    </div>
                                 </div>
-
+                                <section className="dialog-box game-child item-2">
+                                    <div>Game dialogue goes here?</div>
+                                </section>
                             </div>
-                            {/* <AdminState> */}
+                        </div>
+                        <InGameMenu />
+                    </Route>
 
-                            <InGameMenu />
-
-                            {/* </AdminState> */}
-                        </Route>
-                    </UserState>
                 </Switch>
             </BrowserRouter>
         </div>

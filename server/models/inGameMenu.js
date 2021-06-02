@@ -14,27 +14,26 @@ function accessInventory(request, response) {
 }
 
 async function saveGame(request, response) {
-    let userId = verifyTokenFromCookies(request, 'accessToken', 'userId')
     let loadedGame = jwt.verify(getCookies(request)['loadedGame'], config.secret)
+    let userId = verifyTokenFromCookies(request, 'accessToken', 'userId')
+    let gameId = verifyTokenFromCookies(request, 'accessToken', '_id')
 
     if (!loadedGame) {
         return response.status(404).send('Load a game first')
     } else {
-        await Games.updateMany({ userId: userId },
+        await Games.updateMany({ userId: userId, _id: gameId },
             {
                 $set: {
-                    'inventory.cartridge': loadedGame.cartridge,
                     'inventory.spaceshipPieces': loadedGame.spaceshipPieces,
-                    'inventory.hardDrivePieces': loadedGame.hardDrivePieces,
-                    'inventory.gaiaGun': loadedGame.gaiaGun,
-                    'puzzles': loadedGame.puzzles
+                    'inventory.puzzles': loadedGame.puzzles
                 }
             })
+        return response.status(200).send('Game Saved')
     }
 }
 
 function exitGame(response) {
-    response.clearCookie('loadedGame')
+    response.status(200).clearCookie('loadedGame')
 }
 
 module.exports = {
