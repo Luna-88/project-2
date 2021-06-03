@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
-<<<<<<< HEAD
 import useWindowSize from '../hooks/useWindowSize'
 
-=======
->>>>>>> 52e8ff786f6c4fb95a597573293cb360e6c62da3
 import { puzzleMap, puzzleMapTwo, solarPowerMap, windPowerMap, finalMap } from '../data/maps/mapMatrix'
 
 import useWalk from '../hooks/useWalk'
