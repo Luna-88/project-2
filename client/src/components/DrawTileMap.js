@@ -77,7 +77,7 @@ const DrawTileMap = () => {
             ctx.clearRect(0,0, width, height)
             setMapMatrix(windPowerMap)
         }
-        if (index === 20) {
+        if (index === 253) {
             const ctx = canvas.current.getContext('2d')
             ctx.clearRect(0,0, width, height)
             setMapMatrix(puzzleMap)
@@ -529,6 +529,23 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
+                if (mapMatrix[Index] === 27) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        0,
+                        224,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                            constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
             }
         }
 
@@ -537,7 +554,7 @@ const DrawTileMap = () => {
 
     return (
         <div>
-            <canvas ref={canvas} width={width} height={height} />
+            <canvas className='index-dev' ref={canvas} width={width} height={height} />
         </div>
     )
 }

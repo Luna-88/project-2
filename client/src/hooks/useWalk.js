@@ -189,7 +189,7 @@ export default function useWalk(maxSteps) {
         }
     })
     useEffect(() => {
-        if (index === 20) {
+        if (index === 253) {
             setMapMatrix(puzzleMap)
         }
     })
