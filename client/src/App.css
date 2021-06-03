@@ -66,6 +66,13 @@ body {
     background-color: magenta;
 }
 
+.index-dev {
+    background-image: url(../src/assets/images/backgrounds/index.png);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 640px;
+}
+
 .in-menu-container {
     position: fixed;
     top: 2.5rem;
@@ -225,6 +232,17 @@ PRE-EXISTING MENUS */
 
 .world {
     background-color: red;
+}
+
+/* 
+*******
+*******
+*******
+TABLES */
+/* VDR */
+
+.little-bobby-tables {
+    /* TK  */
 }
 
 /* 

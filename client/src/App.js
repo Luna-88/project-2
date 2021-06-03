@@ -6,13 +6,14 @@ import FormPage from './pages/FormPage'
 import Admin from './pages/AdminPage'
 import HomePage from './pages/HomePage'
 
-import InGameMenu from './components/InGameMenu'
-import Player from './components/Player'
-
 import mainSkin from './assets/images/skins/main.png'
 
+// import AdminState from './contexts/admin/AdminState'
+import InGameMenu from './components/InGameMenu'
+import Player from './components/Player'
 import DrawTileMap from './components/DrawTileMap'
-import EditForm from './components/EditForm'
+import EditUserForm from './components/EditUserForm'
+import EditGameForm from './components/EditGameForm'
 import Dialogue from './components/Dialogue'
 
 function App() {
@@ -36,8 +37,11 @@ function App() {
                         <HomePage />
                         <a href="/gaia">Explore Gaia</a>
                     </Route>
-                    <Route path="/edits">
-                        <EditForm />
+                    <Route path="/edit/user/:userId">
+                        <EditUserForm />
+                    </Route>
+                    <Route path="/edit/game/:gameId">
+                        <EditGameForm />
                     </Route>
                     <Route exact path="/gaia">
                         <div className="world-container">
