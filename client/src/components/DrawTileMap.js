@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 
 import useWindowSize from '../hooks/useWindowSize'
-import energyBeam from '../assets/images/energies/lightbeam.png'
 
 import { puzzleMap, puzzleMapTwo, solarPowerMap, windPowerMap, finalMap } from '../data/maps/mapMatrix'
 
-import useWindowSize from '../hooks/useWindowSize'
 import useWalk from '../hooks/useWalk'
 import useKeyPress from '../hooks/useKeyPress'
 
