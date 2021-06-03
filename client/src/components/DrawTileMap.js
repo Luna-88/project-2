@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 
+<<<<<<< HEAD
 import useWindowSize from '../hooks/useWindowSize'
 
+=======
+>>>>>>> 52e8ff786f6c4fb95a597573293cb360e6c62da3
 import { puzzleMap, puzzleMapTwo, solarPowerMap, windPowerMap, finalMap } from '../data/maps/mapMatrix'
 
 import useWalk from '../hooks/useWalk'
@@ -74,7 +77,7 @@ const DrawTileMap = () => {
         }
         if (index === 334) {
             const ctx = canvas.current.getContext('2d')
-            ctx.clearRect(0,0, width, height)
+            ctx.clearRect(0, 0, width, height)
             setMapMatrix(finalMap)
         }
         if (index === 253) {
@@ -529,7 +532,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                            constants.sizes.tileWidth,
+                        constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -546,7 +549,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                            constants.sizes.tileWidth,
+                        constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -563,7 +566,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                            constants.sizes.tileWidth,
+                        constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -580,7 +583,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                            constants.sizes.tileWidth,
+                        constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -597,7 +600,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                            constants.sizes.tileWidth,
+                        constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
@@ -614,7 +617,7 @@ const DrawTileMap = () => {
                         32,
                         32,
                         (Index % (mapMatrix.length / constants.sizes.column)) *
-                            constants.sizes.tileWidth,
+                        constants.sizes.tileWidth,
                         Math.floor(
                             Index / (mapMatrix.length / constants.sizes.row)
                         ) * constants.sizes.tileHeight,
