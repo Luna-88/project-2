@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 
 import * as constants from '../models/constants'
 
 import useWindowSize from './useWindowSize'
-import { puzzleMap, solarPowerMap, windPowerMap } from '../data/maps/mapMatrix'
+import { puzzleMap, puzzleMapTwo, solarPowerMap, windPowerMap } from '../data/maps/mapMatrix'
 
 
 export default function useWalk(maxSteps) {
@@ -52,15 +52,32 @@ export default function useWalk(maxSteps) {
         up: 3,
     }
    
-
     // set the initial state for the map
     const initialMap = puzzleMap 
-    const [mapMatrix, setMapMatrix] = useState(initialMap)
-  
+
+    localStorage.setItem('initial-mapMatrix', JSON.stringify(initialMap))
+
+    function initialMapState() {
+        const gameMapData = JSON.parse(localStorage.getItem('last-mapMatrix'))
+        const gameInitialMapData = JSON.parse(localStorage.getItem('initial-mapMatrix'))
+        if (gameMapData) {
+            return gameMapData
+        } else {
+            return gameInitialMapData
+        }
+    }
+
+    const [mapMatrix, setMapMatrix] = useState(() => initialMapState())
+   
+    useEffect(() => {
+        localStorage.setItem('last-mapMatrix', JSON.stringify(mapMatrix))
+
+    }, [mapMatrix])
+
+
 
 
     const stepSize = 2
-    const stepOffset = 1
 
     const modifier = {
         down: { x: 0, y: stepSize },
@@ -157,6 +174,11 @@ export default function useWalk(maxSteps) {
     }
 
     useEffect(() => {
+        if (index === 368) {
+            setMapMatrix(puzzleMapTwo)
+        }
+    })
+    useEffect(() => {
         if (index === 201) {
             setMapMatrix(solarPowerMap)
         }
@@ -164,6 +186,11 @@ export default function useWalk(maxSteps) {
     useEffect(() => {
         if (index === 29) {
             setMapMatrix(windPowerMap)
+        }
+    })
+    useEffect(() => {
+        if (index === 20) {
+            setMapMatrix(puzzleMap)
         }
     })
 
@@ -174,5 +201,6 @@ export default function useWalk(maxSteps) {
         position,
         modifier,
         index,
+        offsetIndex,
     }
 }
