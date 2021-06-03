@@ -6,15 +6,10 @@ import FormPage from './pages/FormPage'
 import Admin from './pages/AdminPage'
 import HomePage from './pages/HomePage'
 
-import mainSkin from './assets/images/skins/main.png'
-
 // import AdminState from './contexts/admin/AdminState'
 import InGameMenu from './components/InGameMenu'
-import Player from './components/Player'
-import DrawTileMap from './components/DrawTileMap'
 import EditUserForm from './components/EditUserForm'
 import EditGameForm from './components/EditGameForm'
-import Dialogue from './components/Dialogue'
 import GaiaGame from './components/GaiaGame'
 
 function App() {

@@ -9,4 +9,4 @@ export const sizes = {
     tileWidth: 32,
     column: 20,
     row: 20,
-  }
+}

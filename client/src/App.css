@@ -401,7 +401,7 @@ FORM POSITIONING */
 }
 
 .login-image {
-    background-image: url('../src/assets/images/titles/world_2.png');
+    /* background-image: url('../src/assets/images/titles/world_2.png'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

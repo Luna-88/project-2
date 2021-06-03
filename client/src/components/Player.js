@@ -5,10 +5,9 @@ import useWalk from "../hooks/useWalk"
 import beamToggle from '../hooks/useBeam'
 
 
-export default function Player({ skin, sidekick, xOffset, yOffset, light=true }) {
+export default function Player({ skin, sidekick, xOffset, yOffset, light = true }) {
     const { dir, step, walk, position, index } = useWalk(3)
 
-    
     const data = {
         h: 32,
         w: 32,
@@ -20,10 +19,10 @@ export default function Player({ skin, sidekick, xOffset, yOffset, light=true })
         if (arrowKeys.includes(e.key)) {
             walk(e.key.replace("Arrow", "").toLowerCase())
             e.preventDefault()
-        } else if (e.key === " " && light===true) {
+        } else if (e.key === " " && light === true) {
             beamToggle()
             e.preventDefault()
-        } else if (e.key === "q" && light===true) {
+        } else if (e.key === "q" && light === true) {
             document.getElementById("sprite").style.display = "block"
             e.preventDefault()
         }

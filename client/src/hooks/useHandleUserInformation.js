@@ -24,7 +24,7 @@ export default function useHandleUserInformation(api, redirect) {
         setPassword('')
         try {
             let userResponse = await fetch(api, requestOptions)
-       
+
             if (userResponse.status !== 200) {
                 let errorMessage = await userResponse.text()
                 console.log('We had an error: ', errorMessage)

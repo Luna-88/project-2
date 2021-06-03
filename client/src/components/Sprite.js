@@ -25,4 +25,4 @@ export default function Sprite({ image, data, position, sidekick = false, xOffse
             }}
         />
     )
-} 
+}

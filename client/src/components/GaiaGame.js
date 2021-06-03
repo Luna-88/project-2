@@ -6,9 +6,9 @@ import Player from '../components/Player'
 
 import mainSkin from '../assets/images/skins/main.png'
 import useKeyPress from "../hooks/useKeyPress"
+import Dialogue from './Dialogue'
 
 export default function GaiaGame() {
-    
 
     // useKeyPress((e) => {
     //     let draw = document.getElementById('draw-canvas')
@@ -22,21 +22,19 @@ export default function GaiaGame() {
     //         } 
     //     }
     // )
-    
+
     return (
         <div className="world-container">
-                            <div className="game-parent">
-                                <div className="camera game-child item-1">
-                                    <div id="parent" width='640px' height='640px'>
-                                        {/* <DrawCanvas /> */}
-                                        <DrawTileMap />
-                                        <Player skin={mainSkin} />
-                                    </div>
-                                </div>
-                                <section className="dialog-box game-child item-2">
-                                    <div>Game dialogue goes here?</div>
-                                </section>
-                            </div>
-                        </div>
+            <div className="game-parent">
+                <div className="camera game-child item-1">
+                    <div id="parent" width='640px' height='640px'>
+                        {/* <DrawCanvas /> */}
+                        <DrawTileMap />
+                        <Player skin={mainSkin} />
+                    </div>
+                </div>
+                <Dialogue />
+            </div>
+        </div>
     )
 }

@@ -5,7 +5,6 @@ import * as constants from '../models/constants'
 import useWindowSize from './useWindowSize'
 import { puzzleMap, puzzleMapTwo, solarPowerMap, windPowerMap } from '../data/maps/mapMatrix'
 
-
 export default function useWalk(maxSteps) {
     // Set current window dimensions
     const { height, width } = useWindowSize()
@@ -38,7 +37,6 @@ export default function useWalk(maxSteps) {
         localStorage.setItem('last-player-position', JSON.stringify(position))
 
     }, [position])
-
 
     const [dir, setDir] = useState(0)
     const [step, setStep] = useState(0)
@@ -74,9 +72,6 @@ export default function useWalk(maxSteps) {
 
     }, [mapMatrix])
 
-
-
-
     const stepSize = 2
 
     const modifier = {
@@ -86,7 +81,6 @@ export default function useWalk(maxSteps) {
         up: { x: 0, y: -stepSize },
 
     }
-
 
     function walk(dir) {
         setDir((prev) => {

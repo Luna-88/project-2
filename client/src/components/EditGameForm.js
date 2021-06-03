@@ -16,7 +16,6 @@ export default function EditUserForm() {
     const [updatedPiece1, setUpdatedPiece1] = useState(currentPiece1)
     const [updatedPiece2, setUpdatedPiece2] = useState(currentPiece2)
 
-
     let history = useHistory()
 
     const handleSaveOnClick = async (event) => {
@@ -56,8 +55,6 @@ export default function EditUserForm() {
         }
     }
 
-
-
     useEffect(() => {
         const getGames = async () => {
             try {
@@ -87,11 +84,11 @@ export default function EditUserForm() {
         (!updatedSolar ||
             !updatedWind ||
             !updatedPiece1 ||
-            !updatedPiece2) 
+            !updatedPiece2)
 
     return (
         <div>
-            <form className="admin-form-container">
+            <form className="form-container">
                 <h2>Game ID: {gameId.slice(gameId.length - 4, gameId.length)}</h2><br />
                 <h3>Puzzles</h3><br />
                 <label htmlFor="solar">Solar:</label>
