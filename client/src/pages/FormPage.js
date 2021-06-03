@@ -9,7 +9,6 @@ export default function FormPage({ isRegister = false }) {
     let textDisplay = 'Already have an account?'
     let link = 'sign-in'
     let label = 'Sign In'
-
     if (isRegister === true) {
         api = '/api/sign-in'
         redirect = '/home-page'
@@ -27,11 +26,6 @@ export default function FormPage({ isRegister = false }) {
                     height={1080 * 0.55}
                     alt="img"
                 />
-                {/* <div>
-                        <center>
-                <a href='/register'>Begin</a>
-                        </center>
-                </div> */}
             </section>
             <section>
                 <div className="form-section">

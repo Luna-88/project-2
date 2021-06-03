@@ -14,7 +14,6 @@ function DrawCanvas() {
 
     const { width, height } = useWindowSize()
 
-
     const image = new Image()
     image.src = energyBeam
 
@@ -22,15 +21,12 @@ function DrawCanvas() {
 
     const draw = (ctx, frameCount) => {
         ctx.beginPath()
-        ctx.clearRect( 0, 0, width, height)
-        ctx.drawImage(image, 0, 0, 32, 32, position.x + 10*Math.sin(frameCount*0.05)**2, position.y , 32, 32)
+        ctx.clearRect(0, 0, width, height)
+        ctx.drawImage(image, 0, 0, 32, 32, position.x + 10 * Math.sin(frameCount * 0.05) ** 2, position.y, 32, 32)
     }
-    
 
-
-
-    return ( <div id='draw-canvas'> <GameCanvas ref={canvas} draw={draw} /></div>)
-} 
+    return (<div id='draw-canvas'> <GameCanvas ref={canvas} draw={draw} /></div>)
+}
 
 export default DrawCanvas
 

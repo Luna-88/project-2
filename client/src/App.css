@@ -401,7 +401,7 @@ FORM POSITIONING */
 }
 
 .login-image {
-    background-image: url('../src/assets/images/titles/world_2.png');
+    /* background-image: url('../src/assets/images/titles/world_2.png'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -532,13 +532,31 @@ Game Titlescreen */
 
 } */
 
-.superhero-table {
+.admin-table {
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
-.superhero-table th {
-    background-color: grey;
-    color: white;
-    padding: 2px 20px 2px 20px;
+.admin-table th {
+    background-color: rgb(213,238,195);
+    color: rgb(41,47,37);
+    padding: 10px 20px 2px 20px;
+    border-radius: 0.5rem;
 }
+
+.admin-table td, .admin-table th {
+    padding: 10px;
+    border-radius: 0.5rem;
+  }
+
+  .admin-table td:first-child {
+    text-align: left;
+  }
+
+  .admin-table td:last-child {
+    background-color: white;
+  }
+
+.admin-table tr:hover {background-color: rgb(245, 252, 239);}
+

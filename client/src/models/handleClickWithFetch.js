@@ -1,4 +1,4 @@
-export default async function handleClickWithFetch(setResponse, requestMethod, api, redirect=false) {
+export default async function handleClickWithFetch(setResponse, requestMethod, api, redirect = false) {
 
     let requestOptions = {
         method: requestMethod,

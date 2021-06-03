@@ -1,5 +1,3 @@
-// import '../css/App.css'
-
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -19,14 +17,22 @@ async function signInUser(request, response, next) {
             if (!passwordIsValid) {
                 return response.status(401).send('Invalid Password!')
             }
-            const token = jwt.sign({ userId: user._id, username: user.username }, config.secret, {
-                expiresIn: 86400,
-            }) //24h
-            response.cookie('accessToken', token, {
-                httpOnly: true,
-                maxAge: 3600000,
-            })
-
+            // console.log(user.isAdmin)
+            const admin = user.isAdmin
+            if (!admin) {
+                // if (!user.isAdmin) {
+                console.log('Signing in at midnight')
+                const token = jwt.sign({ userId: user._id, username: user.username, isAdmin: admin }, config.secret, {
+                    expiresIn: 86400,
+                }) //24h
+                response.cookie('accessToken', token, {
+                    httpOnly: true,
+                    maxAge: 3600000,
+                })
+            } else {
+                // console.log(admin)
+                return response.status(200).json({ isAdmin: admin })
+            }
             next()
         } catch (error) {
             console.log(error)

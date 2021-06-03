@@ -18,12 +18,12 @@ export default function useCanvas(draw) {
             draw(context, frameCount)
             animationFrameId = window.requestAnimationFrame(render)
         }
-    render()
 
-    return () => {
+        render()
 
-        window.cancelAnimationFrame(animationFrameId)
-    }
+        return () => {
+            window.cancelAnimationFrame(animationFrameId)
+        }
 
     }, [draw, position])
 

@@ -85,7 +85,7 @@ export default function PlayerMenu() {
 
     return (
         <div>
-            <div className="superhero-table">
+            <div className="admin-table">
                 <table>
                     <tbody>
                         <tr>
@@ -123,10 +123,7 @@ export default function PlayerMenu() {
 
             <div className='player-menu-container'>
                 <button
-                    onClick={() => handleNewGameOnClick()}//{() => handleClickWithFetch(
-                // setServerResponse,
-                // 'POST',
-                // '/api/player/new-game')}
+                    onClick={() => handleNewGameOnClick()}
                 >New Game</button>
                 {serverResponse && <div className="server-response alert">{serverResponse}</div>}
             </div>

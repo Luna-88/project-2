@@ -1,11 +1,18 @@
 const Dialogue = require('../models/dialogue')
 
-async function displayDialogue(response) {
-    let dialogue = await Dialogue.find({})
-    let solarDialogue = dialogue[0].solar
-    let windDialogue = dialogue[0].wind
+async function displayDialogue(dialogue, response) {
+    let dialogueDB = await Dialogue.find({})
+    let dialogueResponse = []
 
-    response.status(200).send(solarDialogue)
+    if (dialogue === 'instructions') {
+        dialogueResponse = [dialogueDB[0].instructions]
+    } else if (dialogue === 'solar') {
+        dialogueResponse = dialogueDB[0].solar
+    } else if (dialogue === 'wind') {
+        dialogueResponse = dialogueDB[0].wind
+    }
+
+    response.status(200).send(dialogueResponse)
 }
 
 module.exports = {

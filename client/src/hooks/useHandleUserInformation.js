@@ -24,17 +24,31 @@ export default function useHandleUserInformation(api, redirect) {
         setPassword('')
         try {
             let userResponse = await fetch(api, requestOptions)
-       
+
             if (userResponse.status !== 200) {
                 let errorMessage = await userResponse.text()
                 console.log('We had an error: ', errorMessage)
                 setServerResponse(errorMessage)
+
             } else if (userResponse.status === 200) {
                 let serverMessage = await userResponse.text()
                 setServerResponse(serverMessage)
-                history.push(redirect)
-            } else {
-                setServerResponse(undefined)
+                //
+                // console.log(serverResponse.isAdmin)
+                // console.log(setServerResponse)
+                //
+                // console.log(serverResponse)
+                // console.log(serverMessage)
+                //
+                // if user "isAdmin" or not
+
+                if (serverMessage === "Signed in successfully" || serverMessage === "Registered successfully!") {
+                    // console.log('1 - user path')
+                    history.push(redirect)
+                } else {
+                    // console.log('2 - admin path')
+                    history.push('/admin')
+                }
             }
         } catch (error) {
             console.error('Failed to reach the server')
