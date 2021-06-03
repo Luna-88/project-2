@@ -31,7 +31,7 @@ ROOT VARIABLES */
 
     /* Game dialogue dialog size */
     --dialog-height: 5rem;
-    --dialog-padding: 1.5rem;
+    --dialog-padding: 0.75rem;
 }
 
 /* 
@@ -274,6 +274,9 @@ GAME WORLD POSITIONING */
     justify-items: center;
     align-items: start;
 
+    position: relative;
+    /* top: -50px; */
+
     /* overflow-y: visible;
     position: absolute; */
 
@@ -334,7 +337,7 @@ GAME WORLD POSITIONING */
     align-items: center;
 
     position: relative;
-    top: 0px;
+    top: -50px;
     left: -30px;
 }
 
