@@ -28,12 +28,12 @@ export default function Dialogue() {
     }
 
 
-    if (index === 116) {
+    if (index === 201) {
         getDialogue('solar')
         getInventory('solar')
     }
 
-    if (index === 69) {
+    if (index === 49) {
         getDialogue('wind')
         getInventory('wind')
     }
