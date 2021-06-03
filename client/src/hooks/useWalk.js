@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 
 import * as constants from '../models/constants'
 
 import useWindowSize from './useWindowSize'
-import { puzzleMap } from '../data/maps/mapMatrix'
+import { puzzleMap, puzzleMapTwo, solarPowerMap, windPowerMap } from '../data/maps/mapMatrix'
 
 
 export default function useWalk(maxSteps) {
-    // Set initial location of user
+    // Set current window dimensions
     const { height, width } = useWindowSize()
 
     // Initial position of sprite
@@ -52,12 +52,32 @@ export default function useWalk(maxSteps) {
         up: 3,
     }
    
+    // set the initial state for the map
+    const initialMap = puzzleMap 
 
-  
+    localStorage.setItem('initial-mapMatrix', JSON.stringify(initialMap))
+
+    function initialMapState() {
+        const gameMapData = JSON.parse(localStorage.getItem('last-mapMatrix'))
+        const gameInitialMapData = JSON.parse(localStorage.getItem('initial-mapMatrix'))
+        if (gameMapData) {
+            return gameMapData
+        } else {
+            return gameInitialMapData
+        }
+    }
+
+    const [mapMatrix, setMapMatrix] = useState(() => initialMapState())
+   
+    useEffect(() => {
+        localStorage.setItem('last-mapMatrix', JSON.stringify(mapMatrix))
+
+    }, [mapMatrix])
+
+
 
 
     const stepSize = 2
-    const stepOffset = 1
 
     const modifier = {
         down: { x: 0, y: stepSize },
@@ -86,7 +106,7 @@ export default function useWalk(maxSteps) {
         position.y + modifier[dir].y <= 640 - constants.spriteSize.height
 
 
-        // console.log("index:", index, 'item:', puzzleMap[Math.floor(index)], 'Offset Index:', offsetIndex)
+        console.log("index:", index, 'item:', mapMatrix[Math.floor(index)], 'Offset Index:', offsetIndex)
         
         if ( dir === 'left') {
             setOffsetIndex((Math.floor((position.y + 31)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x) / constants.sizes.tileWidth))))
@@ -102,26 +122,26 @@ export default function useWalk(maxSteps) {
         }
 
         // COLLISION MATH
-        for ( let i = 0; i < puzzleMap.length; i++) {
-            if ( puzzleMap[i] == 5 ) {
+        for ( let i = 0; i < mapMatrix.length; i++) {
+            if ( mapMatrix[i] == 5 ) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
-                    if( dir === 'right' && puzzleMap[Math.floor(index)] == 5  || dir === 'right' && puzzleMap[Math.floor(offsetIndex)] == 5) {
+                    if( dir === 'right' && mapMatrix[Math.floor(index)] == 5  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 5) {
                         modifier[dir].x = 0
                         console.log('right barrier')
                         // this fucking works! 
                     }
-                    if( dir === 'left' && puzzleMap[Math.floor(index)] == 5 ||  (dir === 'left' && puzzleMap[Math.floor(offsetIndex)] == 5) ) {
+                    if( dir === 'left' && mapMatrix[Math.floor(index)] == 5 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 5) ) {
                         modifier[dir].x = 0
                         console.log('left barrier')
                         // this fucking works! 
                     }
-                    if( dir === 'up' && puzzleMap[Math.floor(index)] == 5 || dir === 'up' && puzzleMap[Math.floor(offsetIndex)] == 5 ) {
+                    if( dir === 'up' && mapMatrix[Math.floor(index)] == 5 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 5 ) {
                         modifier[dir].y = 0
                         console.log('up barrier')
                         // this fucking works! 
                     }
 
-                    if( dir === 'down' && puzzleMap[Math.floor(index)] == 5 || (dir === 'down' && puzzleMap[Math.floor(offsetIndex)] == 5) ) {
+                    if( dir === 'down' && mapMatrix[Math.floor(index)] == 5 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 5) ) {
                         modifier[dir].y = 0
                         console.log('down barrier')
                         // this fucking works! 
@@ -153,7 +173,27 @@ export default function useWalk(maxSteps) {
     
     }
 
-   
+    useEffect(() => {
+        if (index === 368) {
+            setMapMatrix(puzzleMapTwo)
+        }
+    })
+    useEffect(() => {
+        if (index === 201) {
+            setMapMatrix(solarPowerMap)
+        }
+    })
+    useEffect(() => {
+        if (index === 29) {
+            setMapMatrix(windPowerMap)
+        }
+    })
+    useEffect(() => {
+        if (index === 253) {
+            setMapMatrix(puzzleMap)
+        }
+    })
+
     return {
         walk,
         dir,
@@ -161,5 +201,6 @@ export default function useWalk(maxSteps) {
         position,
         modifier,
         index,
+        offsetIndex,
     }
 }
