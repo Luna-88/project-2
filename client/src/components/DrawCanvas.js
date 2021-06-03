@@ -1,28 +1,36 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 import GameCanvas from './GameCanvas'
-import { useWindowResize } from 'beautiful-react-hooks'
 
-export default function DrawCanvas() {
-    let width = window.innerWidth
-    let height = window.innerHeight
-    
-    const [windowWidth, setWindowWidth] = useState(width)
-    const [windowHeight, setWindowHeight] = useState(height)
+import useWindowSize from '../hooks/useWindowSize'
+import energyBeam from '../assets/images/energies/lightbeam.png'
+import * as constants from '../models/constants'
+import useWalk from '../hooks/useWalk'
 
-    useWindowResize((e) => {
-        setWindowWidth(width)
-        setWindowHeight(height)
-    })
+import { puzzleMap, solarPowerMap, windPowerMap } from '../data/maps/mapMatrix'
 
-    let w = 640
-    let h = 640
+function DrawCanvas() {
 
-    const draw = ctx => {
+    const { dir, step, walk, position, index } = useWalk(3)
+
+    const { width, height } = useWindowSize()
+
+
+    const image = new Image()
+    image.src = energyBeam
+
+    const canvas = useRef(null)
+
+    const draw = (ctx, frameCount) => {
         ctx.beginPath()
         ctx.clearRect( 0, 0, width, height)
-        ctx.fillRect( ((width-w)/2), ((height-h)/2), w, h)
+        ctx.drawImage(image, 0, 0, 32, 32, position.x + 10*Math.sin(frameCount*0.05)**2, position.y , 32, 32)
     }
+    
 
-    return ( <div><GameCanvas draw={draw} /></div>)
-}
+
+
+    return ( <div id='draw-canvas'> <GameCanvas ref={canvas} draw={draw} /></div>)
+} 
+
+export default DrawCanvas
 
