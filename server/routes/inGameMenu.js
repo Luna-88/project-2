@@ -14,9 +14,29 @@ inGameMenuRouter.get('/inventory', (request, response) => {
     }
 })
 
-inGameMenuRouter.get('/dialogue', async (request, response) => {
+inGameMenuRouter.get('/dialogue/instructions', async (request, response) => {
     try {
-        displayDialogue(response)
+        displayDialogue('instructions', response)
+    }
+    catch (error) {
+        console.log(error)
+        response.status(500).send('There was a problem with dialogue')
+    }
+})
+
+inGameMenuRouter.get('/dialogue/solar', async (request, response) => {
+    try {
+        displayDialogue('solar', response)
+    }
+    catch (error) {
+        console.log(error)
+        response.status(500).send('There was a problem with dialogue')
+    }
+})
+
+inGameMenuRouter.get('/dialogue/wind', async (request, response) => {
+    try {
+        displayDialogue('wind', response)
     }
     catch (error) {
         console.log(error)

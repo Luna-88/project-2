@@ -6,15 +6,11 @@ import FormPage from './pages/FormPage'
 import Admin from './pages/AdminPage'
 import HomePage from './pages/HomePage'
 
-import mainSkin from './assets/images/skins/main.png'
-
 // import AdminState from './contexts/admin/AdminState'
 import InGameMenu from './components/InGameMenu'
-import Player from './components/Player'
-import DrawTileMap from './components/DrawTileMap'
 import EditUserForm from './components/EditUserForm'
 import EditGameForm from './components/EditGameForm'
-import Dialogue from './components/Dialogue'
+import GaiaGame from './components/GaiaGame'
 
 function App() {
     return (
@@ -44,17 +40,7 @@ function App() {
                         <EditGameForm />
                     </Route>
                     <Route exact path="/gaia">
-                        <div className="world-container">
-                            <div className="game-parent">
-                                <div className="camera game-child item-1">
-                                    <div id="parent">
-                                        <DrawTileMap />
-                                        <Player skin={mainSkin} />
-                                    </div>
-                                </div>
-                            </div>
-                            <Dialogue />
-                        </div>
+                        <GaiaGame />
                         <InGameMenu />
                     </Route>
                 </Switch>

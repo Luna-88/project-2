@@ -2,9 +2,12 @@ import Actor from "./Actor"
 import useKeyPress from "../hooks/useKeyPress"
 import useWalk from "../hooks/useWalk"
 
-export default function Player({ skin, sidekick, xOffset, yOffset, light=false }) {
+import beamToggle from '../hooks/useBeam'
+
+
+export default function Player({ skin, sidekick, xOffset, yOffset, light = true }) {
     const { dir, step, walk, position, index } = useWalk(3)
-    
+
     const data = {
         h: 32,
         w: 32,
@@ -16,10 +19,10 @@ export default function Player({ skin, sidekick, xOffset, yOffset, light=false }
         if (arrowKeys.includes(e.key)) {
             walk(e.key.replace("Arrow", "").toLowerCase())
             e.preventDefault()
-        } else if (e.key === " " && light===true) {
-            document.getElementById("sprite").style.display = "none"
+        } else if (e.key === " " && light === true) {
+            beamToggle()
             e.preventDefault()
-        } else if (e.key === "q" && light===true) {
+        } else if (e.key === "q" && light === true) {
             document.getElementById("sprite").style.display = "block"
             e.preventDefault()
         }

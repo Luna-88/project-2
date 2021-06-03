@@ -1,6 +1,6 @@
 import useHandleUserInformation from "../hooks/useHandleUserInformation"
 
-export default function Form({api, redirect}) {
+export default function Form({ api, redirect }) {
     const { username,
         setUsername,
         password,

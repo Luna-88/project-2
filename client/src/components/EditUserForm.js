@@ -48,8 +48,6 @@ export default function EditUserForm() {
         }
     }
 
-
-
     useEffect(() => {
         const getUser = async () => {
             try {
@@ -80,7 +78,7 @@ export default function EditUserForm() {
     return (
         <div>
             <form className="form-container">
-            <h2>Player ID: {userId.slice(userId.length - 4, userId.length)}</h2><br />
+                <h2>Player ID: {userId.slice(userId.length - 4, userId.length)}</h2><br />
                 <label htmlFor="username">Player:</label>
                 <input
                     className="user-input"

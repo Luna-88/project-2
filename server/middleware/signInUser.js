@@ -1,5 +1,3 @@
-// import '../css/App.css'
-
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
