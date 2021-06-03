@@ -11,7 +11,6 @@ import Player from './components/Player'
 
 import mainSkin from './assets/images/skins/main.png'
 
-// import AdminState from './contexts/admin/AdminState'
 import DrawTileMap from './components/DrawTileMap'
 import EditForm from './components/EditForm'
 import Dialogue from './components/Dialogue'
