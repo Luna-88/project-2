@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import useWindowSize from '../hooks/useWindowSize'
 import energyBeam from '../assets/images/energies/lightbeam.png'
 
-import { puzzleMap, puzzleMapTwo, solarPowerMap, windPowerMap } from '../data/maps/mapMatrix'
+import { puzzleMap, puzzleMapTwo, solarPowerMap, solarPowerMapTwo, solarPowerMapThree, windPowerMap, windPowerMapTwo, finalMap, finalMapTwo } from '../data/maps/mapMatrix'
 
 import * as constants from '../models/constants'
 import tileMap from '../assets/tileset/spritesheet_32.png'
@@ -71,6 +71,16 @@ const DrawTileMap = () => {
             const ctx = canvas.current.getContext('2d')
             ctx.clearRect(0,0, width, height)
             setMapMatrix(solarPowerMap)
+        }
+        if (index === 245) {
+            const ctx = canvas.current.getContext('2d')
+            ctx.clearRect(0,0, width, height)
+            setMapMatrix(solarPowerMapTwo)
+        }
+        if (index === 247) {
+            const ctx = canvas.current.getContext('2d')
+            ctx.clearRect(0,0, width, height)
+            setMapMatrix(solarPowerMapThree)
         }
         if (index === 29) {
             const ctx = canvas.current.getContext('2d')
@@ -580,6 +590,74 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
+                if (mapMatrix[Index] === 30) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        0,
+                        256,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                            constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 31) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        0,
+                        288,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                            constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 32) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        32,
+                        288,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                            constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 33) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        64,
+                        288,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                            constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
             }
         }
 
@@ -588,7 +666,7 @@ const DrawTileMap = () => {
 
     return (
         <div>
-            <canvas  ref={canvas} width={width} height={height} />
+            <canvas className='index-dev' ref={canvas} width={width} height={height} />
         </div>
     )
 }

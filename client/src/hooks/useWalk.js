@@ -3,7 +3,7 @@ import { useState, useEffect, createContext } from 'react'
 import * as constants from '../models/constants'
 
 import useWindowSize from './useWindowSize'
-import { puzzleMap, puzzleMapTwo, solarPowerMap, windPowerMap } from '../data/maps/mapMatrix'
+import { puzzleMap, puzzleMapTwo, solarPowerMap, solarPowerMapTwo, windPowerMap, windPowerMapTwo, finalMap, finalMapTwo, solarPowerMapThree } from '../data/maps/mapMatrix'
 
 
 export default function useWalk(maxSteps) {
@@ -181,6 +181,16 @@ export default function useWalk(maxSteps) {
     useEffect(() => {
         if (index === 201) {
             setMapMatrix(solarPowerMap)
+        }
+    })
+    useEffect(() => {
+        if (index === 245) {
+            setMapMatrix(solarPowerMapTwo)
+        }
+    })
+    useEffect(() => {
+        if (index === 247) {
+            setMapMatrix(solarPowerMapThree)
         }
     })
     useEffect(() => {
