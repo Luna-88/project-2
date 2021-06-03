@@ -158,7 +158,7 @@ export default function Admin() {
     return (
         <div>
             <br />
-            <div className="superhero-table">
+            <div className="admin-table">
                 <table>
                     <tbody>
                         <tr>
@@ -189,7 +189,7 @@ export default function Admin() {
                 </table>
             </div>
             <br />
-            <div className="superhero-table">
+            <div className="admin-table">
                 <table>
                     <tbody>
                         <tr>

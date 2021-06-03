@@ -79,7 +79,7 @@ export default function EditUserForm() {
 
     return (
         <div>
-            <form className="form-container">
+            <form className="admin-form-container">
             <h2>Player ID: {userId.slice(userId.length - 4, userId.length)}</h2><br />
                 <label htmlFor="username">Player:</label>
                 <input

@@ -91,7 +91,7 @@ export default function EditUserForm() {
 
     return (
         <div>
-            <form className="form-container">
+            <form className="admin-form-container">
                 <h2>Game ID: {gameId.slice(gameId.length - 4, gameId.length)}</h2><br />
                 <h3>Puzzles</h3><br />
                 <label htmlFor="solar">Solar:</label>
