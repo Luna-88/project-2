@@ -546,6 +546,40 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
+                if (mapMatrix[Index] === 28) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        32,
+                        256,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                            constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 29) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        32,
+                        224,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                            constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
             }
         }
 
@@ -554,7 +588,7 @@ const DrawTileMap = () => {
 
     return (
         <div>
-            <canvas className='index-dev' ref={canvas} width={width} height={height} />
+            <canvas  ref={canvas} width={width} height={height} />
         </div>
     )
 }
