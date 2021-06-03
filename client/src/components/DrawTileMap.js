@@ -666,7 +666,7 @@ const DrawTileMap = () => {
 
     return (
         <div>
-            <canvas className='index-dev' ref={canvas} width={width} height={height} />
+            <canvas ref={canvas} width={width} height={height} />
         </div>
     )
 }
