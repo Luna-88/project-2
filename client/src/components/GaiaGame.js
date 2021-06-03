@@ -14,7 +14,7 @@ export default function GaiaGame() {
     //     let draw = document.getElementById('draw-canvas')
     //     if (e.key === "a") {  
     //         draw.style.display = 'none'   
-    //         console.log('space bar')
+    //         console.log('a')
     //         e.preventDefault()
     //     } else if 
     //         (e.key === "d") {

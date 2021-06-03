@@ -337,6 +337,87 @@ export default function useWalk(maxSteps) {
                 }   
             }
         }
+        for ( let i = 0; i < mapMatrix.length; i++) {
+            if ( mapMatrix[i] == 41 ) {
+                if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
+                    if( dir === 'right' && mapMatrix[Math.floor(index)] == 41  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 41) {
+                        modifier[dir].x = 0
+                        console.log('right barrier')
+                        // this fucking works! 
+                    }
+                    if( dir === 'left' && mapMatrix[Math.floor(index)] == 41 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 41) ) {
+                        modifier[dir].x = 0
+                        console.log('left barrier')
+                        // this fucking works! 
+                    }
+                    if( dir === 'up' && mapMatrix[Math.floor(index)] == 41 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 41 ) {
+                        modifier[dir].y = 0
+                        console.log('up barrier')
+                        // this fucking works! 
+                    }
+
+                    if( dir === 'down' && mapMatrix[Math.floor(index)] == 41 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 41) ) {
+                        modifier[dir].y = 0
+                        console.log('down barrier')
+                        // this fucking works! 
+                    }
+                }   
+            }
+        }
+        for ( let i = 0; i < mapMatrix.length; i++) {
+            if ( mapMatrix[i] == 39 ) {
+                if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
+                    if( dir === 'right' && mapMatrix[Math.floor(index)] == 39  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 39) {
+                        modifier[dir].x = 0
+                        console.log('right barrier')
+                        // this fucking works! 
+                    }
+                    if( dir === 'left' && mapMatrix[Math.floor(index)] == 39 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 39) ) {
+                        modifier[dir].x = 0
+                        console.log('left barrier')
+                        // this fucking works! 
+                    }
+                    if( dir === 'up' && mapMatrix[Math.floor(index)] == 39 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 39 ) {
+                        modifier[dir].y = 0
+                        console.log('up barrier')
+                        // this fucking works! 
+                    }
+
+                    if( dir === 'down' && mapMatrix[Math.floor(index)] == 39 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 39) ) {
+                        modifier[dir].y = 0
+                        console.log('down barrier')
+                        // this fucking works! 
+                    }
+                }   
+            }
+        }
+        for ( let i = 0; i < mapMatrix.length; i++) {
+            if ( mapMatrix[i] == 40 ) {
+                if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
+                    if( dir === 'right' && mapMatrix[Math.floor(index)] == 40 || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 40) {
+                        modifier[dir].x = 0
+                        console.log('right barrier')
+                        // this fucking works! 
+                    }
+                    if( dir === 'left' && mapMatrix[Math.floor(index)] == 40 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 40) ) {
+                        modifier[dir].x = 0
+                        console.log('left barrier')
+                        // this fucking works! 
+                    }
+                    if( dir === 'up' && mapMatrix[Math.floor(index)] == 40 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 40 ) {
+                        modifier[dir].y = 0
+                        console.log('up barrier')
+                        // this fucking works! 
+                    }
+
+                    if( dir === 'down' && mapMatrix[Math.floor(index)] == 40 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 40) ) {
+                        modifier[dir].y = 0
+                        console.log('down barrier')
+                        // this fucking works! 
+                    }
+                }   
+            }
+        }
 
         if (worldBounds) {
             setPosition((prev) => ({
