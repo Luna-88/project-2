@@ -335,7 +335,7 @@ GAME WORLD POSITIONING */
 
     position: relative;
     top: 0px;
-    left: 0px;
+    left: -30px;
 }
 
 .dialog-overlay {
@@ -363,7 +363,7 @@ GAME WORLD POSITIONING */
     left: 0px;
     padding-left: 100px;
 
-    width: 640px;
+    width: 600px;
     z-index: -1;
     /* min-height: var(--dialog-height); */
     min-height: 100px;
@@ -381,6 +381,8 @@ GAME WORLD POSITIONING */
 
     border: 0.0125rem solid rgba(162, 187, 145, 100);
     border-radius: 0.5rem;
+
+    line-height: 1.5rem;
 }
 
 .dialog-padding: {
