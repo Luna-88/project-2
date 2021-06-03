@@ -22,16 +22,24 @@ export default function Dialogue() {
         setDialogue(data)
     }
 
-    if (index === 201) {
-        getDialogue('solar')
+    const getInventory = async (energy) => {
+        let response = await fetch('/api/in-game-menu/inventory/' + energy)
+        let data = await response.json()
     }
 
-    if (index === 368) {
+
+    if (index === 116) {
+        getDialogue('solar')
+        getInventory('solar')
+    }
+
+    if (index === 69) {
         getDialogue('wind')
+        getInventory('wind')
     }
 
     useEffect(() => {
-        getDialogue()
+        getDialogue('instructions')
     }, [])
 
     return (

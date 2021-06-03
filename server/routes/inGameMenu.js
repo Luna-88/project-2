@@ -6,7 +6,27 @@ const { accessInventory, saveGame, exitGame } = require('../models/inGameMenu')
 
 inGameMenuRouter.get('/inventory', (request, response) => {
     try {
-        response.status(200).json(accessInventory(request, response))
+        response.status(200).json(accessInventory('display', request, response))
+    }
+    catch (error) {
+        console.log(error)
+        response.status(500).send('There was a problem with your inventory. Please, try loading a game.')
+    }
+})
+
+inGameMenuRouter.get('/inventory/solar', (request, response) => {
+    try {
+        response.status(200).json(accessInventory('solar', request, response))
+    }
+    catch (error) {
+        console.log(error)
+        response.status(500).send('There was a problem with your inventory. Please, try loading a game.')
+    }
+})
+
+inGameMenuRouter.get('/inventory/wind', (request, response) => {
+    try {
+        response.status(200).json(accessInventory('wind', request, response))
     }
     catch (error) {
         console.log(error)

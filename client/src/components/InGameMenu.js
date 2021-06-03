@@ -27,6 +27,7 @@ export default function InGameMenu() {
             } else if (serverResponse.status === 200) {
                 let serverMessage = await serverResponse.text()
                 setServerResponse(serverMessage)
+                localStorage.clear()
                 history.push('/')
             }
             else {
