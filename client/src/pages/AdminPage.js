@@ -86,7 +86,7 @@ export default function Admin() {
             } else if (userResponse.status === 200) {
                 let serverMessage = await userResponse.text()
                 setServerResponse(serverMessage)
-                history.push('/edits/' + userId)
+                history.push('/edit/user/' + userId)
             } else {
                 setServerResponse(undefined)
             }
@@ -140,7 +140,7 @@ export default function Admin() {
             } else if (userResponse.status === 200) {
                 let serverMessage = await userResponse.text()
                 setServerResponse(serverMessage)
-                history.push('/edits/' + gameId)
+                history.push('/edit/game/' + gameId)
 
             } else {
                 setServerResponse(undefined)
@@ -197,7 +197,7 @@ export default function Admin() {
                             <th>Player ID</th>
                             <th>Game ID</th>
                             <th>Puzzles</th>
-                            <th>Spaceship</th>
+                            <th>Spaceship Pieces</th>
                         </tr>
                         {gameRows.map((row) => {
                             return (
