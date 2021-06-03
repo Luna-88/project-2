@@ -4,7 +4,7 @@ import DrawCanvas from './DrawCanvas'
 import DrawTileMap from './DrawTileMap'
 import Player from '../components/Player'
 
-import mainSkin from '../assets/images/skins/main.png'
+import mainSkin from '../assets/images/skins/skins-main.png'
 import useKeyPress from "../hooks/useKeyPress"
 import Dialogue from './Dialogue'
 
