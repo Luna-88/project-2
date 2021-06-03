@@ -622,6 +622,193 @@ const DrawTileMap = () => {
                         constants.sizes.tileHeight
                     )
                 }
+                if (mapMatrix[Index] === 33) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        128,
+                        224,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                        constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 34) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        160,
+                        224,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                        constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 35) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        448,
+                        448,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                        constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 36) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        416,
+                        448,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                        constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 37) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        384,
+                        448,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                        constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 38) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        448,
+                        416,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                        constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 39) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        416,
+                        416,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                        constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 40) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        384,
+                        416,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                        constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 41) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        448,
+                        384,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                        constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 42) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        416,
+                        384,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                        constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
+                if (mapMatrix[Index] === 43) {
+                    //Red flowers
+                    ctx.drawImage(
+                        image,
+                        384,
+                        384,
+                        32,
+                        32,
+                        (Index % (mapMatrix.length / constants.sizes.column)) *
+                        constants.sizes.tileWidth,
+                        Math.floor(
+                            Index / (mapMatrix.length / constants.sizes.row)
+                        ) * constants.sizes.tileHeight,
+                        constants.sizes.tileWidth,
+                        constants.sizes.tileHeight
+                    )
+                }
             }
         }
 
