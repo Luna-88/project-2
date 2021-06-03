@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
-import useKeyPress from "../hooks/useKeyPress"
+import useKeyPress from '../hooks/useKeyPress'
 import useWalk from '../hooks/useWalk'
+
+import wallaceBlink from '../assets/images/objects/wallace/wallace-blink.gif'
 
 export default function Dialogue() {
     const [dialogue, setDialogue] = useState()
@@ -43,8 +45,15 @@ export default function Dialogue() {
     }, [])
 
     return (
-        <section className="dialog-box game-child item-2">
-            <div>{dialogue}</div>
-        </section>
+        <div className="game-child item-2 dialog-container">
+            <div className="dialog-overlay">
+                <img src={wallaceBlink} width="200" height="200"></img>
+            </div>
+            <div>
+                <section className="dialog-box">
+                    <div className="dialog-padding">{dialogue}</div>
+                </section>
+            </div>
+        </div>
     )
 }

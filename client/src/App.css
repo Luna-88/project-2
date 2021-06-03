@@ -328,14 +328,45 @@ GAME WORLD POSITIONING */
     border-radius: 0.5rem;
 }
 
-.dialog-box {
-    /* position: absolute;
-    left: calc(50% - 640px / 2);
-    bottom: 5%; */
+.dialog-container {
+    display: grid;
+    justify-items: center;
+    align-items: center;
 
-    width: 640px;
-    z-index: 1;
-    min-height: var(--dialog-height);
+    position: relative;
+    top: 0px;
+    left: -30px;
+}
+
+.dialog-overlay {
+    /* background-position: bottom left;
+    background-repeat: no-repeat;
+    background-image: url('../src/assets/images/objects/wallace/wallace-blink.gif');
+    background-size: 200px 200px; */
+
+    /* background-color: red; */
+
+    transform: rotate(-7.5deg);
+
+    float: left;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+
+    position: absolute;
+    top: -65px;
+    left: -25px;
+    z-index: 5;
+}
+
+.dialog-box {
+    top: 0px;
+    left: 0px;
+    padding-left: 100px;
+
+    width: 600px;
+    z-index: -1;
+    /* min-height: var(--dialog-height); */
+    min-height: 100px;
 }
 
 .dialog-box div:first-child {
@@ -350,6 +381,13 @@ GAME WORLD POSITIONING */
 
     border: 0.0125rem solid rgba(162, 187, 145, 100);
     border-radius: 0.5rem;
+
+    line-height: 1.5rem;
+}
+
+.dialog-padding: {
+    padding-left: 100px !important;
+    background-color: red !important;
 }
 
 /* 
@@ -539,24 +577,26 @@ Game Titlescreen */
 }
 
 .admin-table th {
-    background-color: rgb(213,238,195);
-    color: rgb(41,47,37);
+    background-color: rgb(213, 238, 195);
+    color: rgb(41, 47, 37);
     padding: 10px 20px 2px 20px;
     border-radius: 0.5rem;
 }
 
-.admin-table td, .admin-table th {
+.admin-table td,
+.admin-table th {
     padding: 10px;
     border-radius: 0.5rem;
-  }
+}
 
-  .admin-table td:first-child {
+.admin-table td:first-child {
     text-align: left;
-  }
+}
 
-  .admin-table td:last-child {
+.admin-table td:last-child {
     background-color: white;
-  }
+}
 
-.admin-table tr:hover {background-color: rgb(245, 252, 239);}
-
+.admin-table tr:hover {
+    background-color: rgb(245, 252, 239);
+}
