@@ -16,7 +16,7 @@ inGameMenuRouter.get('/inventory', (request, response) => {
 
 inGameMenuRouter.get('/dialogue', async (request, response) => {
     try {
-       displayDialogue(response)
+        displayDialogue(response)
     }
     catch (error) {
         console.log(error)

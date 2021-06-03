@@ -20,9 +20,10 @@ async function signInUser(request, response, next) {
                 return response.status(401).send('Invalid Password!')
             }
             // console.log(user.isAdmin)
-            let admin = user.isAdmin
+            const admin = user.isAdmin
             if (!admin) {
                 // if (!user.isAdmin) {
+                console.log('Signing in at midnight')
                 const token = jwt.sign({ userId: user._id, username: user.username, isAdmin: admin }, config.secret, {
                     expiresIn: 86400,
                 }) //24h
@@ -32,7 +33,7 @@ async function signInUser(request, response, next) {
                 })
             } else {
                 // console.log(admin)
-                response.status(200).json({ isAdmin: admin })
+                return response.status(200).json({ isAdmin: admin })
             }
             next()
         } catch (error) {

@@ -9,7 +9,6 @@ export default function FormPage({ isRegister = false }) {
     let textDisplay = 'Already have an account?'
     let link = 'sign-in'
     let label = 'Sign In'
-
     if (isRegister === true) {
         api = '/api/sign-in'
         redirect = '/home-page'

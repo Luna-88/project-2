@@ -29,6 +29,7 @@ export default function useHandleUserInformation(api, redirect) {
                 let errorMessage = await userResponse.text()
                 console.log('We had an error: ', errorMessage)
                 setServerResponse(errorMessage)
+
             } else if (userResponse.status === 200) {
                 let serverMessage = await userResponse.text()
                 setServerResponse(serverMessage)
@@ -36,10 +37,11 @@ export default function useHandleUserInformation(api, redirect) {
                 // console.log(serverResponse.isAdmin)
                 // console.log(setServerResponse)
                 //
-                console.log(serverResponse)
-                console.log(serverMessage)
+                // console.log(serverResponse)
+                // console.log(serverMessage)
                 //
                 // if user "isAdmin" or not
+
                 if (serverMessage === "Signed in successfully" || serverMessage === "Registered successfully!") {
                     // console.log('1 - user path')
                     history.push(redirect)
