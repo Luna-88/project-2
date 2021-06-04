@@ -7,10 +7,11 @@ import spacer from '../assets/images/backgrounds/spacer.png'
 
 export default function FormPage({ isRegister = false }) {
     let api = '/api/register'
-    let redirect = '/home-page'
+    let redirect = '/sign-in'
     let textDisplay = 'Already have an account?'
     let link = 'sign-in'
     let label = 'Sign In'
+
     if (isRegister === true) {
         api = '/api/sign-in'
         redirect = '/home-page'
