@@ -147,6 +147,10 @@ button:disabled {
     padding: 0;
     width: 100vw;
     height: 100vh;
+
+    background-image: url('../src/assets/images/backgrounds/admin_bg.png');
+    background-position: safe center;
+    background-size: cover;
 }
 
 .in-menu-container {
@@ -660,6 +664,10 @@ Game Titlescreen */
 
     border: 0.0125rem solid rgba(162, 187, 145, 100);
     border-radius: 0.5rem;
+}
+
+.admin-table td {
+    background-color: white;
 }
 
 .admin-table td,

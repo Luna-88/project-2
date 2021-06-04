@@ -92,10 +92,14 @@ export default function PlayerMenu() {
                 <table>
                     <tbody>
                         <tr>
+                            <th colSpan="6">Your Games</th>
+                        </tr>
+                        <tr>
                             <th>Game ID</th>
                             <th>Player</th>
                             <th>Puzzles</th>
                             <th>Spaceship</th>
+                            <th colSpan="2"></th>
                         </tr>
                         {gameRows.map((row) => {
                             return (
@@ -129,7 +133,8 @@ export default function PlayerMenu() {
                                         >
                                             Load
                                         </button>
-                                        <button className="delete-alert"
+                                        <button
+                                            className="delete-alert"
                                             onClick={() =>
                                                 handleDeleteOnClick(row)
                                             }
@@ -145,8 +150,9 @@ export default function PlayerMenu() {
             </div>
 
             <div className="new-game-container">
-                <button onClick={() => handleNewGameOnClick()}>New Game</button><br />
-                <a href='/gaia'>Explore Gaia</a>
+                <button onClick={() => handleNewGameOnClick()}>New Game</button>
+                <br />
+                <a href="/gaia">Explore Gaia</a>
                 {serverResponse && (
                     <div className="server-response alert">
                         {serverResponse}
