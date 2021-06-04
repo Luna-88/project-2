@@ -1,6 +1,8 @@
 import AccountOption from '../components/AccountOption'
 import Form from '../components/Form'
-import title from '../assets/images/titles/title-heroside.png'
+import spacer from '../assets/images/backgrounds/spacer.png'
+
+// import title from '../assets/images/titles/title-heroside.png'
 // import world-bg from '../assets/images/titles/world_2.png'
 
 export default function FormPage({ isRegister = false }) {
@@ -18,10 +20,10 @@ export default function FormPage({ isRegister = false }) {
     }
 
     return (
-        <div className="fullscreen-container omit-login-image">
+        <div className="welcome-container omit-login-image">
             <section className="game-title">
                 <img
-                    src={title}
+                    src={spacer}
                     width={1920 * 0.55}
                     height={1080 * 0.55}
                     alt="img"
@@ -31,7 +33,11 @@ export default function FormPage({ isRegister = false }) {
                 <div className="form-section">
                     <Form api={api} redirect={redirect} />
                 </div>
-                <AccountOption link={link} label={label} textDisplay={textDisplay} />
+                <AccountOption
+                    link={link}
+                    label={label}
+                    textDisplay={textDisplay}
+                />
             </section>
         </div>
     )
