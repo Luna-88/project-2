@@ -64,7 +64,7 @@ inGameMenuRouter.get('/dialogue/wind', async (request, response) => {
     }
 })
 
-inGameMenuRouter.get('/save-game', async (request, response) => {
+inGameMenuRouter.put('/save-game', async (request, response) => {
     try {
         await saveGame(request, response)
     }

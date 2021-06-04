@@ -1,8 +1,21 @@
 import { useState, useEffect } from 'react'
+import useKeyPress from './useKeyPress'
+import useWalk from './useWalk'
 
 export default function useGameMenu() {
     let [serverResponse, setServerResponse] = useState()
     let [inventoryItem, setInventoryItem] = useState()
+
+    const { dir, step, walk, position, index } = useWalk(3)
+
+    useKeyPress((e) => {
+        let arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
+
+        if (arrowKeys.includes(e.key)) {
+            walk(e.key.replace('Arrow', '').toLowerCase())
+            e.preventDefault()
+        }
+    })
 
     useEffect(() => {
         async function getInventory() {
@@ -33,7 +46,7 @@ export default function useGameMenu() {
             }
         }
         getInventory()
-    }, [])
+    }, [index])
 
     return {
         serverResponse,
