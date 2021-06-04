@@ -141,7 +141,7 @@ export default function useHandleUserInformation() {
                 </div>
                 <div className="form-container">
                     Don't have an account?
-                    <a href='/register'>Register</a>
+                    <a href='/sign-in'>Register</a>
                 </div>
             </section>
         </div>

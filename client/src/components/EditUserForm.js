@@ -77,8 +77,7 @@ export default function EditUserForm() {
 
     return (
         <div className='fullscreen-container'>
-            {/* <form className="admin-table"> */}
-            <div className="admin-table">
+            <div className='admin-table'>
                 <table>
                     <tbody>
                         <tr>
@@ -129,40 +128,6 @@ export default function EditUserForm() {
                     </tbody>
                 </table>
             </div>
-            {/*  */}
-            {/* <h2>Player ID: {userId.slice(userId.length - 4, userId.length)}</h2><br />
-            <label htmlFor="username">Player:</label>
-            <input
-                className="user-input"
-                type="text"
-                id="username"
-                value={updatedUsername}
-                onChange={(event) => {
-                    setUpdatedUsername(event.target.value)
-                }}
-                placeholder={`${currentUsername}`}
-            />
-            <label htmlFor="isAdmin">Administrator Access:</label>
-            <input
-                className="user-input"
-                type="text"
-                id="isAdmin"
-                value={updatedIsAdmin}
-                onChange={(event) => {
-                    setUpdatedIsAdmin(event.target.value)
-                }}
-                placeholder={`${currentIsAdmin}`}
-            />
-            <div className="button-container">
-                <button
-                    disabled={userDataInvalid}
-                    onClick={handleSaveOnClick}
-                >
-                    Update
-                        </button>
-                {serverResponse && <div>{serverResponse}</div>}
-            </div> */}
-            {/* </form> */}
         </div>
     )
 }

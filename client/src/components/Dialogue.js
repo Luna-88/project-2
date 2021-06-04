@@ -31,7 +31,7 @@ export default function Dialogue() {
     }
 
     useEffect(() => {
-        getDialogue()
+        getDialogue('instructions')
     }, [])
 
     return (
