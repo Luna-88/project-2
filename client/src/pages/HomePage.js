@@ -14,10 +14,7 @@ export default function PlayerMenu() {
     }
 
     const handleNewGameOnClick = async () => {
-        handleClickWithFetch(
-            setServerResponse,
-            'POST',
-            '/api/player/new-game')
+        handleClickWithFetch(setServerResponse, 'POST', '/api/player/new-game')
         getGames()
     }
 
@@ -32,7 +29,10 @@ export default function PlayerMenu() {
             },
         }
         try {
-            let userResponse = await fetch('/api/player/load-game', requestOptions)
+            let userResponse = await fetch(
+                '/api/player/load-game',
+                requestOptions
+            )
 
             if (userResponse.status !== 200) {
                 let errorMessage = await userResponse.text()
@@ -61,7 +61,10 @@ export default function PlayerMenu() {
             },
         }
         try {
-            let userResponse = await fetch('/api/player/delete-game', requestOptions)
+            let userResponse = await fetch(
+                '/api/player/delete-game',
+                requestOptions
+            )
 
             if (userResponse.status !== 200) {
                 let errorMessage = await userResponse.text()
@@ -84,7 +87,7 @@ export default function PlayerMenu() {
     }, [])
 
     return (
-        <div>
+        <div className="player-menu-container ">
             <div className="admin-table">
                 <table>
                     <tbody>
@@ -97,18 +100,41 @@ export default function PlayerMenu() {
                         {gameRows.map((row) => {
                             return (
                                 <tr key={row._id}>
-                                    <td>{row._id.slice(row._id.length - 4, row._id.length)}</td>
-                                    <td>{row.username}</td>
-                                    <td>{getPuzzle((row.inventory.puzzles[0]), 0)}{getPuzzle((row.inventory.puzzles[1]), 1)}</td>
-                                    <td>{getSpaceshipPiece((row.inventory.spaceshipPieces[0]), 0)}{getSpaceshipPiece((row.inventory.spaceshipPieces[1]), 1)}</td>
                                     <td>
-                                        <button onClick={() => handleLoadOnClick(row)}>
+                                        {row._id.slice(
+                                            row._id.length - 4,
+                                            row._id.length
+                                        )}
+                                    </td>
+                                    <td>{row.username}</td>
+                                    <td>
+                                        {getPuzzle(row.inventory.puzzles[0], 0)}
+                                        {getPuzzle(row.inventory.puzzles[1], 1)}
+                                    </td>
+                                    <td>
+                                        {getSpaceshipPiece(
+                                            row.inventory.spaceshipPieces[0],
+                                            0
+                                        )}
+                                        {getSpaceshipPiece(
+                                            row.inventory.spaceshipPieces[1],
+                                            1
+                                        )}
+                                    </td>
+                                    <td>
+                                        <button
+                                            onClick={() =>
+                                                handleLoadOnClick(row)
+                                            }
+                                        >
                                             Load
                                         </button>
                                     </td>
                                     <td>
                                         <button
-                                            onClick={() => handleDeleteOnClick(row)}
+                                            onClick={() =>
+                                                handleDeleteOnClick(row)
+                                            }
                                         >
                                             Delete
                                         </button>
@@ -120,12 +146,13 @@ export default function PlayerMenu() {
                 </table>
             </div>
 
-
-            <div className='player-menu-container'>
-                <button
-                    onClick={() => handleNewGameOnClick()}
-                >New Game</button>
-                {serverResponse && <div className="server-response alert">{serverResponse}</div>}
+            <div className="new-game-container">
+                <button onClick={() => handleNewGameOnClick()}>New Game</button>
+                {serverResponse && (
+                    <div className="server-response alert">
+                        {serverResponse}
+                    </div>
+                )}
             </div>
         </div>
     )

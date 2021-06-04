@@ -9,13 +9,15 @@ function deleteRecord(record) {
         case undefined: // delete game record
             console.log('0: Games Record ', record.isAdmin)
             console.log(record)
-            return ('Deleted game record: ' + record._id)
+            return 'Deleted game record: ' + record._id
         case false: // delete user record
             console.log('1: User Record ', record.isAdmin)
-            return (record.username + ' user record was deleted')
+            return record.username + ' user record was deleted'
         case true: // admin user flag
             console.log('2: User Record', record.isAdmin)
-            return (record.username + ' is an administrator and cannot be deleted')
+            return (
+                record.username + ' is an administrator and cannot be deleted'
+            )
         default:
             return null
     }
@@ -52,7 +54,10 @@ export default function Admin() {
             },
         }
         try {
-            let userResponse = await fetch('/api/admin/delete-user', requestOptions)
+            let userResponse = await fetch(
+                '/api/admin/delete-user',
+                requestOptions
+            )
 
             if (userResponse.status !== 200) {
                 let errorMessage = await userResponse.text()
@@ -77,7 +82,10 @@ export default function Admin() {
             method: 'PUT',
         }
         try {
-            let userResponse = await fetch('/api/admin/user/' + userId, requestOptions)
+            let userResponse = await fetch(
+                '/api/admin/user/' + userId,
+                requestOptions
+            )
 
             if (userResponse.status !== 200) {
                 let errorMessage = await userResponse.text()
@@ -106,7 +114,10 @@ export default function Admin() {
             },
         }
         try {
-            let userResponse = await fetch('/api/admin/delete-game', requestOptions)
+            let userResponse = await fetch(
+                '/api/admin/delete-game',
+                requestOptions
+            )
 
             if (userResponse.status !== 200) {
                 let errorMessage = await userResponse.text()
@@ -131,7 +142,10 @@ export default function Admin() {
             method: 'PUT',
         }
         try {
-            let userResponse = await fetch('/api/admin/game/' + gameId, requestOptions)
+            let userResponse = await fetch(
+                '/api/admin/game/' + gameId,
+                requestOptions
+            )
 
             if (userResponse.status !== 200) {
                 let errorMessage = await userResponse.text()
@@ -141,7 +155,6 @@ export default function Admin() {
                 let serverMessage = await userResponse.text()
                 setServerResponse(serverMessage)
                 history.push('/edit/game/' + gameId)
-
             } else {
                 setServerResponse(undefined)
             }
@@ -156,7 +169,7 @@ export default function Admin() {
     }, [])
 
     return (
-        <div className='admin-container'>
+        <div className="admin-container">
             <br />
             <div className="admin-table">
                 <table>
@@ -169,15 +182,25 @@ export default function Admin() {
                             return (
                                 <tr key={row._id}>
                                     <td>{row.username}</td>
-                                    <td>{row._id.slice(row._id.length - 4, row._id.length)}</td>
+                                    <td>
+                                        {row._id.slice(
+                                            row._id.length - 4,
+                                            row._id.length
+                                        )}
+                                    </td>
                                     <td>
                                         <button
-                                            onClick={() => handleDeleteUserOnClick(row)}
+                                            className="delete-alert"
+                                            onClick={() =>
+                                                handleDeleteUserOnClick(row)
+                                            }
                                         >
                                             Delete
                                         </button>
                                         <button
-                                            onClick={() => handleEditUserOnClick(row)}
+                                            onClick={() =>
+                                                handleEditUserOnClick(row)
+                                            }
                                         >
                                             Edit
                                         </button>
@@ -203,18 +226,45 @@ export default function Admin() {
                             return (
                                 <tr key={row._id}>
                                     <td>{row.username}</td>
-                                    <td>{row.userId.slice(row.userId.length - 4, row.userId.length)}</td>
-                                    <td>{row._id.slice(row._id.length - 4, row._id.length)}</td>
-                                    <td>{getPuzzle((row.inventory.puzzles[0]), 0)}{getPuzzle((row.inventory.puzzles[1]), 1)}</td>
-                                    <td>{getSpaceshipPiece((row.inventory.spaceshipPieces[0]), 0)}{getSpaceshipPiece((row.inventory.spaceshipPieces[1]), 1)}</td>
+                                    <td>
+                                        {row.userId.slice(
+                                            row.userId.length - 4,
+                                            row.userId.length
+                                        )}
+                                    </td>
+                                    <td>
+                                        {row._id.slice(
+                                            row._id.length - 4,
+                                            row._id.length
+                                        )}
+                                    </td>
+                                    <td>
+                                        {getPuzzle(row.inventory.puzzles[0], 0)}
+                                        {getPuzzle(row.inventory.puzzles[1], 1)}
+                                    </td>
+                                    <td>
+                                        {getSpaceshipPiece(
+                                            row.inventory.spaceshipPieces[0],
+                                            0
+                                        )}
+                                        {getSpaceshipPiece(
+                                            row.inventory.spaceshipPieces[1],
+                                            1
+                                        )}
+                                    </td>
                                     <td>
                                         <button
-                                            onClick={() => handleDeleteGameOnClick(row)}
+                                            className="delete-alert"
+                                            onClick={() =>
+                                                handleDeleteGameOnClick(row)
+                                            }
                                         >
                                             Delete
                                         </button>
                                         <button
-                                            onClick={() => handleEditGameOnClick(row)}
+                                            onClick={() =>
+                                                handleEditGameOnClick(row)
+                                            }
                                         >
                                             Edit
                                         </button>
@@ -230,14 +280,14 @@ export default function Admin() {
                 <table>
                     <tbody>
                         <tr>
-                            <td>
-                                {message}
-                            </td>
+                            <td>{message}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            {serverResponse && <div className="server-response alert">{serverResponse}</div>}
+            {serverResponse && (
+                <div className="server-response alert">{serverResponse}</div>
+            )}
         </div>
     )
 }
