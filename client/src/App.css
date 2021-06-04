@@ -470,7 +470,9 @@ FORM POSITIONING */
 .entry-title {
     font-size: 2rem;
     padding: 0.5rem;
-    color: var(--large-header);
+    padding-top: 10rem;
+    /* color: var(--large-header); */
+    color: white;
 }
 
 .form-container {
