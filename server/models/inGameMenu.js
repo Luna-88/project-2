@@ -11,12 +11,6 @@ function accessInventory(energy, request, response) {
         return response.status(404).send('Load a game first')
     } else {
         if (energy === 'solar') {
-<<<<<<< HEAD
-            // console.log('solar')
-        } else if (energy === 'wind') {
-            // console.log('wind')
-        } else if (energy==='display') {
-=======
             const token = jwt.sign(
                 JSON.stringify({
                     gameId: loadedGame.gameId,
@@ -39,7 +33,6 @@ function accessInventory(energy, request, response) {
                 config.secret)
             response.cookie('loadedGame', token, { httpOnly: true, maxAge: 3600000, overwrite: true })
         } else if (energy === 'display') {
->>>>>>> c43b7fb164b622dad481e62ad1cdce1ed6e0b23f
             return loadedGame
         }
     }
