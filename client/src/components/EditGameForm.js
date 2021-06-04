@@ -87,66 +87,91 @@ export default function EditUserForm() {
             !updatedPiece2)
 
     return (
-        <div>
-            <form className="form-container">
-                <h2>Game ID: {gameId.slice(gameId.length - 4, gameId.length)}</h2><br />
-                <h3>Puzzles</h3><br />
-                <label htmlFor="solar">Solar:</label>
-                <input
-                    className="user-input"
-                    type="text"
-                    id="solar"
-                    value={updatedSolar}
-                    onChange={(event) => {
-                        setUpdatedSolar(event.target.value)
-                    }}
-                    placeholder={`${currentSolar}`}
-                />
-                <label htmlFor="wind">Wind:</label>
-                <input
-                    className="user-input"
-                    type="text"
-                    id="wind"
-                    value={updatedWind}
-                    onChange={(event) => {
-                        setUpdatedWind(event.target.value)
-                    }}
-                    placeholder={`${currentWind}`}
-                />
-                <h3>Spaceship Pieces</h3><br />
-                <label htmlFor="piece1">Piece 1:</label>
-                <input
-                    className="user-input"
-                    type="text"
-                    id="piece1"
-                    value={updatedPiece1}
-                    onChange={(event) => {
-                        setUpdatedPiece1(event.target.value)
-                    }}
-                    placeholder={`${currentPiece1}`}
-                />
-                <label htmlFor="piece2">Piece 2:</label>
-                <input
-                    className="user-input"
-                    type="text"
-                    id="piece2"
-                    value={updatedPiece2}
-                    onChange={(event) => {
-                        setUpdatedPiece2(event.target.value)
-                    }}
-                    placeholder={`${currentPiece2}`}
-                />
-
-                <div className="button-container">
-                    <button
-                        disabled={userDataInvalid}
-                        onClick={handleSaveOnClick}
-                    >
-                        Update
-                        </button>
-                    {serverResponse && <div>{serverResponse}</div>}
-                </div>
-            </form>
+        <div className='fullscreen-container'>
+            <div className='admin-table'>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th colspan='4'>Game ID: {gameId.slice(gameId.length - 4, gameId.length)}</th>
+                        </tr>
+                        <tr>
+                            <th colspan='2'>Puzzles</th>
+                            <th colspan='2'>Spaceship Pieces</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label htmlFor="solar">Solar:</label>
+                                </td>
+                                <td>
+                                <input
+                                    className="user-input"
+                                    type="text"
+                                    id="solar"
+                                    value={updatedSolar}
+                                    onChange={(event) => {
+                                        setUpdatedSolar(event.target.value)
+                                    }}
+                                    placeholder={`${currentSolar}`}
+                                />
+                            </td>
+                            <td><label htmlFor="piece1">Piece 1:</label></td>
+                            <td>
+                                <input
+                                    className="user-input"
+                                    type="text"
+                                    id="piece1"
+                                    value={updatedPiece1}
+                                    onChange={(event) => {
+                                        setUpdatedPiece1(event.target.value)
+                                    }}
+                                    placeholder={`${currentPiece1}`}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label htmlFor="wind">Wind:</label></td>
+                            <td>
+                                <input
+                                    className="user-input"
+                                    type="text"
+                                    id="wind"
+                                    value={updatedWind}
+                                    onChange={(event) => {
+                                        setUpdatedWind(event.target.value)
+                                    }}
+                                    placeholder={`${currentWind}`}
+                                />
+                            </td>
+                            <td><label htmlFor="piece2">Piece 2:</label></td>
+                            <td>
+                                <input
+                                    className="user-input"
+                                    type="text"
+                                    id="piece2"
+                                    value={updatedPiece2}
+                                    onChange={(event) => {
+                                        setUpdatedPiece2(event.target.value)
+                                    }}
+                                    placeholder={`${currentPiece2}`}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id='edit-submit' colspan='4'>
+                                <div className="edit-button-container">
+                                    <button
+                                        disabled={userDataInvalid}
+                                        onClick={handleSaveOnClick}
+                                    >
+                                        Update
+                                        </button>
+                                    {serverResponse && <div>{serverResponse}</div>}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

@@ -573,6 +573,17 @@ Game Titlescreen */
 
 } */
 
+.admin-container {
+    display: grid;
+    overflow-y: scroll;
+    justify-items: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
 .admin-table {
     display: flex;
     justify-content: center;
@@ -602,4 +613,16 @@ Game Titlescreen */
 
 .admin-table tr:hover {
     background-color: rgb(245, 252, 239);
+}
+
+#edit-submit {
+    text-align: center;
+    align-content: center;
+    margin: auto;
+}
+
+.edit-button-container {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    align-items: center;
 }

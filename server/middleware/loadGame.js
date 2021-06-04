@@ -25,7 +25,7 @@ async function loadGame(request, response, next) {
 
                     const token = jwt.sign(
                         JSON.stringify({
-                            _id: gameId,
+                            gameId: gameId,
                             userId: loadGame[0].userId,
                             username: loadGame[0].username,
                             spaceshipPieces: loadGame[0].inventory.spaceshipPieces,
