@@ -138,7 +138,17 @@ button:disabled {
     width: max-content;
 } */
 
-.player-menu-container,
+.player-menu-container {
+    display: grid;
+    overflow-y: scroll;
+    justify-items: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
 .in-menu-container {
     display: flex;
     justify-content: center;
@@ -146,6 +156,17 @@ button:disabled {
     width: max-content;
     min-width: 10rem;
     max-width: 10rem;
+}
+
+.new-game-container {
+    /* justify-self: auto; */
+    /* justify-content: center; */
+    text-align: center;
+    min-width: 10rem;
+    margin: auto;
+    /* width: 50%; */
+    /* border: 3px solid green; */
+    /* padding: 10px; */
 }
 
 /* 
@@ -169,6 +190,10 @@ NAV MENUS */
     padding: 0.5rem;
     margin: 0.25rem;
 }
+/* 
+.yellow {
+    background-color: goldenrod !important;
+} */
 
 /* 
 *******
@@ -606,10 +631,34 @@ Game Titlescreen */
     text-align: center;
 }
 
-.admin-table th {
+/* .admin-table th {
     background-color: rgb(213, 238, 195);
     color: rgb(41, 47, 37);
     padding: 10px 20px 2px 20px;
+    border-radius: 0.5rem;
+} */
+
+.admin-table th {
+    background-color: rgba(245, 251, 240, 100);
+    padding: 1rem 0.625rem 0.625rem 1rem;
+    border: 0.0125rem solid rgba(162, 187, 145, 100);
+    border-radius: 0.5rem;
+}
+
+.delete-alert:hover {
+    background-color: tomato;
+}
+
+.alert {
+    background-color: rgba(245, 251, 240, 100);
+    padding: 1rem;
+
+    /* to be prettied: */
+    border: 0.0625rem solid darkgrey;
+    margin: 0.125rem;
+    margin-top: 1.5rem;
+
+    border: 0.0125rem solid rgba(162, 187, 145, 100);
     border-radius: 0.5rem;
 }
 
