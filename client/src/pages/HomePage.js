@@ -129,8 +129,6 @@ export default function PlayerMenu() {
                                         >
                                             Load
                                         </button>
-                                    </td>
-                                    <td>
                                         <button
                                             onClick={() =>
                                                 handleDeleteOnClick(row)
