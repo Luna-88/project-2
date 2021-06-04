@@ -156,7 +156,7 @@ export default function Admin() {
     }, [])
 
     return (
-        <div>
+        <div className='admin-container'>
             <br />
             <div className="admin-table">
                 <table>

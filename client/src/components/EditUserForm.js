@@ -76,42 +76,58 @@ export default function EditUserForm() {
         !updatedIsAdmin
 
     return (
-        <div>
-            <form className="form-container">
-                <h2>Player ID: {userId.slice(userId.length - 4, userId.length)}</h2><br />
-                <label htmlFor="username">Player:</label>
-                <input
-                    className="user-input"
-                    type="text"
-                    id="username"
-                    value={updatedUsername}
-                    onChange={(event) => {
-                        setUpdatedUsername(event.target.value)
-                    }}
-                    placeholder={`${currentUsername}`}
-                />
-                <label htmlFor="isAdmin">Administrator Access:</label>
-                <input
-                    className="user-input"
-                    type="text"
-                    id="isAdmin"
-                    value={updatedIsAdmin}
-                    onChange={(event) => {
-                        setUpdatedIsAdmin(event.target.value)
-                    }}
-                    placeholder={`${currentIsAdmin}`}
-                />
-
-                <div className="button-container">
-                    <button
-                        disabled={userDataInvalid}
-                        onClick={handleSaveOnClick}
-                    >
-                        Update
-                        </button>
-                    {serverResponse && <div>{serverResponse}</div>}
-                </div>
-            </form>
+        <div className='fullscreen-container'>
+            <div className='admin-table'>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Player ID: {userId.slice(userId.length - 4, userId.length)}</th>
+                            <td>
+                                <input
+                                    className="user-input"
+                                    type="text"
+                                    id="username"
+                                    value={updatedUsername}
+                                    onChange={(event) => {
+                                        setUpdatedUsername(event.target.value)
+                                    }}
+                                    placeholder={`${currentUsername}`}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Administrator Access: </th>
+                            <td>
+                                <input
+                                    className="user-input"
+                                    type="text"
+                                    id="isAdmin"
+                                    value={updatedIsAdmin}
+                                    onChange={(event) => {
+                                        setUpdatedIsAdmin(event.target.value)
+                                    }}
+                                    placeholder={`${currentIsAdmin}`}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id='edit-submit' colspan='2'>
+                                <div className="edit-button-container">
+                                    <center>
+                                        <button
+                                            disabled={userDataInvalid}
+                                            onClick={handleSaveOnClick}
+                                        >
+                                            Update
+                                        </button>
+                                        {serverResponse && <div>{serverResponse}</div>}
+                                    </center>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }
