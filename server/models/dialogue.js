@@ -3,6 +3,7 @@ require('./db')
 
 const dialogueSchema = new mongoose.Schema({
     instructions: { type: String },
+    winning: { type: String },
     solar: { type: Array },
     wind: { type: Array },
 })

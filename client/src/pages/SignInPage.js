@@ -35,9 +35,9 @@ export default function useHandleUserInformation() {
                 let serverMessage = await userResponse.text()
                 setServerResponse(serverMessage)
                 //
-                // console.log(setServerResponse)
-                // console.log(serverResponse)
-                // console.log(serverMessage)
+                console.log(setServerResponse)
+                console.log(serverResponse)
+                console.log(serverMessage)
                 //
                 if (serverResponse === 'Signed in successfully') {
                     console.log('user')
