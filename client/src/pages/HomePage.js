@@ -151,8 +151,13 @@ export default function PlayerMenu() {
 
             <div className="new-game-container">
                 <button onClick={() => handleNewGameOnClick()}>New Game</button>
-                <br />
-                <a href="/gaia">Explore Gaia</a>
+                {/* <br /> */}
+                <form action="/gaia">
+                    <button type="/gaia" value="Explore Gaia">
+                        Explore Gaia
+                    </button>
+                </form>
+                {/* <a href="/gaia">Explore Gaia</a> */}
                 {serverResponse && (
                     <div className="server-response alert">
                         {serverResponse}
