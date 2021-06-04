@@ -84,7 +84,7 @@ export default function InGameMenu() {
                 onClick={() =>
                     handleClickWithFetch(
                         setServerResponse,
-                        'GET',
+                        'PUT',
                         '/api/in-game-menu/save-game'
                     )
                 }
