@@ -64,6 +64,16 @@ inGameMenuRouter.get('/dialogue/wind', async (request, response) => {
     }
 })
 
+inGameMenuRouter.get('/dialogue/winning', async (request, response) => {
+    try {
+        displayDialogue('winning', response)
+    }
+    catch (error) {
+        console.log(error)
+        response.status(500).send('There was a problem with dialogue')
+    }
+})
+
 inGameMenuRouter.put('/save-game', async (request, response) => {
     try {
         await saveGame(request, response)

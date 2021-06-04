@@ -34,16 +34,13 @@ export default function Dialogue() {
         getDialogue('solar')
         getInventory('solar')
     }
-    
-    if (index === 39 || index === 38 || offsetIndex === 39 || offsetIndex === 38) {
-    // if (index === 78 || offsetIndex === 78) {
-        getDialogue('winning')
-        getInventory('winning')
-    }
 
     if (index === 29 || offsetIndex === 29) {
         getDialogue('wind')
-        getInventory('wind')
+    }
+
+    if (index === 18 || index === 19 || offsetIndex === 18 || offsetIndex === 19) {
+        getDialogue('winning')        
     }
 
     useEffect(() => {
