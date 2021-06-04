@@ -129,7 +129,7 @@ export default function PlayerMenu() {
                                         >
                                             Load
                                         </button>
-                                        <button
+                                        <button className="delete-alert"
                                             onClick={() =>
                                                 handleDeleteOnClick(row)
                                             }

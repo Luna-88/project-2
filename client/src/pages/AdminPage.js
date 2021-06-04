@@ -284,10 +284,14 @@ export default function Admin() {
                         </tr>
                     </tbody>
                 </table>
+            </div >
+            <div className="new-game-container">
+                <a href='/'>Exit</a>
+                {serverResponse && (
+                    <div className="server-response alert">{serverResponse}</div>
+
+                )}
             </div>
-            {serverResponse && (
-                <div className="server-response alert">{serverResponse}</div>
-            )}
         </div>
     )
 }
