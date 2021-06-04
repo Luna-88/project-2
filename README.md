@@ -2,7 +2,7 @@
 
 <img src="https://github.com/Luna-88/project-2/blob/gameComponent/client/src/assets/images/backgrounds/github_bg.png" width="600">
 
-An in-class proof-of-concept, skills-building exercise to construct the framework for a text-based game using `node`, `Express JS`, and additional exploratory learning in `mongoDB Atlas`, the `pug` front-end renderer and other technologies.
+An in-class proof-of-concept, skills-building exercise to construct the framework for a text-based game using `node`, `Express JS`, and additional exploratory learning in `mongoDB Atlas`, and other technologies.
 
 ### Requirements
 
@@ -21,7 +21,7 @@ Your server will now be running at [http://localhost:3030](http://localhost:3030
 
 ## Team Members
 
-Andy
-Terence
-Andreina  
-Jason Salazar
+-   Andy
+-   Terence
+-   Andreina
+-   Jason Salazar
