@@ -241,9 +241,9 @@ PRE-EXISTING MENUS */
 TABLES */
 /* VDR */
 
-.little-bobby-tables {
-    /* TK  */
-}
+/* .little-bobby-tables {
+    TK  
+} */
 
 /* 
 *******
@@ -283,10 +283,10 @@ GAME WORLD POSITIONING */
     /* background-color: mediumturquoise; */
 }
 
-.game-child {
+/* .game-child {
     /* nothing goes here yet */
-    /* background-color: magenta; */
-}
+/* background-color: magenta; */
+/* } */
 
 .item-1 {
     grid-row: 1/2;
@@ -388,9 +388,9 @@ GAME WORLD POSITIONING */
     line-height: 1.5rem;
 }
 
-.dialog-padding: {
+.dialog-padding {
     padding-left: 100px !important;
-    background-color: red !important;
+    /* background-color: red !important; */
 }
 
 /* 
