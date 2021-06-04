@@ -29,7 +29,6 @@ export default function Dialogue() {
         let data = await response.json()
     }
 
-
     if (index === 201 || offsetIndex === 201) {
         getDialogue('solar')
         getInventory('solar')
@@ -39,18 +38,23 @@ export default function Dialogue() {
         getDialogue('wind')
     }
 
-    if (index === 18 || index === 19 || offsetIndex === 18 || offsetIndex === 19) {
-        getDialogue('winning')        
+    if (
+        index === 18 ||
+        index === 19 ||
+        offsetIndex === 18 ||
+        offsetIndex === 19
+    ) {
+        getDialogue('winning')
     }
 
     useEffect(() => {
         getDialogue('instructions')
-        return() => getDialogue('')
+        return () => getDialogue('')
     }, [])
 
     return (
         <div className="game-child item-2 dialog-container">
-            <div className="dialog-overlay">
+            <div className="dialog-overlay animate-hover">
                 <img src={wallaceBlink} width="200" height="200"></img>
             </div>
             <div>
