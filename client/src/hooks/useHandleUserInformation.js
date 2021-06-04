@@ -43,10 +43,10 @@ export default function useHandleUserInformation(api, redirect) {
                 // if user "isAdmin" or not
 
                 if (serverMessage === "Signed in successfully" || serverMessage === "Registered successfully!") {
-                    console.log('1 - user path')
+                    // console.log('1 - user path')
                     history.push(redirect)
                 } else {
-                    console.log('2 - admin path')
+                    // console.log('2 - admin path')
                     history.push('/admin')
                 }
             }

@@ -100,7 +100,7 @@ export default function useWalk(maxSteps) {
         position.y + modifier[dir].y <= 640 - constants.spriteSize.height
 
 
-        console.log("index:", index, 'item:', mapMatrix[Math.floor(index)], 'Offset Index:', offsetIndex)
+        // console.log("index:", index, 'item:', mapMatrix[Math.floor(index)], 'Offset Index:', offsetIndex)
         
         if ( dir === 'left') {
             setOffsetIndex((Math.floor((position.y + 31)/ constants.sizes.tileHeight) * constants.sizes.row) + (Math.floor(((position.x) / constants.sizes.tileWidth))))
@@ -121,23 +121,23 @@ export default function useWalk(maxSteps) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 5  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 5) {
                         modifier[dir].x = 0
-                        console.log('right barrier')
+                        // console.log('right barrier')
                         // this fucking works! 
                     }
                     if( dir === 'left' && mapMatrix[Math.floor(index)] == 5 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 5) ) {
                         modifier[dir].x = 0
-                        console.log('left barrier')
+                        // console.log('left barrier')
                         // this fucking works! 
                     }
                     if( dir === 'up' && mapMatrix[Math.floor(index)] == 5 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 5 ) {
                         modifier[dir].y = 0
-                        console.log('up barrier')
+                        // console.log('up barrier')
                         // this fucking works! 
                     }
 
                     if( dir === 'down' && mapMatrix[Math.floor(index)] == 5 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 5) ) {
                         modifier[dir].y = 0
-                        console.log('down barrier')
+                        // console.log('down barrier')
                         // this fucking works! 
                     }
                 }   
@@ -149,23 +149,23 @@ export default function useWalk(maxSteps) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 4  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 4) {
                         modifier[dir].x = 0
-                        console.log('right barrier')
+                        // console.log('right barrier')
                         // this fucking works! 
                     }
                     if( dir === 'left' && mapMatrix[Math.floor(index)] == 4 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 4) ) {
                         modifier[dir].x = 0
-                        console.log('left barrier')
+                        // console.log('left barrier')
                         // this fucking works! 
                     }
                     if( dir === 'up' && mapMatrix[Math.floor(index)] == 4 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 4 ) {
                         modifier[dir].y = 0
-                        console.log('up barrier')
+                        // console.log('up barrier')
                         // this fucking works! 
                     }
 
                     if( dir === 'down' && mapMatrix[Math.floor(index)] == 4 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 4) ) {
                         modifier[dir].y = 0
-                        console.log('down barrier')
+                        // console.log('down barrier')
                         // this fucking works! 
                     }
                 }   
@@ -177,23 +177,23 @@ export default function useWalk(maxSteps) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 16  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 16) {
                         modifier[dir].x = 0
-                        console.log('right barrier')
+                        // console.log('right barrier')
                         // this fucking works! 
                     }
                     if( dir === 'left' && mapMatrix[Math.floor(index)] == 16 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 16) ) {
                         modifier[dir].x = 0
-                        console.log('left barrier')
+                        // console.log('left barrier')
                         // this fucking works! 
                     }
                     if( dir === 'up' && mapMatrix[Math.floor(index)] == 16 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 16 ) {
                         modifier[dir].y = 0
-                        console.log('up barrier')
+                        // console.log('up barrier')
                         // this fucking works! 
                     }
 
                     if( dir === 'down' && mapMatrix[Math.floor(index)] == 16 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 16) ) {
                         modifier[dir].y = 0
-                        console.log('down barrier')
+                        // console.log('down barrier')
                         // this fucking works! 
                     }
                 }   
@@ -205,23 +205,23 @@ export default function useWalk(maxSteps) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 1  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 1) {
                         modifier[dir].x = 0
-                        console.log('right barrier')
+                        // console.log('right barrier')
                         // this fucking works! 
                     }
                     if( dir === 'left' && mapMatrix[Math.floor(index)] == 1 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 1) ) {
                         modifier[dir].x = 0
-                        console.log('left barrier')
+                        // console.log('left barrier')
                         // this fucking works! 
                     }
                     if( dir === 'up' && mapMatrix[Math.floor(index)] == 1 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 1 ) {
                         modifier[dir].y = 0
-                        console.log('up barrier')
+                        // console.log('up barrier')
                         // this fucking works! 
                     }
 
                     if( dir === 'down' && mapMatrix[Math.floor(index)] == 1 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 1) ) {
                         modifier[dir].y = 0
-                        console.log('down barrier')
+                        // console.log('down barrier')
                         // this fucking works! 
                     }
                 }   
@@ -233,23 +233,23 @@ export default function useWalk(maxSteps) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 2  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 2) {
                         modifier[dir].x = 0
-                        console.log('right barrier')
+                        // console.log('right barrier')
                         // this fucking works! 
                     }
                     if( dir === 'left' && mapMatrix[Math.floor(index)] == 2 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 2) ) {
                         modifier[dir].x = 0
-                        console.log('left barrier')
+                        // console.log('left barrier')
                         // this fucking works! 
                     }
                     if( dir === 'up' && mapMatrix[Math.floor(index)] == 2 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 2 ) {
                         modifier[dir].y = 0
-                        console.log('up barrier')
+                        // console.log('up barrier')
                         // this fucking works! 
                     }
 
                     if( dir === 'down' && mapMatrix[Math.floor(index)] == 2 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 2) ) {
                         modifier[dir].y = 0
-                        console.log('down barrier')
+                        // console.log('down barrier')
                         // this fucking works! 
                     }
                 }   
@@ -261,23 +261,23 @@ export default function useWalk(maxSteps) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 27  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 27) {
                         modifier[dir].x = 0
-                        console.log('right barrier')
+                        // console.log('right barrier')
                         // this fucking works! 
                     }
                     if( dir === 'left' && mapMatrix[Math.floor(index)] == 27 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 27) ) {
                         modifier[dir].x = 0
-                        console.log('left barrier')
+                        // console.log('left barrier')
                         // this fucking works! 
                     }
                     if( dir === 'up' && mapMatrix[Math.floor(index)] == 27 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 27 ) {
                         modifier[dir].y = 0
-                        console.log('up barrier')
+                        // console.log('up barrier')
                         // this fucking works! 
                     }
 
                     if( dir === 'down' && mapMatrix[Math.floor(index)] == 27 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 27) ) {
                         modifier[dir].y = 0
-                        console.log('down barrier')
+                        // console.log('down barrier')
                         // this fucking works! 
                     }
                 }   
@@ -288,23 +288,23 @@ export default function useWalk(maxSteps) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 29  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 29) {
                         modifier[dir].x = 0
-                        console.log('right barrier')
+                        // console.log('right barrier')
                         // this fucking works! 
                     }
                     if( dir === 'left' && mapMatrix[Math.floor(index)] == 29 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 29) ) {
                         modifier[dir].x = 0
-                        console.log('left barrier')
+                        // console.log('left barrier')
                         // this fucking works! 
                     }
                     if( dir === 'up' && mapMatrix[Math.floor(index)] == 29 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 29 ) {
                         modifier[dir].y = 0
-                        console.log('up barrier')
+                        // console.log('up barrier')
                         // this fucking works! 
                     }
 
                     if( dir === 'down' && mapMatrix[Math.floor(index)] == 29 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 29) ) {
                         modifier[dir].y = 0
-                        console.log('down barrier')
+                        // console.log('down barrier')
                         // this fucking works! 
                     }
                 }   
@@ -315,23 +315,23 @@ export default function useWalk(maxSteps) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 28  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 28) {
                         modifier[dir].x = 0
-                        console.log('right barrier')
+                        // console.log('right barrier')
                         // this fucking works! 
                     }
                     if( dir === 'left' && mapMatrix[Math.floor(index)] == 28 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 28) ) {
                         modifier[dir].x = 0
-                        console.log('left barrier')
+                        // console.log('left barrier')
                         // this fucking works! 
                     }
                     if( dir === 'up' && mapMatrix[Math.floor(index)] == 28 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 28 ) {
                         modifier[dir].y = 0
-                        console.log('up barrier')
+                        // console.log('up barrier')
                         // this fucking works! 
                     }
 
                     if( dir === 'down' && mapMatrix[Math.floor(index)] == 28 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 28) ) {
                         modifier[dir].y = 0
-                        console.log('down barrier')
+                        // console.log('down barrier')
                         // this fucking works! 
                     }
                 }   
@@ -342,23 +342,23 @@ export default function useWalk(maxSteps) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 41  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 41) {
                         modifier[dir].x = 0
-                        console.log('right barrier')
+                        // console.log('right barrier')
                         // this fucking works! 
                     }
                     if( dir === 'left' && mapMatrix[Math.floor(index)] == 41 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 41) ) {
                         modifier[dir].x = 0
-                        console.log('left barrier')
+                        // console.log('left barrier')
                         // this fucking works! 
                     }
                     if( dir === 'up' && mapMatrix[Math.floor(index)] == 41 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 41 ) {
                         modifier[dir].y = 0
-                        console.log('up barrier')
+                        // console.log('up barrier')
                         // this fucking works! 
                     }
 
                     if( dir === 'down' && mapMatrix[Math.floor(index)] == 41 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 41) ) {
                         modifier[dir].y = 0
-                        console.log('down barrier')
+                        // console.log('down barrier')
                         // this fucking works! 
                     }
                 }   
@@ -369,23 +369,23 @@ export default function useWalk(maxSteps) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 39  || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 39) {
                         modifier[dir].x = 0
-                        console.log('right barrier')
+                        // console.log('right barrier')
                         // this fucking works! 
                     }
                     if( dir === 'left' && mapMatrix[Math.floor(index)] == 39 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 39) ) {
                         modifier[dir].x = 0
-                        console.log('left barrier')
+                        // console.log('left barrier')
                         // this fucking works! 
                     }
                     if( dir === 'up' && mapMatrix[Math.floor(index)] == 39 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 39 ) {
                         modifier[dir].y = 0
-                        console.log('up barrier')
+                        // console.log('up barrier')
                         // this fucking works! 
                     }
 
                     if( dir === 'down' && mapMatrix[Math.floor(index)] == 39 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 39) ) {
                         modifier[dir].y = 0
-                        console.log('down barrier')
+                        // console.log('down barrier')
                         // this fucking works! 
                     }
                 }   
@@ -396,23 +396,23 @@ export default function useWalk(maxSteps) {
                 if (Math.floor(index) == Math.floor(i) || Math.floor(offsetIndex) == Math.floor(i)){                        
                     if( dir === 'right' && mapMatrix[Math.floor(index)] == 40 || dir === 'right' && mapMatrix[Math.floor(offsetIndex)] == 40) {
                         modifier[dir].x = 0
-                        console.log('right barrier')
+                        // console.log('right barrier')
                         // this fucking works! 
                     }
                     if( dir === 'left' && mapMatrix[Math.floor(index)] == 40 ||  (dir === 'left' && mapMatrix[Math.floor(offsetIndex)] == 40) ) {
                         modifier[dir].x = 0
-                        console.log('left barrier')
+                        // console.log('left barrier')
                         // this fucking works! 
                     }
                     if( dir === 'up' && mapMatrix[Math.floor(index)] == 40 || dir === 'up' && mapMatrix[Math.floor(offsetIndex)] == 40 ) {
                         modifier[dir].y = 0
-                        console.log('up barrier')
+                        // console.log('up barrier')
                         // this fucking works! 
                     }
 
                     if( dir === 'down' && mapMatrix[Math.floor(index)] == 40 || (dir === 'down' && mapMatrix[Math.floor(offsetIndex)] == 40) ) {
                         modifier[dir].y = 0
-                        console.log('down barrier')
+                        // console.log('down barrier')
                         // this fucking works! 
                     }
                 }   

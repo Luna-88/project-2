@@ -21,7 +21,7 @@ async function signInUser(request, response, next) {
             const admin = user.isAdmin
             if (!admin) {
                 // if (!user.isAdmin) {
-                console.log('Signing in at midnight')
+                // console.log('Signing in at midnight')
                 const token = jwt.sign({ userId: user._id, username: user.username, isAdmin: admin }, config.secret, {
                     expiresIn: 86400,
                 }) //24h

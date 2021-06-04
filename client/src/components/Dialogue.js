@@ -7,7 +7,7 @@ import wallaceBlink from '../assets/images/objects/wallace/wallace-blink.gif'
 
 export default function Dialogue() {
     const [dialogue, setDialogue] = useState()
-    const { dir, step, walk, position, index } = useWalk(3)
+    const { dir, step, walk, position, index, offsetIndex } = useWalk(3)
 
     useKeyPress((e) => {
         let arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
@@ -30,18 +30,25 @@ export default function Dialogue() {
     }
 
 
-    if (index === 201) {
+    if (index === 201 || offsetIndex === 201) {
         getDialogue('solar')
         getInventory('solar')
     }
+    
+    if (index === 39 || index === 38 || offsetIndex === 39 || offsetIndex === 38) {
+    // if (index === 78 || offsetIndex === 78) {
+        getDialogue('winning')
+        getInventory('winning')
+    }
 
-    if (index === 49) {
+    if (index === 29 || offsetIndex === 29) {
         getDialogue('wind')
         getInventory('wind')
     }
 
     useEffect(() => {
         getDialogue('instructions')
+        return() => getDialogue('')
     }, [])
 
     return (

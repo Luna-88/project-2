@@ -77,7 +77,7 @@ adminRouter.get('/edit/game/:gameId', async (request, response) => {
 
 adminRouter.put('/edit/game/save', async (request, response) => {
     try {
-        console.log("reached save server")
+        // console.log("reached save server")
         let gameId = request.body._id
         let solar = request.body.solar
         let wind = request.body.wind

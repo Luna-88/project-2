@@ -11,9 +11,9 @@ function accessInventory(energy, request, response) {
         return response.status(404).send('Load a game first')
     } else {
         if (energy === 'solar') {
-            console.log('solar')
+            // console.log('solar')
         } else if (energy === 'wind') {
-            console.log('wind')
+            // console.log('wind')
         } else if (energy==='display') {
             return loadedGame
         }
